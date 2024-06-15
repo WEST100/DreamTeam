@@ -19,7 +19,7 @@ const CategoryList = () => {
       ) : (
         categories &&
         categories.map((cat) => (
-          <div className="categoriesContainer">
+          <div key={ cat.id} className="categoriesContainer">
             <img className="categoriesImg" src="./assets/images/category_img/1.jpeg" alt="categorie img" />
             <h2>{cat.title}</h2>
           </div>
