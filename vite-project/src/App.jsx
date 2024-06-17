@@ -7,13 +7,9 @@ import Home from "./pages/Home/Home";
 
 function App() {
   return (
-    <div>
-      <div>
+    <main>
+      <div className="nav-link__div">
         <NavLink to="/">Main Page</NavLink>
-        <br />
-        <NavLink to="/products">All products</NavLink>
-        <br />
-        <NavLink to="/categories">Categories</NavLink>
       </div>
 
       <Routes>
@@ -22,7 +18,7 @@ function App() {
         <Route path="/categories" element={<Categories />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
-    </div>
+    </main>
   );
 }
 
