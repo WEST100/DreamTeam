@@ -1,12 +1,10 @@
 import React from "react";
 // import "./App.scss";
-import logo from "/src/assets/images/home_img/logo.png"
+import logo from "/src/assets/images/home_img/logo.png";
 import heart from "/src/assets/images/home_img/heart.svg";
 import cart from "/src/assets/images/home_img/cart.svg";
 import header from "/src/assets/images/home_img/header.jpg";
 import { NavLink } from "react-router-dom";
-
-
 
 const Home = () => {
   return (
@@ -60,7 +58,7 @@ const Home = () => {
                 Amazing Discounts <br />
                 on Garden Products!
               </h1>
-              <button className="main__button_large">Check out</button>
+              <button className="main__button_large montserrat-main">Check out</button>
             </div>
           </div>
         </div>
