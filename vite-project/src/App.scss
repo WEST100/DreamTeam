@@ -2,21 +2,13 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-}
-
-// <uniquifier>: Use a unique and descriptive class name
-// <weight>: Use a value from 100 to 900
-
-.montserrat-main {
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
-  font-weight: 500;
   font-style: normal;
 }
 
 body {
   background-color: #fffff1;
-  font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
 }
@@ -27,106 +19,3 @@ body {
   // border: 1px solid black;
 }
 
-.header .container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.company-style {
-  display: flex;
-  align-items: center;
-  gap: 22px;
-}
-
-.theme {
-  max-width: 60px;
-}
-
-.logo {
-  width: 70px;
-  height: 70px;
-  margin: 30px 0;
-}
-
-.menu__list {
-  list-style: none;
-  display: flex;
-  gap: 32px;
-}
-
-.menu__item a {
-  font-size: 20px;
-  line-height: 130%;
-  text-decoration: none;
-  cursor: pointer;
-  color: black;
-}
-
-.menu__button {
-  text-align: center;
-  margin-bottom: 12px;
-}
-
-.menu__button_small {
-  border: none;
-  border-radius: 6px;
-  padding: 6px 16px;
-  width: 151px;
-  height: 32px;
-  background: #92a134;
-  text-align: center;
-  color: #fffff1;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 126%;
-}
-
-.users-menu {
-  display: flex;
-  gap: 24px;
-  align-items: center;
-}
-
-// .main-content__items {
-//   position: relative;
-// }
-
-.main__text {
-  font-weight: 700;
-  font-size: 96px;
-  line-height: 110%;
-  color: #fffff1;
-  margin-bottom: 40px;
-}
-
-.main__button_large {
-  border: none;
-  border-radius: 6px;
-  background: #92a134;
-  padding: 16px 56px;
-  width: 218px;
-  height: 58px;
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 130%;
-  text-align: center;
-  color: #fffff1;
-}
-
-.main-content__item {
-  position: absolute;
-  padding-top: 40px;
-  // z-index: 998;
-  // top: 460;
-}
-
-.main-content__image {
-  margin: 0 auto;
-  max-width: 1440px;
-}
-
-.main-image {
-  display: block;
-  max-width: 100%;
-}
