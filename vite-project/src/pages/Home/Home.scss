@@ -1,32 +1,3 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-// <uniquifier>: Use a unique and descriptive class name
-// <weight>: Use a value from 100 to 900
-
-.montserrat-main {
-  font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 500;
-  font-style: normal;
-}
-
-body {
-  background-color: #fffff1;
-  font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal; 
-}
-
-.container {
-  max-width: 1360px;
-  margin: 0 auto;
-  // border: 1px solid black;
-}
-
 .header .container {
   display: flex;
   align-items: center;
@@ -66,20 +37,20 @@ body {
 .menu__button {
   text-align: center;
   margin-bottom: 12px;
-}
 
-.menu__button_small {
-  border: none;
-  border-radius: 6px;
-  padding: 6px 16px;
-  width: 151px;
-  height: 32px;
-  background: #92a134;
-  text-align: center;
-  color: #fffff1;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 126%;
+  &_small {
+    border: none;
+    border-radius: 6px;
+    padding: 6px 16px;
+    width: 151px;
+    height: 32px;
+    background: #92a134;
+    text-align: center;
+    color: #fffff1;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 126%;
+  }
 }
 
 .users-menu {
@@ -112,25 +83,180 @@ body {
 
 .main-content {
   margin-bottom: 80px;
+
+  &__item {
+    position: absolute;
+    padding-top: 80px;
+    padding-left: 40px;
+    top: 0;
+    left: 0;
+  }
+
+  &__items {
+    position: relative;
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+  }
 }
 
-.main-content__item {
-  position: absolute;
-  padding-top: 80px;
-  padding-left: 40px;
-  top: 0;
-  left: 0;
-}
-
-.main-content__items {
-  position: relative;
-  max-width: 1440px;
+.categories {
+  max-width: 1360px;
   margin: 0 auto;
+
+  &__title {
+    max-width: 1360px;
+    display: flex;
+    align-items: center;
+
+    & h1 {
+      font-family: "Montserrat", sans-serif;
+      font-optical-sizing: auto;
+      font-weight: 700;
+      font-style: normal;
+      font-size: 64px;
+      padding-right: 10px;
+    }
+    & hr {
+      flex-grow: 1; /* Заставляем <hr> занять оставшееся пространство */
+      border: none;
+      border-top: 2px solid lightgray; /*Определяем стиль линии */
+      margin: 0 0 0 10px; /* Отступы по бокам */
+    }
+  }
+
+  &__button {
+    padding: 5px 10px;
+    font-size: 14px;
+    border: 2px solid lightgray;
+    border-radius: 8px;
+  }
+  &__button a {
+    text-decoration: none;
+    color: gray;
+  }
+
+  &__card {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+
+    &__imegs {
+      flex: 1;
+      text-align: center;
+
+      & img {
+        width: 100%;
+        max-width: 316px;
+        height: auto;
+      }
+
+      & p {
+        font-family: "Montserrat", sans-serif;
+        font-size: 20px;
+        font-weight: 500;
+        font-optical-sizing: auto;
+        font-style: normal;
+      }
+    }
+  }
 }
 
-.main-image {
-  display: block;
-  width: 100%;
+.discount {
+  font-family: "Montserrat", sans-serif;
+  background-color: #f8f8f8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  box-sizing: border-box;
+  max-width: 1360px;
+  margin: 0 auto;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1296px;
+    margin: 0 auto;
+  }
+  &__image {
+    width: 100%;
+    max-width: 748px;
+    height: auto;
+    background: url("/src/assets/images/imageForm.jpeg") no-repeat center center;
+    background-size: cover;
+  }
+  &__form {
+    border-radius: 12px;
+    padding: 32px 32px 0px 32px;
+    width: 100%;
+    max-width: 1360px;
+    height: auto;
+    background: linear-gradient(220deg, #0b710b 0%, #393 100%);
+    text-align: center;
+    color: #ffffff;
+
+    & h1 {
+      font-weight: 700;
+      font-size: 64px;
+      line-height: 110%;
+    }
+    &__container {
+      width: 100%;
+      max-width: 516px;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      & form {
+        width: 100%;
+      }
+      & input {
+        width: 100%;
+        height: 58px;
+        margin-bottom: 16px;
+        padding: 0 16px;
+        border: 1px solid #ffffff;
+        border-radius: 6px;
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 130%;
+        color: #ffffff;
+        background-color: transparent;
+      }
+      & input::placeholder {
+        color: #ffffff;
+        opacity: 0.7;
+      }
+      & button {
+        border-radius: 6px;
+        padding: 16px 32px;
+        width: 100%;
+        height: 58px;
+        border: none;
+        background: #ffffff;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 130%;
+        text-align: center;
+        color: #000000;
+        cursor: pointer;
+        transition: background 0.3s, color 0.3s;
+      }
+      & button:hover {
+        background: #000000;
+        color: #ffffff;
+      }
+    }
+  }
 }
 
 .sale {
@@ -139,47 +265,47 @@ body {
   margin: auto;
 }
 
-.sale__all{
+.sale__all {
   font-weight: 700;
   font-size: 64px;
   color: #424436;
   padding: 10px;
-  }
+}
 
-  .sale_item-line{
-    margin-left: auto;
-  }
+.sale_item-line {
+  margin-left: auto;
+}
 
-.sale__line{
+.sale__line {
   border: 1px;
   height: 2px;
   width: 1091px;
-  background-color: #DDDDDD 
+  background-color: #dddddd;
 }
 
-.sale__block{
- display: flex;
- align-items: center;
- //justify-content: space-between;
+.sale__block {
+  display: flex;
+  align-items: center;
+  //justify-content: space-between;
 }
 
-.sale_block-butlin{
+.sale_block-butlin {
   display: flex;
   margin-left: auto;
   margin-right: 5px;
   align-items: center;
 }
 
-.sale__button-item{
-padding: 8px 16px 8px 16px;
+.sale__button-item {
+  padding: 8px 16px 8px 16px;
 }
 
-.all__sales{
+.all__sales {
   border-radius: 10px;
-  border: 1px solid #DDDDDD;
+  border: 1px solid #dddddd;
   background-color: transparent;
   color: inherit;
-  color: #8B8B8B;
+  color: #8b8b8b;
   //size: 16px;
   cursor: pointer;
   align-items: center;
@@ -187,32 +313,31 @@ padding: 8px 16px 8px 16px;
   margin-right: 0px;
 }
 
-.sale__main-section{
+.sale__main-section {
   display: flex;
 }
 
-.sale__priceBlock{
+.sale__priceBlock {
   position: relative;
   // display: flex;
   // flex-direction: column;
   justify-content: space-between;
-  border: 1px solid #DDDDDD;
+  border: 1px solid #dddddd;
   border-radius: 10px;
   margin: 5px;
   width: 100%;
-  
 }
 
-.sale__img-item{
-width: 100%;
+.sale__img-item {
+  width: 100%;
 }
 
 .sale__discountPerc {
   position: absolute;
   top: 10px;
   right: 10px;
-  background: #F26D22;
-  color: #FFFFFF;
+  background: #f26d22;
+  color: #ffffff;
   padding: 4px 8px;
   border-radius: 10px;
   width: 68px;
@@ -224,36 +349,35 @@ width: 100%;
   justify-content: center;
 }
 
-.sale__prices{
+.sale__prices {
   margin-top: 10px;
 }
 
-.sale__description{
-display: inline-block;
-font-size: 20px;
-font-weight: 500;
-color: #424436;
-text-overflow: ellipsis;
-margin-left: 30px;
+.sale__description {
+  display: inline-block;
+  font-size: 20px;
+  font-weight: 500;
+  color: #424436;
+  text-overflow: ellipsis;
+  margin-left: 30px;
 }
 
-.sale__realPrice{
-display: inline-block;
-font-weight: 600;
-font-size: 40px;
-color: #424436;
-margin-bottom: 20px;
+.sale__realPrice {
+  display: inline-block;
+  font-weight: 600;
+  font-size: 40px;
+  color: #424436;
+  margin-bottom: 20px;
 }
 
-.sale__oldPrice{
-display: inline-block;
-font-weight: 500;
-font-size: 20px;
-color: #424436;
-text-decoration: line-through;
-padding: 10px;
+.sale__oldPrice {
+  display: inline-block;
+  font-weight: 500;
+  font-size: 20px;
+  color: #424436;
+  text-decoration: line-through;
+  padding: 10px;
 }
-
 
 .footer__title {
   font-weight: 700;
@@ -300,161 +424,3 @@ padding: 10px;
 iframe {
   margin-bottom: 80px;
 }
-
-.categories {
-  max-width: 1360px;
-  margin: 0 auto;
-
-  &__title {
-     max-width: 1360px;
-     display: flex;
-     align-items: center;
-
-     & h1 {
-         font-family: "Montserrat", sans-serif;
-         font-optical-sizing: auto;
-         font-weight: 700;
-         font-style: normal;
-         font-size: 64px;
-         padding-right: 10px; 
-     }
-     & hr {
-         flex-grow: 1; /* Заставляем <hr> занять оставшееся пространство */
-         border: none; 
-         border-top: 2px solid lightgray; /*Определяем стиль линии */
-         margin: 0  0  0 10px; /* Отступы по бокам */
-     }
- }
-
- &__button {    
-     padding: 5px 10px; 
-     font-size: 14px; 
-     border: 2px solid lightgray;
-     border-radius: 8px
- }
- &__button a {
-     text-decoration: none;
-     color: gray;
- }
-
- &__card {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-
-    &__imegs {
-     flex: 1;
-     text-align: center;
-
-     & img {
-         width: 100%;
-         max-width: 316px; 
-         height: auto;
-         }
-
-     & p{
-         font-family: "Montserrat", sans-serif;
-         font-size: 20px;
-         font-weight: 500;
-         font-optical-sizing: auto;
-         font-style: normal;
-         }
-     }
- }   
-}
-
-
-.discount {
-  font-family: 'Montserrat', sans-serif;
-  background-color: #F8F8F8;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  box-sizing: border-box;
-  max-width: 1360px;
-  margin: 0 auto;
-
-  &__content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    max-width: 1296px;
-    margin: 0 auto;
-  }
-  &__image {
-    width: 100%;
-    max-width: 748px;
-    height: auto;
-    background: url('/src/assets/images/imageForm.jpeg')  no-repeat center center;
-    background-size: cover;
-  }
-  &__form {
-    border-radius: 12px;
-    padding: 32px 32px 0px 32px;
-    width: 100%; 
-    max-width: 1360px;
-    height: auto; 
-    background: linear-gradient(220deg, #0b710b 0%, #393 100%);
-    text-align: center;
-    color: #FFFFFF;
-
-    & h1 {
-      font-weight: 700;
-      font-size: 64px;
-      line-height: 110%;
-    }
-    &__container {
-      width: 100%;
-      max-width: 516px;
-      height: auto;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-
-      & form {
-        width: 100%;
-      }
-      & input {
-        width: 100%;
-        height: 58px;
-        margin-bottom: 16px;
-        padding: 0 16px;
-        border: 1px solid #FFFFFF;
-        border-radius: 6px;
-        font-size: 20px;
-        font-weight: 500;
-        line-height: 130%;
-        color: #FFFFFF;
-        background-color: transparent;
-      }
-      & input::placeholder {
-        color: #FFFFFF;
-        opacity: 0.7;
-      }
-      & button {
-        border-radius: 6px;
-        padding: 16px 32px;
-        width: 100%;
-        height: 58px;
-        border: none;
-        background: #FFFFFF;
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 600;
-        font-size: 20px;
-        line-height: 130%;
-        text-align: center;
-        color: #000000;
-        cursor: pointer;
-        transition: background 0.3s, color 0.3s;
-      }
-      & button:hover {
-        background: #000000;
-        color: #FFFFFF;
-      }
-    }
-  }
-}
-
-

@@ -18,8 +18,8 @@ import img4 from "/src/assets/images/category_img/4.jpeg";
 import imageForm from "/src/assets/images/imageForm.jpeg";
 
 const Home = () => {
-  return ( 
-  <>
+  return (
+    <>
       <header className="header">
         <div className="container">
           <div className="company-style">
@@ -33,7 +33,6 @@ const Home = () => {
           <div className="menu">
             <div className="menu__button">
               <button className="menu__button_small">1 day discount!</button>
-
             </div>
             <nav className="nav">
               <ul className="menu__list">
@@ -64,7 +63,7 @@ const Home = () => {
       </header>
       <section className="main-content">
         <div className="main-content__items">
-          <img className="main-image" src={header} alt="header_image" />
+          <img className="main-content__image" src={header} alt="header_image" />
           <div className="main-content__item">
             <div className="container">
               <h1 className="main__text">
@@ -77,7 +76,7 @@ const Home = () => {
         </div>
       </section>
 
-            <section className="categories">
+      <section className="categories">
         <div className="container">
           <div className="categories__title">
             <h1>Categories</h1>
@@ -112,20 +111,12 @@ const Home = () => {
           <h1>5% off on the first order</h1>
           <div className="discount__content">
             <div className="discount__image">
-              <img
-                src={imageForm}
-                alt="Hands holding garden tools"
-              />
+              <img src={imageForm} alt="Hands holding garden tools" />
             </div>
             <div className="discount__form__container">
               <form>
                 <input type="text" name="name" placeholder="Name" required />
-                <input
-                  type="tel"
-                  name="phone"
-                  placeholder="Phone number"
-                  required
-                />
+                <input type="tel" name="phone" placeholder="Phone number" required />
                 <input type="email" name="email" placeholder="Email" required />
                 <button type="submit">Get a discount</button>
               </form>
@@ -134,124 +125,103 @@ const Home = () => {
         </div>
       </section>
 
-      <section className='sale'>
-
-        <div className='sale__block'>
+      <section className="sale">
+        <div className="sale__block">
           <div>
-            <p className='sale__all'>Sale</p>
+            <p className="sale__all">Sale</p>
           </div>
           <div className="sale_block-butlin">
-          <div className="sale_item-line">
-            <hr className='sale__line' />
-          </div>
-          <div className="sale__button-item">
-            <button className='all__sales'>All sales</button>
-          </div>
+            <div className="sale_item-line">
+              <hr className="sale__line" />
+            </div>
+            <div className="sale__button-item">
+              <button className="all__sales">All sales</button>
+            </div>
           </div>
         </div>
 
-        <div className='sale__main-section'>
-
-          <div className='sale__priceBlock'>
-
+        <div className="sale__main-section">
+          <div className="sale__priceBlock">
             <div className="sale__img">
-              <img className='sale__img-item' src={bridge} alt="Bridge" />
+              <img className="sale__img-item" src={bridge} alt="Bridge" />
             </div>
 
-            <div className='sale__description'>
-              <div className='sale__discount'>
+            <div className="sale__description">
+              <div className="sale__discount">
                 <p>Decorative forged bridge</p>
               </div>
 
-              <div className='sale__prices'>
-                <p className='sale__realPrice'>$500</p>
-                <p className='sale__oldPrice'>$1000</p>
+              <div className="sale__prices">
+                <p className="sale__realPrice">$500</p>
+                <p className="sale__oldPrice">$1000</p>
               </div>
             </div>
 
-
-            <div className='sale__discountPerc'>
+            <div className="sale__discountPerc">
               <p>-50%</p>
             </div>
-
           </div>
 
-
-          <div className='sale__priceBlock'>
-
-
+          <div className="sale__priceBlock">
             <div className="sale__img">
-              <img className='sale__img-item' src={flowers} alt="flowers" />
+              <img className="sale__img-item" src={flowers} alt="flowers" />
             </div>
 
-            <div className='sale__description'>
-              <div className='sale__discount'>
+            <div className="sale__description">
+              <div className="sale__discount">
                 <p>Aquarium lock</p>
               </div>
 
-              <div className='sale__prices'>
-                <p className='sale__realPrice'>$100</p>
-                <p className='sale__oldPrice'>$150</p>
+              <div className="sale__prices">
+                <p className="sale__realPrice">$100</p>
+                <p className="sale__oldPrice">$150</p>
               </div>
             </div>
 
-
-            <div className='sale__discountPerc'>
+            <div className="sale__discountPerc">
               <p>-34%</p>
             </div>
-
           </div>
 
-
-          <div className='sale__priceBlock'>
-
-
+          <div className="sale__priceBlock">
             <div className="sale__img">
-              <img className='sale__img-item' src={castle} alt="castle" />
+              <img className="sale__img-item" src={castle} alt="castle" />
             </div>
 
-            <div className='sale__description'>
-              <div className='sale__discount'>
+            <div className="sale__description">
+              <div className="sale__discount">
                 <p>Flower basket</p>
               </div>
 
-              <div className='sale__prices'>
-                <p className='sale__realPrice'>$150</p>
-                <p className='sale__oldPrice'>$200</p>
+              <div className="sale__prices">
+                <p className="sale__realPrice">$150</p>
+                <p className="sale__oldPrice">$200</p>
               </div>
             </div>
 
-
-            <div className='sale__discountPerc'>
+            <div className="sale__discountPerc">
               <p>-25%</p>
             </div>
-
           </div>
 
-
-          <div className='sale__priceBlock'>
-
-
+          <div className="sale__priceBlock">
             <div className="sale__img">
-              <img className='sale__img-item' src={cutters} alt="Wire cutters" />
+              <img className="sale__img-item" src={cutters} alt="Wire cutters" />
             </div>
 
-            <div className='sale__description'>
-              <div className='sale__discount'>
+            <div className="sale__description">
+              <div className="sale__discount">
                 <p>Secateurs</p>
               </div>
 
-              <div className='sale__prices'>
-                <p className='sale__realPrice'>$199</p>
-                <p className='sale__oldPrice'>$240</p>
+              <div className="sale__prices">
+                <p className="sale__realPrice">$199</p>
+                <p className="sale__oldPrice">$240</p>
               </div>
             </div>
 
-
-            <div className='sale__discountPerc'>
-
+            <div className="sale__discountPerc">
               <p>-17%</p>
-
             </div>
           </div>
         </div>
@@ -283,7 +253,7 @@ const Home = () => {
               <p className="footer__item_info">24 hours a day</p>
             </div>
           </div>
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4855.896610618105!2d13.377704099999999!3d52.516274599999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a851c655f20989%3A0x26bbfb4e84674c63!2z0JHRgNCw0L3QtNC10L3QsdGD0YDQs9GB0LrQuNC1INCy0L7RgNC-0YLQsA!5e0!3m2!1sru!2sde!4v1718793769656!5m2!1sru!2sde" width="1360" height="600" style={{border: 0}} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4855.896610618105!2d13.377704099999999!3d52.516274599999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a851c655f20989%3A0x26bbfb4e84674c63!2z0JHRgNCw0L3QtNC10L3QsdGD0YDQs9GB0LrQuNC1INCy0L7RgNC-0YLQsA!5e0!3m2!1sru!2sde!4v1718793769656!5m2!1sru!2sde" width="1360" height="600" style={{ border: 0 }} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
         </div>
       </footer>
     </>
