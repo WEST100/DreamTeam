@@ -20,7 +20,7 @@ const CategoryList = () => {
         categories &&
         categories.map((cat) => (
           <div key={cat.id} className="categoriesContainer">
-            <img className="categoriesImg" src={`./assets/images${cat.image}`} alt="categorie img" />
+            <img className="categoriesImg" src={`/src/assets/images${cat.image}`} alt="categorie img" />
             <h2>{cat.title}</h2>
           </div>
         ))
