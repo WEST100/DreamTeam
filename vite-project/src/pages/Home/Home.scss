@@ -1,3 +1,32 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+// <uniquifier>: Use a unique and descriptive class name
+// <weight>: Use a value from 100 to 900
+
+.montserrat-main {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+body {
+  background-color: #fffff1;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal; 
+}
+
+.container {
+  max-width: 1360px;
+  margin: 0 auto;
+  // border: 1px solid black;
+}
+
 .header .container {
   display: flex;
   align-items: center;
@@ -79,6 +108,10 @@
   line-height: 130%;
   text-align: center;
   color: #fffff1;
+}
+
+.main-content {
+  margin-bottom: 80px;
 }
 
 .main-content__item {
@@ -219,6 +252,209 @@ font-size: 20px;
 color: #424436;
 text-decoration: line-through;
 padding: 10px;
+}
+
+
+.footer__title {
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 110%;
+  color: #424436;
+  padding-bottom: 40px;
+}
+
+.footer__items {
+  display: grid;
+  grid-template-columns: repeat(2, 2fr);
+  gap: 32px;
+  margin-bottom: 32px;
+}
+
+.footer__item {
+  background: #f2f6d3;
+  border-radius: 12px;
+  padding: 32px;
+  max-width: 780px;
+  max-height: 194px;
+}
+
+.footer__item_descr {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 130%;
+  color: #8b8b8b;
+  margin-bottom: 16px;
+}
+
+.footer__item_info {
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 110%;
+  color: #424436;
+}
+
+.footer__item_image {
+  margin-right: 18px;
+}
+
+iframe {
+  margin-bottom: 80px;
+}
+
+.categories {
+  max-width: 1360px;
+  margin: 0 auto;
+
+  &__title {
+     max-width: 1360px;
+     display: flex;
+     align-items: center;
+
+     & h1 {
+         font-family: "Montserrat", sans-serif;
+         font-optical-sizing: auto;
+         font-weight: 700;
+         font-style: normal;
+         font-size: 64px;
+         padding-right: 10px; 
+     }
+     & hr {
+         flex-grow: 1; /* Заставляем <hr> занять оставшееся пространство */
+         border: none; 
+         border-top: 2px solid lightgray; /*Определяем стиль линии */
+         margin: 0  0  0 10px; /* Отступы по бокам */
+     }
+ }
+
+ &__button {    
+     padding: 5px 10px; 
+     font-size: 14px; 
+     border: 2px solid lightgray;
+     border-radius: 8px
+ }
+ &__button a {
+     text-decoration: none;
+     color: gray;
+ }
+
+ &__card {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+
+    &__imegs {
+     flex: 1;
+     text-align: center;
+
+     & img {
+         width: 100%;
+         max-width: 316px; 
+         height: auto;
+         }
+
+     & p{
+         font-family: "Montserrat", sans-serif;
+         font-size: 20px;
+         font-weight: 500;
+         font-optical-sizing: auto;
+         font-style: normal;
+         }
+     }
+ }   
+}
+
+
+.discount {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #F8F8F8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  box-sizing: border-box;
+  max-width: 1360px;
+  margin: 0 auto;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1296px;
+    margin: 0 auto;
+  }
+  &__image {
+    width: 100%;
+    max-width: 748px;
+    height: auto;
+    background: url('/src/assets/images/imageForm.jpeg')  no-repeat center center;
+    background-size: cover;
+  }
+  &__form {
+    border-radius: 12px;
+    padding: 32px 32px 0px 32px;
+    width: 100%; 
+    max-width: 1360px;
+    height: auto; 
+    background: linear-gradient(220deg, #0b710b 0%, #393 100%);
+    text-align: center;
+    color: #FFFFFF;
+
+    & h1 {
+      font-weight: 700;
+      font-size: 64px;
+      line-height: 110%;
+    }
+    &__container {
+      width: 100%;
+      max-width: 516px;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      & form {
+        width: 100%;
+      }
+      & input {
+        width: 100%;
+        height: 58px;
+        margin-bottom: 16px;
+        padding: 0 16px;
+        border: 1px solid #FFFFFF;
+        border-radius: 6px;
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 130%;
+        color: #FFFFFF;
+        background-color: transparent;
+      }
+      & input::placeholder {
+        color: #FFFFFF;
+        opacity: 0.7;
+      }
+      & button {
+        border-radius: 6px;
+        padding: 16px 32px;
+        width: 100%;
+        height: 58px;
+        border: none;
+        background: #FFFFFF;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 130%;
+        text-align: center;
+        color: #000000;
+        cursor: pointer;
+        transition: background 0.3s, color 0.3s;
+      }
+      & button:hover {
+        background: #000000;
+        color: #FFFFFF;
+      }
+    }
+  }
 }
 
 

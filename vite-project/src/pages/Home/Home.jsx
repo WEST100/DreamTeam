@@ -8,11 +8,18 @@ import bridge from "/src/assets/images/home_img/Bridge.png";
 import flowers from "/src/assets/images/home_img/Flowers.png";
 import cutters from "/src/assets/images/home_img/Wire_cutters.png";
 import castle from "/src/assets/images/home_img/Castle.png";
+import insta from "/src/assets/images/home_img/insta.svg";
+import whatsapp from "/src/assets/images/home_img/whatsapp.svg";
 import { NavLink } from "react-router-dom";
+import img1 from "/src/assets/images/category_img/1.jpeg";
+import img2 from "/src/assets/images/category_img/2.jpeg";
+import img3 from "/src/assets/images/category_img/3.jpeg";
+import img4 from "/src/assets/images/category_img/4.jpeg";
+import imageForm from "/src/assets/images/imageForm.jpeg";
 
 const Home = () => {
-  return (
-    <>
+  return ( 
+  <>
       <header className="header">
         <div className="container">
           <div className="company-style">
@@ -26,6 +33,7 @@ const Home = () => {
           <div className="menu">
             <div className="menu__button">
               <button className="menu__button_small">1 day discount!</button>
+
             </div>
             <nav className="nav">
               <ul className="menu__list">
@@ -64,6 +72,63 @@ const Home = () => {
                 on Garden Products!
               </h1>
               <button className="main__button_large">Check out</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+            <section className="categories">
+        <div className="container">
+          <div className="categories__title">
+            <h1>Categories</h1>
+            <hr />
+            <button className="categories__button">
+              <a href="https://example.com">All categories</a>
+            </button>
+          </div>
+          <div className="categories__card">
+            <div className="categories__card__imegs">
+              <img src={img1} alt="Fertilizer" />
+              <p>Fertilizer</p>
+            </div>
+            <div className="categories__card__imegs">
+              <img src={img2} alt="Protective products and septic tanks" />
+              <p>Protective products and septic tanks</p>
+            </div>
+            <div className="categories__card__imegs">
+              <img src={img3} alt="Planting material" />
+              <p>Planting material</p>
+            </div>
+            <div className="categories__card__imegs">
+              <img src={img4} alt="Planting material" />
+              <p>Planting material</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="discount">
+        <div className="discount__form">
+          <h1>5% off on the first order</h1>
+          <div className="discount__content">
+            <div className="discount__image">
+              <img
+                src={imageForm}
+                alt="Hands holding garden tools"
+              />
+            </div>
+            <div className="discount__form__container">
+              <form>
+                <input type="text" name="name" placeholder="Name" required />
+                <input
+                  type="tel"
+                  name="phone"
+                  placeholder="Phone number"
+                  required
+                />
+                <input type="email" name="email" placeholder="Email" required />
+                <button type="submit">Get a discount</button>
+              </form>
             </div>
           </div>
         </div>
@@ -192,6 +257,35 @@ const Home = () => {
         </div>
       </section>
 
+      <footer className="footer">
+        <div className="container">
+          <h2 className="footer__title">Contact</h2>
+          <div className="footer__items">
+            <div className="footer__item">
+              <p className="footer__item_descr">Phone</p>
+              <p className="footer__item_info">+49 999 999 99 99</p>
+            </div>
+            <div className="footer__item">
+              <p className="footer__item_descr">Socials</p>
+              <a href="#">
+                <img className="footer__item_image" src={insta} alt="instagram" />
+              </a>
+              <a href="#">
+                <img src={whatsapp} alt="whatsapp" />
+              </a>
+            </div>
+            <div className="footer__item">
+              <p className="footer__item_descr">Address</p>
+              <p className="footer__item_info">Linkstraße 2, 8 OG, 10 785, Berlin, Deutschland</p>
+            </div>
+            <div className="footer__item">
+              <p className="footer__item_descr">Working Hours</p>
+              <p className="footer__item_info">24 hours a day</p>
+            </div>
+          </div>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4855.896610618105!2d13.377704099999999!3d52.516274599999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a851c655f20989%3A0x26bbfb4e84674c63!2z0JHRgNCw0L3QtNC10L3QsdGD0YDQs9GB0LrQuNC1INCy0L7RgNC-0YLQsA!5e0!3m2!1sru!2sde!4v1718793769656!5m2!1sru!2sde" width="1360" height="600" style={{border: 0}} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
+        </div>
+      </footer>
     </>
   );
 };
