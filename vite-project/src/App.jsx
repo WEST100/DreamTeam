@@ -4,6 +4,7 @@ import Products from "./pages/Products/Products";
 import Categories from "./pages/Categories/Categories";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import Home from "./pages/Home/Home";
+import Discounted from "./pages/Discounted/Discounted";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
         <Route path="/categories" element={<Categories />} />
+        <Route path="/discounted" element={<Discounted />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </main>
