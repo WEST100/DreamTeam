@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCategoriesAction } from "../../store/asyncActions/categorie";
+import Header from "../HomePage/Header/Header";
+import Footer from "../HomePage/Footer/Footer";
 
 
 const CategoryList = () => {
@@ -13,19 +15,23 @@ const CategoryList = () => {
   }, []);
 
   return (
-    <div className="categoriesListContainer">
-      {isFetching ? (
-        <p>Please, wait...</p>
-      ) : (
-        categories &&
-        categories.map((cat) => (
-          <div key={cat.id} className="categoriesContainer">
-            <img className="categoriesImg" src={`/src/assets/images${cat.image}`} alt="categorie img" />
-            <h2>{cat.title}</h2>
-          </div>
-        ))
-      )}
-    </div>
+    <>
+      <Header />
+      <div className="categoriesListContainer">
+        {isFetching ? (
+          <p>Please, wait...</p>
+        ) : (
+          categories &&
+          categories.map((cat) => (
+            <div key={cat.id} className="categoriesContainer">
+              <img className="categoriesImg" src={`/src/assets/images${cat.image}`} alt="categorie img" />
+              <h2>{cat.title}</h2>
+            </div>
+          ))
+        )}
+      </div>
+      <Footer />
+    </>
   );
 };
 

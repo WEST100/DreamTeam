@@ -1,0 +1,45 @@
+.footer__title {
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 110%;
+  color: #424436;
+  padding-bottom: 40px;
+}
+
+.footer__items {
+  display: grid;
+  grid-template-columns: repeat(2, 2fr);
+  gap: 32px;
+  margin-bottom: 32px;
+}
+
+.footer__item {
+  background: #f2f6d3;
+  border-radius: 12px;
+  padding: 32px;
+  max-width: 780px;
+  max-height: 194px;
+}
+
+.footer__item_descr {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 130%;
+  color: #8b8b8b;
+  margin-bottom: 16px;
+}
+
+.footer__item_info {
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 110%;
+  color: #424436;
+}
+
+.footer__item_image {
+  margin-right: 18px;
+}
+
+iframe {
+  margin-bottom: 80px;
+}

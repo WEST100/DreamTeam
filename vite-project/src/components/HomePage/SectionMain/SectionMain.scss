@@ -1,0 +1,44 @@
+.main__text {
+  font-weight: 700;
+  font-size: 96px;
+  line-height: 110%;
+  color: #fffff1;
+  margin-bottom: 40px;
+}
+
+.main__button_large {
+  border: none;
+  border-radius: 6px;
+  background: #92a134;
+  padding: 16px 56px;
+  width: 218px;
+  height: 58px;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 130%;
+  text-align: center;
+  color: #fffff1;
+}
+
+.main-content {
+  margin-bottom: 80px;
+
+  &__item {
+    position: absolute;
+    padding-top: 80px;
+    padding-left: 40px;
+    top: 0;
+    left: 0;
+  }
+
+  &__items {
+    position: relative;
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+  }
+}
