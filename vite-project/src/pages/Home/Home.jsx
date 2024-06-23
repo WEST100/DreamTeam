@@ -76,39 +76,35 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="categories">
-        <div className="container">
-          <div className="categories__title">
-            <h1>Categories</h1>
-            <hr />
-            <button className="categories__button">
-              <a href="https://example.com">All categories</a>
-            </button>
+      <section className="categories container">
+        <div className="categories__title">
+          <h2>Categories</h2>
+          <hr />
+          <button className="categories__button">All categories</button>
+        </div>
+        <div className="categories__card">
+          <div className="categories__card__images">
+            <img src={img1} alt="Fertilizer" />
+            <p>Fertilizer</p>
           </div>
-          <div className="categories__card">
-            <div className="categories__card__imegs">
-              <img src={img1} alt="Fertilizer" />
-              <p>Fertilizer</p>
-            </div>
-            <div className="categories__card__imegs">
-              <img src={img2} alt="Protective products and septic tanks" />
-              <p>Protective products and septic tanks</p>
-            </div>
-            <div className="categories__card__imegs">
-              <img src={img3} alt="Planting material" />
-              <p>Planting material</p>
-            </div>
-            <div className="categories__card__imegs">
-              <img src={img4} alt="Planting material" />
-              <p>Planting material</p>
-            </div>
+          <div className="categories__card__images">
+            <img src={img2} alt="Protective products and septic tanks" />
+            <p>Protective products and septic tanks</p>
+          </div>
+          <div className="categories__card__images">
+            <img src={img3} alt="Planting material" />
+            <p>Planting material</p>
+          </div>
+          <div className="categories__card__images">
+            <img src={img4} alt="Planting material" />
+            <p>Planting material</p>
           </div>
         </div>
       </section>
 
-      <section className="discount">
+      <section className="discount container">
         <div className="discount__form">
-          <h1>5% off on the first order</h1>
+          <h3>5% off on the first order</h3>
           <div className="discount__content">
             <div className="discount__image">
               <img src={imageForm} alt="Hands holding garden tools" />
@@ -125,10 +121,10 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="sale">
+      <section className="sale container">
         <div className="sale__block">
           <div>
-            <p className="sale__all">Sale</p>
+            <h2 className="sale__all">Sale</h2>
           </div>
           <div className="sale_block-butlin">
             <div className="sale_item-line">
