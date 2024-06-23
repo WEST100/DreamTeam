@@ -63,7 +63,11 @@ const Home = () => {
       </header>
       <section className="main-content">
         <div className="main-content__items">
-          <img className="main-content__image" src={header} alt="header_image" />
+          <img
+            className="main-content__image"
+            src={header}
+            alt="header_image"
+          />
           <div className="main-content__item">
             <div className="container">
               <h1 className="main__text">
@@ -77,31 +81,29 @@ const Home = () => {
       </section>
 
       <section className="categories">
-        <div className="container">
-          <div className="categories__title">
-            <h1>Categories</h1>
-            <hr />
-            <button className="categories__button">
-              <a href="https://example.com">All categories</a>
-            </button>
+        <div className="categories__title">
+          <h1>Categories</h1>
+          <hr />
+          <button className="categories__button">
+            <a href="https://example.com">All categories</a>
+          </button>
+        </div>
+        <div className="categories__card">
+          <div className="categories__card__imegs">
+            <img src={img1} alt="Fertilizer" />
+            <p>Fertilizer</p>
           </div>
-          <div className="categories__card">
-            <div className="categories__card__imegs">
-              <img src={img1} alt="Fertilizer" />
-              <p>Fertilizer</p>
-            </div>
-            <div className="categories__card__imegs">
-              <img src={img2} alt="Protective products and septic tanks" />
-              <p>Protective products and septic tanks</p>
-            </div>
-            <div className="categories__card__imegs">
-              <img src={img3} alt="Planting material" />
-              <p>Planting material</p>
-            </div>
-            <div className="categories__card__imegs">
-              <img src={img4} alt="Planting material" />
-              <p>Planting material</p>
-            </div>
+          <div className="categories__card__imegs">
+            <img src={img2} alt="Protective products and septic tanks" />
+            <p>Protective products and septic tanks</p>
+          </div>
+          <div className="categories__card__imegs">
+            <img src={img3} alt="Planting material" />
+            <p>Planting material</p>
+          </div>
+          <div className="categories__card__imegs">
+            <img src={img4} alt="Planting material" />
+            <p>Planting material</p>
           </div>
         </div>
       </section>
@@ -116,7 +118,12 @@ const Home = () => {
             <div className="discount__form__container">
               <form>
                 <input type="text" name="name" placeholder="Name" required />
-                <input type="tel" name="phone" placeholder="Phone number" required />
+                <input
+                  type="tel"
+                  name="phone"
+                  placeholder="Phone number"
+                  required
+                />
                 <input type="email" name="email" placeholder="Email" required />
                 <button type="submit">Get a discount</button>
               </form>
@@ -206,7 +213,11 @@ const Home = () => {
 
           <div className="sale__priceBlock">
             <div className="sale__img">
-              <img className="sale__img-item" src={cutters} alt="Wire cutters" />
+              <img
+                className="sale__img-item"
+                src={cutters}
+                alt="Wire cutters"
+              />
             </div>
 
             <div className="sale__description">
@@ -238,7 +249,11 @@ const Home = () => {
             <div className="footer__item">
               <p className="footer__item_descr">Socials</p>
               <a href="#">
-                <img className="footer__item_image" src={insta} alt="instagram" />
+                <img
+                  className="footer__item_image"
+                  src={insta}
+                  alt="instagram"
+                />
               </a>
               <a href="#">
                 <img src={whatsapp} alt="whatsapp" />
@@ -246,14 +261,24 @@ const Home = () => {
             </div>
             <div className="footer__item">
               <p className="footer__item_descr">Address</p>
-              <p className="footer__item_info">Linkstraße 2, 8 OG, 10 785, Berlin, Deutschland</p>
+              <p className="footer__item_info">
+                Linkstraße 2, 8 OG, 10 785, Berlin, Deutschland
+              </p>
             </div>
             <div className="footer__item">
               <p className="footer__item_descr">Working Hours</p>
               <p className="footer__item_info">24 hours a day</p>
             </div>
           </div>
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4855.896610618105!2d13.377704099999999!3d52.516274599999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a851c655f20989%3A0x26bbfb4e84674c63!2z0JHRgNCw0L3QtNC10L3QsdGD0YDQs9GB0LrQuNC1INCy0L7RgNC-0YLQsA!5e0!3m2!1sru!2sde!4v1718793769656!5m2!1sru!2sde" width="1360" height="600" style={{ border: 0 }} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4855.896610618105!2d13.377704099999999!3d52.516274599999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a851c655f20989%3A0x26bbfb4e84674c63!2z0JHRgNCw0L3QtNC10L3QsdGD0YDQs9GB0LrQuNC1INCy0L7RgNC-0YLQsA!5e0!3m2!1sru!2sde!4v1718793769656!5m2!1sru!2sde"
+            width="1360"
+            height="600"
+            style={{ border: 0 }}
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
         </div>
       </footer>
     </>
