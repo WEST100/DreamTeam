@@ -105,15 +105,12 @@
 }
 
 .categories {
-  max-width: 1360px;
-  margin: 0 auto;
-
   &__title {
-    max-width: 1360px;
     display: flex;
     align-items: center;
+    margin-bottom: 40px;
 
-    & h1 {
+    & h2 {
       font-family: "Montserrat", sans-serif;
       font-optical-sizing: auto;
       font-weight: 700;
@@ -144,9 +141,9 @@
     display: flex;
     justify-content: space-between;
     gap: 20px;
-    margin: 40px 0 60px 0;
+    margin-bottom: 80px;
 
-    &__imegs {
+    &__images {
       flex: 1;
       text-align: center;
 
@@ -173,9 +170,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  box-sizing: border-box;
-  max-width: 1360px;
-  margin: 0 auto;
+  margin-bottom: 80px;
 
   &__content {
     display: flex;
@@ -202,7 +197,7 @@
     text-align: center;
     color: #ffffff;
 
-    & h1 {
+    & h3 {
       font-weight: 700;
       font-size: 64px;
       line-height: 110%;
@@ -237,6 +232,7 @@
       }
       & button {
         border-radius: 6px;
+        margin-top: 16px;
         padding: 16px 32px;
         width: 100%;
         height: 58px;
@@ -260,9 +256,7 @@
 }
 
 .sale {
-  position: relative;
-  max-width: 1360px;
-  margin: auto;
+  margin-bottom: 80px;
 }
 
 .sale__all {
@@ -286,7 +280,6 @@
 .sale__block {
   display: flex;
   align-items: center;
-  //justify-content: space-between;
 }
 
 .sale_block-butlin {
