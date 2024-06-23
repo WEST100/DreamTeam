@@ -9,10 +9,6 @@ import Discounted from "./pages/Discounted/Discounted";
 function App() {
   return (
     <main>
-      <div className="nav-link__div">
-        <NavLink to="/">Main Page</NavLink>
-      </div>
-
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
