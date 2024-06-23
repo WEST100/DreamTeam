@@ -1,0 +1,59 @@
+.categories {
+  &__title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+
+    & h2 {
+      font-family: "Montserrat", sans-serif;
+      font-optical-sizing: auto;
+      font-weight: 700;
+      font-style: normal;
+      font-size: 64px;
+      padding-right: 10px;
+    }
+    & hr {
+      flex-grow: 1; /* Заставляем <hr> занять оставшееся пространство */
+      border: none;
+      border-top: 2px solid lightgray; /*Определяем стиль линии */
+      margin: 0 0 0 10px; /* Отступы по бокам */
+    }
+  }
+
+  &__button {
+    padding: 5px 10px;
+    font-size: 14px;
+    border: 2px solid lightgray;
+    border-radius: 8px;
+  }
+  &__button a {
+    text-decoration: none;
+    color: gray;
+  }
+
+  &__card {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 80px;
+
+    &__images {
+      flex: 1;
+      text-align: center;
+
+      & img {
+        width: 100%;
+        max-width: 316px;
+        height: auto;
+      }
+
+      & p {
+        font-family: "Montserrat", sans-serif;
+        font-size: 20px;
+        font-weight: 500;
+        font-optical-sizing: auto;
+        font-style: normal;
+      }
+    }
+  }
+}

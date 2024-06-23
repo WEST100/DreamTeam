@@ -1,0 +1,60 @@
+.header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.company-style {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.theme {
+  max-width: 60px;
+}
+
+.logo {
+  width: 70px;
+  height: 70px;
+  margin: 30px 0;
+}
+
+.menu__list {
+  list-style: none;
+  display: flex;
+  gap: 32px;
+}
+
+.menu__item a {
+  font-size: 20px;
+  line-height: 130%;
+  text-decoration: none;
+  cursor: pointer;
+  color: black;
+}
+
+.menu__button {
+  text-align: center;
+  margin-bottom: 12px;
+
+  &_small {
+    border: none;
+    border-radius: 6px;
+    padding: 6px 16px;
+    width: 151px;
+    height: 32px;
+    background: #92a134;
+    text-align: center;
+    color: #fffff1;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 126%;
+  }
+}
+
+.users-menu {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
