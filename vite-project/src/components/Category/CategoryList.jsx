@@ -1,9 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCategoriesAction } from "../../store/asyncActions/categorie";
-import Header from "../HomePage/Header/Header";
-import Footer from "../HomePage/Footer/Footer";
-
 
 const CategoryList = () => {
   const dispatch = useDispatch();
