@@ -13,18 +13,32 @@ const CategoryList = () => {
 
   return (
     <>
-      <div className="categoriesListContainer">
-        {isFetching ? (
-          <p>Please, wait...</p>
-        ) : (
-          categories &&
-          categories.map((cat) => (
-            <div key={cat.id} className="categoriesContainer">
-              <img className="categoriesImg" src={`/src/assets/images${cat.image}`} alt="categorie img" />
-              <h2>{cat.title}</h2>
-            </div>
-          ))
-        )}
+      <div className="categories container">
+        <div className="categories__navigation">
+          <button>Main page</button>
+          <span>—</span>
+          <button>Categories</button>
+        </div>
+        <div className="categories__title">
+          <h2>Categories</h2>
+        </div>
+        <div className="categories__ListContainer">
+          {isFetching ? (
+            <p>Please, wait...</p>
+          ) : (
+            categories &&
+            categories.map((cat) => (
+              <div key={cat.id} className="categories__Container">
+                <img
+                  className="categories__Img"
+                  src={`/src/assets/images${cat.image}`}
+                  alt="categorie img"
+                />
+                <p>{cat.title}</p>
+              </div>
+            ))
+          )}
+        </div>
       </div>
     </>
   );
