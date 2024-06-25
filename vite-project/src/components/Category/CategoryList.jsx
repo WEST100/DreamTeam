@@ -1,9 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCategoriesAction } from "../../store/asyncActions/categorie";
-import Header from "../HomePage/Header/Header";
-import Footer from "../HomePage/Footer/Footer";
-import "./CategoryList.scss";
 
 const CategoryList = () => {
   const dispatch = useDispatch();
@@ -16,7 +13,6 @@ const CategoryList = () => {
 
   return (
     <>
-      <Header />
       <div className="categories container">
         <div className="categories__navigation">
           <button>Main page</button>
@@ -44,7 +40,6 @@ const CategoryList = () => {
           )}
         </div>
       </div>
-      <Footer />
     </>
   );
 };

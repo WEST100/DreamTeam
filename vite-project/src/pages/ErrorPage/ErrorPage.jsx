@@ -3,13 +3,10 @@ import "./ErrorPage.scss";
 import img1 from "/src/assets/images/error_img/left_num.png";
 import img2 from "/src/assets/images/error_img/cactus.png";
 import img3 from "/src/assets/images/error_img/right_num.png";
-import Header from '../../components/HomePage/Header/Header';
-import Footer from '../../components/HomePage/Footer/Footer';
 
 const ErrorPage = () => {
   return (
     <>
-      <Header />
       <div className="not-found__error">
         <div className="error">
           <div className="error__code">
@@ -34,7 +31,6 @@ const ErrorPage = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 };
