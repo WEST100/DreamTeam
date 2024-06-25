@@ -19,9 +19,9 @@ const CategoryList = () => {
       <Header />
       <div className="categories container">
         <div className="categories__navigation">
-          <button className="navigation__buttonL">Main page</button>
+          <button>Main page</button>
           <span>—</span>
-          <button className="navigation__buttonR">Categories</button>
+          <button>Categories</button>
         </div>
         <div className="categories__title">
           <h2>Categories</h2>
