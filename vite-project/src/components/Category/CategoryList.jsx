@@ -17,7 +17,7 @@ const CategoryList = () => {
   return (
     <>
       <Header />
-      <div className="categories__container">
+      <div className="categories container">
         <div className="categories__navigation">
           <button className="navigation__buttonL">Main page</button>
           <span>—</span>

@@ -14,14 +14,12 @@
             padding: 8px 16px;
             max-width: 118px;       
         }
-    
-        &__buttonL {
-            color: #8b8b8b;
-        }
-        
-        &__buttonR {
-            color: #424436;
-        }    
+        & button:first-of-type {
+            color: #8b8b8b; /* Цвет текста для левой кнопки */
+          }
+          & button:last-of-type {
+            color: #424436; /* Цвет текста для правой кнопки */
+          }       
     }
 
     &__ListContainer {
@@ -49,7 +47,13 @@
     }
 }
 
+// &__button__L {
+//     color: #8b8b8b;
+// }
 
+// &__button__R {
+//     color: #424436;
+// }    
 
 
 
