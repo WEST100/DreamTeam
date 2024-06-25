@@ -16,7 +16,6 @@ const CategoryList = () => {
 
   return (
     <>
-      <Header />
       <div className="categoriesListContainer">
         {isFetching ? (
           <p>Please, wait...</p>
@@ -30,7 +29,6 @@ const CategoryList = () => {
           ))
         )}
       </div>
-      <Footer />
     </>
   );
 };
