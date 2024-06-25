@@ -1,0 +1,58 @@
+.categories {
+    &__navigation {
+        max-width: 254px;
+        display: flex;
+        align-items: center;
+        margin: 40px 0;
+    
+        & span {
+            color: lightgrey;
+        }
+        & button {
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 8px 16px;
+            max-width: 118px;       
+        }
+    
+        &__buttonL {
+            color: #8b8b8b;
+        }
+        
+        &__buttonR {
+            color: #424436;
+        }    
+    }
+
+    &__ListContainer {
+        display: flex;
+        justify-content: space-between;
+        gap: 30px;
+        margin-bottom: 80px;
+
+        & p {   
+            font-size: 20px;
+            line-height: 130%;
+            text-align: center;
+            }
+    }
+    
+    &__Container {
+        flex: 1;
+        text-align: center;
+        max-width: 248px;
+    }
+    
+    &__Img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+
+
+
+
+
+
+
