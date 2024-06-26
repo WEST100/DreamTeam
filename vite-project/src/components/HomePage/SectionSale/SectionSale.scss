@@ -1,52 +1,25 @@
 .sale {
-  margin-bottom: 80px;
-}
-
-.sale__all {
-  font-weight: 700;
-  font-size: 64px;
-  color: #424436;
-  padding: 10px;
-}
-
-.sale_item-line {
-  margin-left: auto;
-}
-
-.sale__line {
-  border: 1px;
-  height: 2px;
-  width: 1091px;
-  background-color: #dddddd;
+  position: relative;
+  margin-bottom: 81px;
 }
 
 .sale__block {
   display: flex;
   align-items: center;
-}
 
-.sale_block-butlin {
-  display: flex;
-  margin-left: auto;
-  margin-right: 5px;
-  align-items: center;
-}
+  .sale__title {
+    font-weight: 700;
+    font-size: 64px;
+    color: #424436;
+    padding: 10px;
+  }
 
-.sale__button-item {
-  padding: 8px 16px 8px 16px;
-}
-
-.all__sales {
-  border-radius: 10px;
-  border: 1px solid #dddddd;
-  background-color: transparent;
-  color: inherit;
-  color: #8b8b8b;
-  //size: 16px;
-  cursor: pointer;
-  align-items: center;
-  gap: 10px;
-  margin-right: 0px;
+  .sale__line {
+    flex-grow: 1;
+    border: none;
+    border-top: 2px solid;
+    color: lightgray;
+  }
 }
 
 .sale__main-section {
@@ -55,27 +28,32 @@
 
 .sale__priceBlock {
   position: relative;
-  // display: flex;
-  // flex-direction: column;
   justify-content: space-between;
   border: 1px solid #dddddd;
   border-radius: 10px;
   margin: 5px;
   width: 100%;
+  background-color: #ffffff;
 }
 
 .sale__img-item {
   width: 100%;
+  border-top-left-radius: 10px 10px;
+  border-top-right-radius: 10px 10px;
+}
+
+.sale__discount {
+  margin-top: 20px;
 }
 
 .sale__discountPerc {
   position: absolute;
   top: 10px;
-  right: 10px;
-  background: #f26d22;
+  left: 10px;
+  background: #92a134;
   color: #ffffff;
   padding: 4px 8px;
-  border-radius: 10px;
+  border-radius: 9px;
   width: 68px;
   height: 34px;
   font-size: 20px;
@@ -110,7 +88,20 @@
   display: inline-block;
   font-weight: 500;
   font-size: 20px;
-  color: #424436;
+  color: #8b8b8b;
   text-decoration: line-through;
+  line-height: 130%;
   padding: 10px;
+}
+
+.sale__icons-item {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 48px;
+  height: 106px;
+  padding: px;
+  gap: 20px;
 }
