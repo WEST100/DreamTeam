@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "./CategoryList.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCategoriesAction } from "../../store/asyncActions/categorie";
+import { Link } from "react-router-dom";
 
 const CategoryList = () => {
   const dispatch = useDispatch();
@@ -31,7 +32,10 @@ const CategoryList = () => {
             categories.map((cat) => (
               <div key={cat.id} className="categories__Container">
                 <img className="categories__Img" src={`/src/assets/images${cat.image}`} alt="categorie img" />
-                <p>{cat.title}</p>
+
+                <p>
+                  <Link to={`/categories/${cat.id}`}>{cat.title}</Link>
+                </p>
               </div>
             ))
           )}

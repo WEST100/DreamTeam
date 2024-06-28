@@ -7,7 +7,6 @@ export default function ProductCard({ product }) {
       <h2>{product.title}</h2>
       <p>{product.price}</p>
       <p>{product.discont_price}</p>
-      <p>{product.description}</p>
     </div>
   );
 }
