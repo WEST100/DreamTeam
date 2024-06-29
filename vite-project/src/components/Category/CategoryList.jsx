@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "./CategoryList.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCategoriesAction } from "../../store/asyncActions/categorie";
-import { Link } from "react-router-dom";
+import CategoryCard from "./CategoryCard";
 
 const CategoryList = () => {
   const dispatch = useDispatch();
@@ -24,22 +24,7 @@ const CategoryList = () => {
         <div className="categories__title">
           <h2>Categories</h2>
         </div>
-        <div className="categories__ListContainer">
-          {isFetching ? (
-            <p>Please, wait...</p>
-          ) : (
-            categories &&
-            categories.map((cat) => (
-              <div key={cat.id} className="categories__Container">
-                <img className="categories__Img" src={`/src/assets/images${cat.image}`} alt="categorie img" />
-
-                <p>
-                  <Link to={`/categories/${cat.id}`}>{cat.title}</Link>
-                </p>
-              </div>
-            ))
-          )}
-        </div>
+        <div className="categories__listContainer">{isFetching ? <p>Please, wait...</p> : categories && categories.map((cat) => <CategoryCard key={cat.id} category={cat} />)}</div>
       </div>
     </>
   );
