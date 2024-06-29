@@ -6,6 +6,9 @@ import cart from "/src/assets/images/home_img/cart.svg";
 import { NavLink } from "react-router-dom";
 
 const Header = () => {
+
+  const setActiveLink = ({ isActive }) => (isActive ? "navbar__item navbar__item-active" : "navbar__item");
+
   return (
     <header className="header">
       <div className="container">
@@ -24,16 +27,24 @@ const Header = () => {
           <nav className="nav">
             <ul className="menu__list">
               <li className="menu__item">
-                <NavLink to="/">Main Page</NavLink>
+                <NavLink to="/" className={setActiveLink}>
+                  Main Page
+                </NavLink>
               </li>
               <li className="menu__item">
-                <NavLink to="/categories">Categories</NavLink>
+                <NavLink to="/categories" className={setActiveLink}>
+                  Categories
+                </NavLink>
               </li>
               <li className="menu__item">
-                <NavLink to="/products">All products</NavLink>
+                <NavLink to="/products" className={setActiveLink}>
+                  All products
+                </NavLink>
               </li>
               <li className="menu__item">
-                <NavLink to="/discounted">All sales</NavLink>
+                <NavLink to="/discounted" className={setActiveLink}>
+                  All sales
+                </NavLink>
               </li>
             </ul>
           </nav>

@@ -1,20 +1,18 @@
 import React from "react";
+import ProductCard from "../Product/ProductCard";
+import { useSelector } from "react-redux";
 
-export default function ItemsFromCategory({ product, categoryId }) {
+export default function ItemsFromCategory({ }) {
+
+   const { products } = useSelector((state) => state.products);
+
+
   return (
     <div className="productCardContainer">
-      {product &&
-        product.filter((item) => {
-          if (item.id === categoryId) {
-            <>
-              <img className="productCardImg" src={`/src/assets/images${product.image}`} alt="Product img" />
-              <h2>{product.title}</h2>
-              <p>{product.price}</p>
-              <p>{product.discont_price}</p>
-              <p>{product.description}</p>
-            </>;
-          }
-        })}
+      {products &&
+        products.map(
+          (item) => <ProductCard key={item.id} product={item} />
+        )}
     </div>
   );
 }

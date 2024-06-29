@@ -22,7 +22,7 @@ const productsSlice = createSlice({
       })
       .addCase(getAllCategoriesAction.rejected, (state, action) => {
         state.isFetching = false;
-        state.error = "Ошибка выполнения запроса";
+        state.error = "Request execution error";
       });
   },
 });
