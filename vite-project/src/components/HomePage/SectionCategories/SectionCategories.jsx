@@ -14,7 +14,6 @@ const SectionCategories = () => {
   }, []);
 
   let filteredСategories = categories.slice(0, 4);
-  console.log(filteredСategories);
 
   return (
     <section className="categories container">

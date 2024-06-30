@@ -13,9 +13,7 @@ const ProductList = () => {
   }, []);
 
   return (
-    <>
-      <div className="productListContainer">{isFetching ? <p>Please, wait...</p> : products && products.map((prod) => <ProductCard key={prod.id} product={prod} />)}</div>
-    </>
+      <section className="productListContainer">{isFetching ? <p>Please, wait...</p> : products && products.map((prod) => <ProductCard key={prod.id} product={prod} />)}</section>
   );
 }
 

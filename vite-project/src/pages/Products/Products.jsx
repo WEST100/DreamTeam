@@ -3,9 +3,9 @@ import ProductList from "../../components/Product/ProductList";
 
 const Products = () => {
   return (
-    <div>
+    <>
       <ProductList />
-    </div>
+    </>
   );
 };
 
