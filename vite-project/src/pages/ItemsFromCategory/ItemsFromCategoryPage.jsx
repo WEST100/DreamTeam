@@ -1,24 +1,25 @@
 import React, { useEffect } from "react";
-import ItemsFromCategory from "../../components/ItemsFromCategory/ItemsFromCategory";
 import { useDispatch, useSelector } from "react-redux";
 import { getCategoriesProductsAction } from "../../store/asyncActions/product";
 import { useParams } from "react-router-dom";
+import ProductCard from "../../components/Product/ProductCard";
 
 const ItemsFromCategoryPage = () => {
+  const { categoryId } = useParams();
 
- const { categoryId } = useParams();
+  const dispatch = useDispatch();
 
-   const dispatch = useDispatch();
+  const { products, isFetching } = useSelector((state) => state.products);
 
-  const { isFetching } = useSelector((state) => state.products);
-
-   useEffect(() => {
-     dispatch(getCategoriesProductsAction(categoryId));
-   }, [categoryId]);
+  useEffect(() => {
+    dispatch(getCategoriesProductsAction(categoryId));
+  }, [categoryId]);
 
   return (
     <>
-      <div className="productListContainer">{isFetching ? <p>Please, wait...</p> :  <ItemsFromCategory />}</div>
+      <section className="productListContainer">
+        {isFetching ? <p>Please, wait...</p> : products && products.map((item) => <ProductCard key={item.id} product={item} />)}
+      </section>
     </>
   );
 };

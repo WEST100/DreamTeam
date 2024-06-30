@@ -1,11 +1,5 @@
 import React, { useEffect } from "react";
 import "./SectionSale.scss";
-import bridge from "/src/assets/images/home_img/Bridge.png";
-import flowers from "/src/assets/images/home_img/Flowers.png";
-import cutters from "/src/assets/images/home_img/Wire_cutters.png";
-import castle from "/src/assets/images/home_img/Castle.png";
-import whiteheart from "/src/assets/images/home_img/white_heart.svg";
-import cart from "/src/assets/images/home_img/white_cart.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProductAction } from "../../../store/asyncActions/product";
 import ProductCard from "../../Product/ProductCard";
@@ -22,7 +16,6 @@ const SectionSale = () => {
   let filteredProducts = products.filter((item) => item.discont_price);
 
   let randomProducts = filteredProducts.sort(() => Math.random() - 0.5).slice(0, 4);
-  console.log(randomProducts);
 
   // --------------------- 2nd variant to find randomProducts with a shuffle func ------------------
 
@@ -45,7 +38,14 @@ const SectionSale = () => {
   // ------------------------------- end ------------------------------
 
   return (
-    <div className="test">{randomProducts && randomProducts.map((item) => <ProductCard key={item.id} product={item} />)}</div>
+    <section className="sale container">
+      <div className="sale__block">
+        <h2 className="sale__title">Sale</h2>
+        <hr className="sale__line" />
+        <button className="categories__button">All sales</button>
+      </div>
+      <div className="sale__main-section">{isFetching ? <p>Please, wait...</p> : randomProducts && randomProducts.map((item) => <ProductCard key={item.id} product={item} />)}</div>
+    </section>
 
     // <section className="sale container">
     //   <div className="sale__block">
