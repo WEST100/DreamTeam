@@ -3,6 +3,7 @@ import "./CategoryList.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCategoriesAction } from "../../store/asyncActions/categorie";
 
+
 const CategoryList = () => {
   const dispatch = useDispatch();
 

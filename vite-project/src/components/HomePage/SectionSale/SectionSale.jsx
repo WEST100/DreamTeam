@@ -10,92 +10,92 @@ import cart from "/src/assets/images/home_img/white_cart.svg";
 const SectionSale = () => {
   return (
     <section className="sale container">
-      <div className="sale__block">
-        <h2 className="sale__title">Sale</h2>
-        <hr className="sale__line" />
+      <div className="categories__title">
+        <h2>Sale</h2>
+        <hr />
         <button className="categories__button">All sales</button>
       </div>
-      <div className="sale__main-section">
-        <div className="sale__priceBlock">
+      <div className="sale__block">
+        <div className="sale__block__item">
           <div className="sale__img">
-            <img className="sale__img-item" src={bridge} alt="Bridge" />
+            <img src={bridge} alt="Bridge" />
           </div>
-          <div className="sale__description">
-            <div className="sale__discount">
+          <div className="sale__discount">
+            <div className="sale__discount__text">
               <p>Decorative forged bridge</p>
             </div>
-            <div className="sale__prices">
-              <p className="sale__realPrice">$500</p>
-              <p className="sale__oldPrice">$1000</p>
+            <div className="sale__price">
+              <p className="sale__price__real">$500</p>
+              <p className="sale__price__old">$1000</p>
             </div>
           </div>
-          <div className="sale__discountPerc">
+          <div className="sale__discount__Perc">
             <p>-50%</p>
           </div>
-          <div className="sale__icons-item">
-            <img className="sale__icons-all" src={whiteheart} alt="Icon Heart" />
-            <img className="sale__icons-all" src={cart} alt="Icon Bag" />
+          <div className="sale__icons">
+            <img src={whiteheart} alt="Icon Heart" />
+            <img src={cart} alt="Icon Bag" />
           </div>
         </div>
-        <div className="sale__priceBlock">
+        <div className="sale__block__item">
           <div className="sale__img">
-            <img className="sale__img-item" src={flowers} alt="flowers" />
+            <img src={flowers} alt="flowers" />
           </div>
-          <div className="sale__description">
-            <div className="sale__discount">
+          <div className="sale__discount">
+            <div className="sale__discount__text">
               <p>Aquarium lock</p>
             </div>
-            <div className="sale__prices">
-              <p className="sale__realPrice">$100</p>
-              <p className="sale__oldPrice">$150</p>
+            <div className="sale__price">
+              <p className="sale__price__real">$100</p>
+              <p className="sale__price__old">$150</p>
             </div>
           </div>
-          <div className="sale__discountPerc">
+          <div className="sale__discount__Perc">
             <p>-34%</p>
           </div>
-          <div className="sale__icons-item">
+          <div className="sale__icons">
             <img className="sale__icons-all" src={whiteheart} alt="Icon Heart" />
             <img id="sale__icons-bag" className="sale__icons-all" src={cart} alt="Icon Bag" />
           </div>
         </div>
-        <div className="sale__priceBlock">
+        <div className="sale__block__item">
           <div className="sale__img">
-            <img className="sale__img-item" src={castle} alt="castle" />
+            <img src={castle} alt="castle" />
           </div>
-          <div className="sale__description">
-            <div className="sale__discount">
+          <div className="sale__discount">
+            <div className="sale__discount__text">
               <p>Flower basket</p>
             </div>
-            <div className="sale__prices">
-              <p className="sale__realPrice">$150</p>
-              <p className="sale__oldPrice">$200</p>
+            <div className="sale__price">
+              <p className="sale__price__real">$150</p>
+              <p className="sale__price__old">$200</p>
             </div>
           </div>
-          <div className="sale__discountPerc">
+          <div className="sale__discount__Perc">
             <p>-25%</p>
           </div>
-          <div className="sale__icons-item">
+          <div className="sale__icons">
             <img className="sale__icons-all" src={whiteheart} alt="Icon Heart" />
             <img className="sale__icons-all" src={cart} alt="Icon Bag" />
           </div>
         </div>
-        <div className="sale__priceBlock">
+        <div className="sale__block__item">
           <div className="sale__img">
-            <img className="sale__img-item" src={cutters} alt="Wire cutters" />
+            <img src={cutters} alt="Wire cutters" />
           </div>
-          <div className="sale__description">
-            <div className="sale__discount">
+          <div className="sale__discount">
+            <div className="sale__discount__text">
               <p>Secateurs</p>
             </div>
-            <div className="sale__prices">
-              <p className="sale__realPrice">$199</p>
-              <p className="sale__oldPrice">$240</p>
+            <div className="sale__price">
+              <p className="sale__price__real">$199</p>
+              <p className="sale__price__old">$240</p>
             </div>
           </div>
-          <div className="sale__discountPerc">
+          <div className="sale__discount__Perc">
             <p>-17%</p>
           </div>
-          <div className="sale__icons-item">
+          <div className="sale__icons">
             <img className="sale__icons-all" src={whiteheart} alt="Icon Heart" />
             <img className="sale__icons-all" src={cart} alt="Icon Bag" />
           </div>
