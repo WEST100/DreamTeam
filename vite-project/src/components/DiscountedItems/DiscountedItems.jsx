@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import "./DiscountedItems.scss";
 import { getAllProductAction } from '../../store/asyncActions/product';
+import ProductCard from '../Product/ProductCard';
 
 const DiscountedItems = () => {
 
@@ -24,22 +25,7 @@ const DiscountedItems = () => {
 
   return (
     <>
-      <div className="productListContainer">
-        {isFetching ? (
-          <p>Please, wait...</p>
-        ) : (
-          findDiscountedItems &&
-          findDiscountedItems.map((prod) => (
-            <div key={prod.id}>
-              <p>{prod.title}</p>
-              <p>{prod.price}</p>
-              <p>{prod.discont_price}</p>
-              <p>{prod.description}</p>
-              <img src={`/src/assets/images${prod.image}`} alt="Discounted Products" />
-            </div>
-          ))
-        )}
-      </div>
+      <div className="productListContainer">{isFetching ? <p>Please, wait...</p> : findDiscountedItems && findDiscountedItems.map((prod) => <ProductCard key={prod.id} product={prod} />)}</div>
     </>
   );
 }
