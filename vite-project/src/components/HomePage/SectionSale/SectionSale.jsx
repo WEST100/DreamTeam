@@ -3,8 +3,6 @@ import "./SectionSale.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProductAction } from "../../../store/asyncActions/product";
 import ProductCard from "../../Product/ProductCard";
-import whiteheart from "/src/assets/images/home_img/white_heart.svg";
-import cart from "/src/assets/images/home_img/white_cart.svg";
 
 const SectionSale = () => {
   let dispatch = useDispatch();

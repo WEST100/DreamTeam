@@ -1,5 +1,8 @@
 import React from "react";
 import "./ProductCard.css";
+import whiteheart from "/src/assets/images/home_img/white_heart.svg";
+import cart from "/src/assets/images/home_img/white_cart.svg";
+
 
 export default function ProductCard({ product }) {
   return (
