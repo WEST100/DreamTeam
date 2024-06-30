@@ -44,10 +44,8 @@ const SectionSale = () => {
         <hr />
         <button className="categories__button">All sales</button>
       </div>
-      <div className="sale__main-section">{isFetching ? <p>Please, wait...</p> : randomProducts && randomProducts.map((item) => <ProductCard key={item.id} product={item} />)}</div>
+      <div className="sale__block">{isFetching ? <p>Please, wait...</p> : randomProducts && randomProducts.map((item) => <ProductCard key={item.id} product={item} />)}</div>
     </section>
-
-    
   );
 };
 
