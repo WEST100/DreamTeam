@@ -29,3 +29,17 @@ body {
   line-height: 126%;
   text-align: center;
 }
+
+.navbar__item {
+  font-size: 20px;
+  line-height: 130%;
+  text-decoration: none;
+  cursor: pointer;
+  color: black;
+
+  &-active {
+  border-bottom: 2px solid black;
+}
+}
+
+

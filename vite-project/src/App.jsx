@@ -6,6 +6,7 @@ import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import Home from "./pages/Home/Home";
 import Discounted from "./pages/Discounted/Discounted";
 import Layout from "./components/Layout/Layout";
+import ItemsFromCategoryPage from "./pages/ItemsFromCategory/ItemsFromCategoryPage";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/products" element={<Products />} />
           <Route path="/categories" element={<Categories />} />
           <Route path="/discounted" element={<Discounted />} />
+          <Route path='/categories/:categoryId' element={<ItemsFromCategoryPage />}/>
           <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>

@@ -1,38 +1,30 @@
-import React from 'react'
+import React, { useEffect } from "react";
 import "./SectionCategories.scss";
-import img1 from "/src/assets/images/category_img/1.jpeg";
-import img2 from "/src/assets/images/category_img/2.jpeg";
-import img3 from "/src/assets/images/category_img/3.jpeg";
-import img4 from "/src/assets/images/category_img/4.jpeg";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllCategoriesAction } from "../../../store/asyncActions/categorie";
+import CategoryCard from "../../Category/CategoryCard";
 
 const SectionCategories = () => {
+  const dispatch = useDispatch();
+
+  const { categories, isFetching } = useSelector((state) => state.categories);
+
+  useEffect(() => {
+    dispatch(getAllCategoriesAction());
+  }, []);
+
+  let filteredСategories = categories.slice(0, 4);
+
   return (
     <section className="categories container">
-      <div className="categories__title">
+      <div className="categories__block">
         <h2>Categories</h2>
         <hr />
         <button className="categories__button">All categories</button>
       </div>
-      <div className="categories__card">
-        <div className="categories__card__images">
-          <img src={img1} alt="Fertilizer" />
-          <p>Fertilizer</p>
-        </div>
-        <div className="categories__card__images">
-          <img src={img2} alt="Protective products and septic tanks" />
-          <p>Protective products and septic tanks</p>
-        </div>
-        <div className="categories__card__images">
-          <img src={img3} alt="Planting material" />
-          <p>Planting material</p>
-        </div>
-        <div className="categories__card__images">
-          <img src={img4} alt="Planting material" />
-          <p>Planting material</p>
-        </div>
-      </div>
+      <div className="categories__listContainer">{isFetching ? <p>Please, wait...</p> : filteredСategories && filteredСategories.map((item) => <CategoryCard key={item.id} category={item} />)}</div>
     </section>
   );
-}
+};
 
-export default SectionCategories
+export default SectionCategories;

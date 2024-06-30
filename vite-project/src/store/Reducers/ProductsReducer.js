@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getAllProductAction } from "../asyncActions/product";
+import { getAllProductAction, getCategoriesProductsAction } from "../asyncActions/product";
 
 const productsSlice = createSlice({
   name: "products",
@@ -9,9 +9,7 @@ const productsSlice = createSlice({
     error: null,
   },
 
-  reducers: {
-  
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(getAllProductAction.pending, (state, action) => {
@@ -20,13 +18,17 @@ const productsSlice = createSlice({
       })
       .addCase(getAllProductAction.fulfilled, (state, action) => {
         state.isFetching = false;
-        state.products = action.payload
+        state.products = action.payload;
       })
       .addCase(getAllProductAction.rejected, (state, action) => {
         state.isFetching = false;
-        state.error = 'Ошибка выполнения запроса'
+        state.error = "Request execution error";
+      })
+      .addCase(getCategoriesProductsAction.fulfilled, (state, action) => {
+        state.isFetching = false;
+        state.products = action.payload.data;
       });
-  }
+  },
 });
 
 export default productsSlice.reducer;

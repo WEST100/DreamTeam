@@ -1,13 +1,11 @@
 import React from "react";
 import "./ProductCard.css";
-import whiteheart from "/src/assets/images/home_img/white_heart.svg";
-import cart from "/src/assets/images/home_img/white_cart.svg";
 
 export default function ProductCard({ product }) {
   return (
     <div className="product__card">
       <div className="sale__img">
-        <img src={`/src/assets/images${product.image}`} alt="Product img" />
+        <img src={`https://exam-server-5c4e.onrender.com${product.image}`} alt="Product img" />
       </div>
       <div className="sale__discount">
         <div className="sale__discount__text">

@@ -1,0 +1,27 @@
+.categories__card {
+  &-item {
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 16px;
+    height: 350px;
+
+    & img {
+      display: block;
+      width: 100%;
+      max-width: 317px;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  p {
+    font-size: 20px;
+    line-height: 130%;
+    text-align: center;
+
+    & a {
+      text-decoration: none;
+      color: #424436;
+    }
+  }
+}
