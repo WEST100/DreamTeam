@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllCategoriesAction } from "../../store/asyncActions/categorie";
 import CategoryCard from "./CategoryCard";
 
+
 const CategoryList = () => {
   const dispatch = useDispatch();
 
