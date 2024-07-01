@@ -15,7 +15,6 @@ body {
 .container {
   max-width: 1360px;
   margin: 0 auto;
-  // border: 1px solid black;
 }
 
 .categories__button {
@@ -42,17 +41,17 @@ body {
   }
 }
 
-// .bg {
-//     &-dark {
-//         background-color: #424436;
-//         color: #fff;
-//     }
+.productListContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(316px, 1fr));
+  gap: 32px; 
+}
 
-//     &-light {
-//         background-color: #fffff1;
-//         color: #111;
-//     }
-// }
+.productListContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(316px, 1fr));
+  gap: 32px; 
+}
 
 .switch {
   background-color: hsl(198, 90%, 15%);
@@ -73,10 +72,6 @@ body {
     height: 34px;
     border-radius: 50%;
     background-color: hsl(198, 90%, 55%);
-
-    // background: url("https://www.freeiconspng.com/thumbs/moon-png/moon-png-no-background-15.png");
-    // background-size: contain;
-    // display: inline-block;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -91,8 +86,6 @@ body {
 
     .switch__slider {
       transform: translateX(36px);
-      // background: url("https://parspng.com/wp-content/uploads/2022/05/sunpng.parspng.com-3.png");
-      // background-size: contain;
       background-color: hsl(48, 90%, 55%);
     }
   }

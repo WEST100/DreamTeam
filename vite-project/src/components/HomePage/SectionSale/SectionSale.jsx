@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import "./SectionSale.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProductAction } from "../../../store/asyncActions/product";
 import ProductCard from "../../Product/ProductCard";
@@ -39,12 +38,12 @@ const SectionSale = () => {
 
   return (
     <section className="sale container">
-      <div className="categories__title">
+      <div className="categories__block">
         <h2>Sale</h2>
         <hr />
         <button className="categories__button">All sales</button>
       </div>
-      <div className="sale__block">{isFetching ? <p>Please, wait...</p> : randomProducts && randomProducts.map((item) => <ProductCard key={item.id} product={item} />)}</div>
+      <div className="productListContainer">{isFetching ? <p>Please, wait...</p> : randomProducts && randomProducts.map((item) => <ProductCard key={item.id} product={item} />)}</div>
     </section>
   );
 };
