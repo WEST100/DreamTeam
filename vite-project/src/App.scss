@@ -38,8 +38,62 @@ body {
   color: black;
 
   &-active {
-  border-bottom: 2px solid black;
-}
+    border-bottom: 2px solid black;
+  }
 }
 
+// .bg {
+//     &-dark {
+//         background-color: #424436;
+//         color: #fff;
+//     }
 
+//     &-light {
+//         background-color: #fffff1;
+//         color: #111;
+//     }
+// }
+
+.switch {
+  background-color: hsl(198, 90%, 15%);
+  box-shadow: 0 0 0 0.125em hsla(223, 90%, 55%, 0);
+  position: relative;
+  border-radius: 20px;
+  width: 74px;
+  padding: 2px;
+  display: flex;
+
+  input {
+    position: absolute;
+    opacity: 0;
+  }
+
+  &__slider {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background-color: hsl(198, 90%, 55%);
+
+    // background: url("https://www.freeiconspng.com/thumbs/moon-png/moon-png-no-background-15.png");
+    // background-size: contain;
+    // display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+    color: #fff;
+  }
+
+  &-active {
+    background-color: hsl(48, 90%, 85%);
+    box-shadow: 0 0 0 0.125em hsla(223, 90%, 55%, 0);
+    transition: 0.5s;
+
+    .switch__slider {
+      transform: translateX(36px);
+      // background: url("https://parspng.com/wp-content/uploads/2022/05/sunpng.parspng.com-3.png");
+      // background-size: contain;
+      background-color: hsl(48, 90%, 55%);
+    }
+  }
+}

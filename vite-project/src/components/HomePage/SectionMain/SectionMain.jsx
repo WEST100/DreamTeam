@@ -1,10 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import header from "/src/assets/images/home_img/header.jpg";
 import "./SectionMain.scss";
+import { ThemeContext } from '../../Theme/ThemeContext';
 
 const SectionMain = () => {
+
+ const { theme } = useContext(ThemeContext);
+
   return (
-    <section className="main-content">
+    //     <header className={`header ${theme ? "header-dark" : "header-light"}`}>
+
+    <section className={`main-content ${theme ? "main-content-dark" : "main-content-light"}`}>
       <div className="main-content__items">
         <img className="main-content__image" src={header} alt="header_image" />
         <div className="main-content__item">
