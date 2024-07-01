@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import "./SectionSale.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProductAction } from "../../../store/asyncActions/product";
 import ProductCard from "../../Product/ProductCard";
