@@ -23,6 +23,14 @@
 .main-content {
   margin-bottom: 80px;
 
+  &-light {
+    background-color: #fffff1;
+  }
+
+  &-dark {
+    background-color: #424436;
+  }
+
   &__item {
     position: absolute;
     padding-top: 80px;

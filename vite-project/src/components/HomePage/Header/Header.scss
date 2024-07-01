@@ -4,14 +4,54 @@
   justify-content: space-between;
 }
 
+.header {
+  &-light {
+    background-color: #fffff1;
+
+    a {
+      color: #424436;
+    }
+
+    .users-menu .heart {
+      stroke: #424436;
+      stroke-linejoin: round;
+      stroke-linecap: round;
+      stroke-width: 2.2;
+    }
+
+    .users-menu .cart {
+      fill: #424436;
+    }
+  }
+
+  &-dark {
+    background-color: #424436;
+
+    a {
+      color: #fff;
+    }
+
+    .navbar__item-active {
+      border-bottom: 2px solid #fff;
+    }
+
+    .users-menu .heart {
+      stroke: #fffff1;
+      stroke-linejoin: round;
+      stroke-linecap: round;
+      stroke-width: 2.2;
+    }
+
+    .users-menu .cart {
+      fill: #fffff1;
+    }
+  }
+}
+
 .company-style {
   display: flex;
   align-items: center;
   gap: 22px;
-}
-
-.theme {
-  max-width: 60px;
 }
 
 .logo {

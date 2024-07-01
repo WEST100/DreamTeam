@@ -16,12 +16,9 @@ const DiscountedItems = () => {
 
   const findDiscountedItems = products.filter((item) => {
     if (item.discont_price != null) {
-      // console.log(item);
       return item;
     }
   });
-
-  // console.log(findDiscountedItems);
 
   return (
     <div className="discountedItems container">
