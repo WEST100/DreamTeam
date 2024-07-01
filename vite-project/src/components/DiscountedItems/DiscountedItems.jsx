@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import "./DiscountedItems.scss";
-import { getAllProductAction } from '../../store/asyncActions/product';
+import { getAllProductAction } from "../../store/asyncActions/product";
+import ProductCard from "../Product/ProductCard";
+import Filter from "../Filter/Filter";
 
 const DiscountedItems = () => {
-
   const dispatch = useDispatch();
 
   const { products, isFetching } = useSelector((state) => state.products);
@@ -15,33 +16,36 @@ const DiscountedItems = () => {
 
   const findDiscountedItems = products.filter((item) => {
     if (item.discont_price != null) {
-      console.log(item);
+      // console.log(item);
       return item;
     }
   });
 
-  console.log(findDiscountedItems);
+  // console.log(findDiscountedItems);
 
   return (
-    <>
+    <div className="discountedItems container">
+      <div className="categories__navigation">
+        <button className="categories__button">Main page</button>
+        <span>—</span>
+        <button className="categories__button">All sales</button>
+      </div>
+      <div className="categories__title">
+        <h2>Discounted items</h2>
+      </div>
+      <Filter />
       <div className="productListContainer">
         {isFetching ? (
           <p>Please, wait...</p>
         ) : (
           findDiscountedItems &&
           findDiscountedItems.map((prod) => (
-            <div key={prod.id}>
-              <p>{prod.title}</p>
-              <p>{prod.price}</p>
-              <p>{prod.discont_price}</p>
-              <p>{prod.description}</p>
-              <img src={`/src/assets/images${prod.image}`} alt="Discounted Products" />
-            </div>
+            <ProductCard key={prod.id} product={prod} />
           ))
         )}
       </div>
-    </>
+    </div>
   );
-}
+};
 
-export default DiscountedItems
+export default DiscountedItems;
