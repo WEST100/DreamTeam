@@ -42,4 +42,10 @@ body {
 }
 }
 
+.productListContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(316px, 1fr));
+  gap: 32px; 
+}
+
 
