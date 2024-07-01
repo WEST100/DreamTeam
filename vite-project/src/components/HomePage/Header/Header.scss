@@ -14,6 +14,9 @@
 
     .users-menu .heart {
       stroke: #424436;
+      stroke-linejoin: round;
+      stroke-linecap: round;
+      stroke-width: 2.2;
     }
 
     .users-menu .cart {
@@ -34,6 +37,9 @@
 
     .users-menu .heart {
       stroke: #fffff1;
+      stroke-linejoin: round;
+      stroke-linecap: round;
+      stroke-width: 2.2;
     }
 
     .users-menu .cart {
