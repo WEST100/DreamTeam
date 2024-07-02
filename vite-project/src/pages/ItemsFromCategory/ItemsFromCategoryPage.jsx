@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCategoriesProductsAction } from "../../store/asyncActions/product";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import ProductCard from "../../components/Product/ProductCard";
-import { getAllCategoriesAction } from "../../store/asyncActions/categorie";
+import { getCategoriesTitleAction } from "../../store/asyncActions/categorie";
 import Filter from "../../components/Filter/Filter";
 
 const ItemsFromCategoryPage = () => {
@@ -19,30 +19,31 @@ const ItemsFromCategoryPage = () => {
   }, [categoryId]);
 
   useEffect(() => {
-    dispatch(getAllCategoriesAction());
-  }, []);
+    dispatch(getCategoriesTitleAction(categoryId));
+  }, [categoryId]);
+
+  console.log(categoryId);
+
+  console.log(categories.title);
 
   return (
     <div className="itemsFromCategoryPage container">
-      <div className="categories__navigation">
-        <button className="categories__button">Main page</button>
+      <div className="breadcrumbs__navigation">
+        <button className="breadcrumbs__button">
+          <Link to={"/"}>Main page</Link>
+        </button>
         <span>—</span>
-        <button className="categories__button">Categories</button>
+        <button className="breadcrumbs__button">
+          <Link to={"/categories"}>Categories</Link>
+        </button>
         <span>—</span>
-        <button className="categories__button">Tools and equipment</button>
+        <button className="breadcrumbs__button">{categories.title}</button>
       </div>
-      <div className="categories__title">
-        <h2>{categories.map((cat) => cat.title)}</h2>
+      <div className="allPagesTitle">
+        <h2>{categories.title}</h2>
       </div>
       <Filter />
-      <section className="productListContainer">
-        {isFetching ? (
-          <p>Please, wait...</p>
-        ) : (
-          products &&
-          products.map((item) => <ProductCard key={item.id} product={item} />)
-        )}
-      </section>
+      <section className="productListContainer">{isFetching ? <p>Please, wait...</p> : products && products.map((item) => <ProductCard key={item.id} product={item} />)}</section>
     </div>
   );
 };

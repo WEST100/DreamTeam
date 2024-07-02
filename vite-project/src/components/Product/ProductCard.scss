@@ -2,42 +2,35 @@
   &__card {
     display: grid;
     grid-template-rows: 1fr auto;
-  
-    /* display: flex;
-    flex-direction: column; */
-  
-  
     position: relative;
     border: 1px solid #ddd;
     border-radius: 12px;
-    background: #fff; 
-    overflow: hidden; 
+    background: #fff;
+    overflow: hidden;
   }
   &__img {
-    // align-content: center;
-
-    & img {
+    img {
       width: 100%;
       object-fit: cover;
-  
-      grid-row: 1 / 2; 
-  
-      // flex-grow: 1;
+      grid-row: 1 / 2;
     }
   }
-  
-  &__discount {
-    grid-row: 2 / 3; 
 
+  &__discount {
+    grid-row: 2 / 3;
     padding: 0px 32px 32px 32px;
     margin-top: 16px;
-    text-align: left; 
+    text-align: left;
 
     &__text {
-      margin-bottom: 16px; 
-      font-size: 20px;
-      line-height: 130%;
-      color: #424436; 
+      margin-bottom: 16px;
+
+      a {
+        font-size: 20px;
+        line-height: 130%;
+        text-decoration: none;
+        color: #424436;
+      }
     }
 
     &__Perc {
@@ -53,7 +46,7 @@
       align-items: center;
       justify-content: center;
 
-      & p{
+      & p {
         font-weight: 600;
         font-size: 20px;
         line-height: 130%;
@@ -62,7 +55,7 @@
     }
   }
   &__price {
-    font-size: 24px; 
+    font-size: 24px;
 
     &__real {
       display: inline-block;
@@ -91,6 +84,3 @@
     gap: 10px;
   }
 }
-  
-  
-

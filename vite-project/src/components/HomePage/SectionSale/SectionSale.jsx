@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProductAction } from "../../../store/asyncActions/product";
 import ProductCard from "../../Product/ProductCard";
+import { Link } from "react-router-dom";
 
 const SectionSale = () => {
   let dispatch = useDispatch();
@@ -38,10 +39,12 @@ const SectionSale = () => {
 
   return (
     <section className="sale container">
-      <div className="categories__block">
+      <div className="homePageSectionTitle">
         <h2>Sale</h2>
         <hr />
-        <button className="categories__button">All sales</button>
+        <button className="breadcrumbs__button">
+          <Link to={"/discounted"}>All sales</Link>
+        </button>
       </div>
       <div className="productListContainer">{isFetching ? <p>Please, wait...</p> : randomProducts && randomProducts.map((item) => <ProductCard key={item.id} product={item} />)}</div>
     </section>
