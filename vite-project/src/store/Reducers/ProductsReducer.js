@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getAllProductAction, getCategoriesProductsAction } from "../asyncActions/product";
+import { getAllProductAction, getCategoriesProductsAction, getProductsCardDetailAction } from "../asyncActions/product";
 
 const productsSlice = createSlice({
   name: "products",
@@ -27,6 +27,10 @@ const productsSlice = createSlice({
       .addCase(getCategoriesProductsAction.fulfilled, (state, action) => {
         state.isFetching = false;
         state.products = action.payload.data;
+      })
+      .addCase(getProductsCardDetailAction.fulfilled, (state, action) => {
+        state.isFetching = false;
+        state.products = action.payload;
       });
   },
 });

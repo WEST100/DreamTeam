@@ -11,3 +11,9 @@ export const getCategoriesProductsAction = createAsyncThunk("categories/products
   let data = await res.json();
   return data;
 });
+
+export const getProductsCardDetailAction = createAsyncThunk("products/product", async (id) => {
+  let res = await fetch(`https://exam-server-5c4e.onrender.com/products/${id}`);
+  let data = await res.json();
+  return data;
+});

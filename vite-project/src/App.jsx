@@ -8,6 +8,7 @@ import Discounted from "./pages/Discounted/Discounted";
 import Layout from "./components/Layout/Layout";
 import ItemsFromCategoryPage from "./pages/ItemsFromCategory/ItemsFromCategoryPage";
 import { ThemeProvider } from "./components/Theme/ThemeContext";
+import ProductCardDetailPage from "./pages/ProductCardDetailPage/ProductCardDetailPage";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="/categories" element={<Categories />} />
             <Route path="/discounted" element={<Discounted />} />
             <Route path="/categories/:categoryId" element={<ItemsFromCategoryPage />} />
+            <Route path="/products/:productId" element={ <ProductCardDetailPage/>} />
             <Route path="*" element={<ErrorPage />} />
           </Route>
         </Routes>
