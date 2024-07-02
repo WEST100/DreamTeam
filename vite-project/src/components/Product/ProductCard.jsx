@@ -5,6 +5,11 @@ import cart from "/src/assets/images/home_img/white_cart.svg";
 
 
 export default function ProductCard({ product }) {
+
+  const shortText = (text, length) => {
+    return text.length > length ? `${text.slice(0, length)} ...` : text
+  }
+
   return (
     <div className="product__card">
       <div className="product__img">
@@ -12,11 +17,11 @@ export default function ProductCard({ product }) {
       </div>
       <div className="product__discount">
         <div className="product__discount__text">
-          <p>{product.title}</p>
+          <p>{shortText(product.title, 30)}</p>
         </div>
         <div className="product__price">
           <p className="product__price__real">${product.price}</p>
-          <p className="product__price__old">${product.discont_price}</p>
+          <p className="product__price__old">{product.discont_price > 0 ?`$${product.discont_price}` : product.discont_price}</p>
         </div>
       </div>
       <div className="product__discount__Perc">
