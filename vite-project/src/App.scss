@@ -17,7 +17,7 @@ body {
   margin: 0 auto;
 }
 
-.categories__button {
+.breadcrumbs__button {
   border-radius: 6px;
   border: 1px solid #ddd;
   background-color: transparent;
@@ -27,6 +27,18 @@ body {
   font-size: 16px;
   line-height: 126%;
   text-align: center;
+}
+
+.breadcrumbs__navigation {
+  margin: 40px 0;
+
+  span {
+    color: lightgrey;
+  }
+
+  button:last-of-type {
+    color: #424436; /* Цвет текста для правой кнопки */
+  }
 }
 
 .navbar__item {
@@ -41,14 +53,37 @@ body {
   }
 }
 
-.productListContainer {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(316px, 1fr));
-  gap: 32px; 
+.homePageSectionTitle {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+
+  h2 {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 64px;
+    padding-right: 10px;
+  }
+
+  hr {
+    flex-grow: 1; /* Заставляем <hr> занять оставшееся пространство */
+    border: none;
+    border-top: 2px solid lightgray; /*Определяем стиль линии */
+    margin: 0 0 0 10px; /* Отступы по бокам */
+  }
 }
+
+.allPagesTitle h2 {
+    font-weight: 700;
+    font-size: 64px;
+    padding-right: 10px;
+    padding-bottom: 40px;
+  }
 
 .productListContainer {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(316px, 1fr));
-  gap: 32px; 
+  gap: 32px;
 }

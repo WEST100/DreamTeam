@@ -38,10 +38,10 @@ const SectionSale = () => {
 
   return (
     <section className="sale container">
-      <div className="categories__block">
+      <div className="homePageSectionTitle">
         <h2>Sale</h2>
         <hr />
-        <button className="categories__button">All sales</button>
+        <button className="breadcrumbs__button">All sales</button>
       </div>
       <div className="productListContainer">{isFetching ? <p>Please, wait...</p> : randomProducts && randomProducts.map((item) => <ProductCard key={item.id} product={item} />)}</div>
     </section>

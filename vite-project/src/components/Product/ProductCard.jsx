@@ -2,6 +2,7 @@ import React from "react";
 import "./ProductCard.scss";
 import whiteheart from "/src/assets/images/home_img/white_heart.svg";
 import cart from "/src/assets/images/home_img/white_cart.svg";
+import { Link } from "react-router-dom";
 
 
 export default function ProductCard({ product }) {
@@ -17,11 +18,11 @@ export default function ProductCard({ product }) {
       </div>
       <div className="product__discount">
         <div className="product__discount__text">
-          <p>{shortText(product.title, 30)}</p>
+          <Link to={`/products/${product.id}`}>{shortText(product.title, 30)}</Link>
         </div>
         <div className="product__price">
           <p className="product__price__real">${product.price}</p>
-          <p className="product__price__old">{product.discont_price > 0 ?`$${product.discont_price}` : product.discont_price}</p>
+          <p className="product__price__old">{product.discont_price > 0 ? `$${product.discont_price}` : product.discont_price}</p>
         </div>
       </div>
       <div className="product__discount__Perc">

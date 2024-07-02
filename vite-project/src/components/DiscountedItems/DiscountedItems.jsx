@@ -22,25 +22,16 @@ const DiscountedItems = () => {
 
   return (
     <div className="discountedItems container">
-      <div className="categories__navigation">
-        <button className="categories__button">Main page</button>
+      <div className="breadcrumbs__navigation">
+        <button className="breadcrumbs__button">Main page</button>
         <span>—</span>
-        <button className="categories__button">All sales</button>
+        <button className="breadcrumbs__button">All sales</button>
       </div>
-      <div className="categories__title">
+      <div className="allPagesTitle">
         <h2>Discounted items</h2>
       </div>
       <Filter />
-      <div className="productListContainer">
-        {isFetching ? (
-          <p>Please, wait...</p>
-        ) : (
-          findDiscountedItems &&
-          findDiscountedItems.map((prod) => (
-            <ProductCard key={prod.id} product={prod} />
-          ))
-        )}
-      </div>
+      <div className="productListContainer">{isFetching ? <p>Please, wait...</p> : findDiscountedItems && findDiscountedItems.map((prod) => <ProductCard key={prod.id} product={prod} />)}</div>
     </div>
   );
 };

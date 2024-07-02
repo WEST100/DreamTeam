@@ -8,7 +8,8 @@ import Discounted from "./pages/Discounted/Discounted";
 import Layout from "./components/Layout/Layout";
 import ItemsFromCategoryPage from "./pages/ItemsFromCategory/ItemsFromCategoryPage";
 import { ThemeProvider } from "./components/Theme/ThemeContext";
-import ProductCardDetailPage from "./pages/ProductCardDetailPage/ProductCardDetailPage";
+import ProductCardDetailPage from "./pages/ProductCartDetailPage/ProductCardDetailPage";
+
 
 function App() {
   return (

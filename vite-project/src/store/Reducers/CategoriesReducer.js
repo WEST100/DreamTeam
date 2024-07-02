@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getAllCategoriesAction } from "../asyncActions/categorie";
+import { getAllCategoriesAction, getCategoriesTitleAction } from "../asyncActions/categorie";
 
 const productsSlice = createSlice({
   name: "categories",
@@ -23,6 +23,10 @@ const productsSlice = createSlice({
       .addCase(getAllCategoriesAction.rejected, (state, action) => {
         state.isFetching = false;
         state.error = "Request execution error";
+      })
+      .addCase(getCategoriesTitleAction.fulfilled, (state, action) => {
+        state.isFetching = false;
+        state.categories = action.payload.category;
       });
   },
 });

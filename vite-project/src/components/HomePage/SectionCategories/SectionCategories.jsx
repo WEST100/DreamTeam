@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import "./SectionCategories.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCategoriesAction } from "../../../store/asyncActions/categorie";
 import CategoryCard from "../../Category/CategoryCard";
@@ -17,10 +16,10 @@ const SectionCategories = () => {
 
   return (
     <section className="categories container">
-      <div className="categories__block">
+      <div className="homePageSectionTitle">
         <h2>Categories</h2>
         <hr />
-        <button className="categories__button">All categories</button>
+        <button className="breadcrumbs__button">All categories</button>
       </div>
       <div className="categories__listContainer">{isFetching ? <p>Please, wait...</p> : filteredСategories && filteredСategories.map((item) => <CategoryCard key={item.id} category={item} />)}</div>
     </section>
