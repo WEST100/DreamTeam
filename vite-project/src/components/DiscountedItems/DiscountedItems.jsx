@@ -4,6 +4,7 @@ import "./DiscountedItems.scss";
 import { getAllProductAction } from "../../store/asyncActions/product";
 import ProductCard from "../Product/ProductCard";
 import Filter from "../Filter/Filter";
+import { Link } from "react-router-dom";
 
 const DiscountedItems = () => {
   const dispatch = useDispatch();
@@ -23,7 +24,9 @@ const DiscountedItems = () => {
   return (
     <div className="discountedItems container">
       <div className="breadcrumbs__navigation">
-        <button className="breadcrumbs__button">Main page</button>
+        <button className="breadcrumbs__button">
+          <Link to={"/"}>Main page</Link>
+        </button>
         <span>—</span>
         <button className="breadcrumbs__button">All sales</button>
       </div>

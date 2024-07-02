@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import ProductCard from "./ProductCard";
 import { getAllProductAction } from "../../store/asyncActions/product";
 import Filter from "../Filter/Filter";
+import { Link } from "react-router-dom";
 
 const ProductList = () => {
   const dispatch = useDispatch();
@@ -16,7 +17,9 @@ const ProductList = () => {
   return (
     <div className="all_products container">
       <div className="breadcrumbs__navigation">
-        <button className="breadcrumbs__button">Main page</button>
+        <button className="breadcrumbs__button">
+          <Link to={"/"}>Main page</Link>
+        </button>
         <span>—</span>
         <button className="breadcrumbs__button">All products</button>
       </div>

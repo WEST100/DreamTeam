@@ -21,12 +21,17 @@ body {
   border-radius: 6px;
   border: 1px solid #ddd;
   background-color: transparent;
-  color: #8b8b8b;
+  // color: #8b8b8b;
   cursor: pointer;
   padding: 8px 16px;
   font-size: 16px;
   line-height: 126%;
   text-align: center;
+
+  a {
+    text-decoration: none;
+    color: #8b8b8b;
+  }
 }
 
 .breadcrumbs__navigation {
@@ -38,6 +43,7 @@ body {
 
   button:last-of-type {
     color: #424436; /* Цвет текста для правой кнопки */
+    cursor: auto;
   }
 }
 
@@ -76,11 +82,10 @@ body {
 }
 
 .allPagesTitle h2 {
-    font-weight: 700;
-    font-size: 64px;
-    padding-right: 10px;
-    padding-bottom: 40px;
-  }
+  font-weight: 700;
+  font-size: 64px;
+  padding-bottom: 40px;
+}
 
 .productListContainer {
   display: grid;
