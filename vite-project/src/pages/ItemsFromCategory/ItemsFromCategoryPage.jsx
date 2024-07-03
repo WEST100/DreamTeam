@@ -11,7 +11,7 @@ const ItemsFromCategoryPage = () => {
 
   const dispatch = useDispatch();
 
-  const { products, isFetching } = useSelector((state) => state.products);
+  const { products, isLoading } = useSelector((state) => state.products);
   const { categories } = useSelector((state) => state.categories);
 
   useEffect(() => {
@@ -43,7 +43,7 @@ const ItemsFromCategoryPage = () => {
         <h2>{categories.title}</h2>
       </div>
       <Filter />
-      <section className="productListContainer">{isFetching ? <p>Please, wait...</p> : products && products.map((item) => <ProductCard key={item.id} product={item} />)}</section>
+      <section className="productListContainer">{isLoading ? <div className="loader"></div> : products && products.map((item) => <ProductCard key={item.id} product={item} />)}</section>
     </div>
   );
 };

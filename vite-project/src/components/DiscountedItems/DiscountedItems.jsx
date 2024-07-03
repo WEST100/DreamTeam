@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 const DiscountedItems = () => {
   const dispatch = useDispatch();
 
-  const { products, isFetching } = useSelector((state) => state.products);
+  const { products, isLoading } = useSelector((state) => state.products);
 
   useEffect(() => {
     dispatch(getAllProductAction());
@@ -34,7 +34,7 @@ const DiscountedItems = () => {
         <h2>Discounted items</h2>
       </div>
       <Filter />
-      <div className="productListContainer">{isFetching ? <p>Please, wait...</p> : findDiscountedItems && findDiscountedItems.map((prod) => <ProductCard key={prod.id} product={prod} />)}</div>
+      <div className="productListContainer">{isLoading ? <div className="loader"></div> : findDiscountedItems && findDiscountedItems.map((prod) => <ProductCard key={prod.id} product={prod} />)}</div>
     </div>
   );
 };

@@ -92,7 +92,8 @@
 }
 
 .switch {
-  background-color: hsl(198, 90%, 15%);
+  // hsl(198, 90%, 15%);
+  background-color: hsl(200, 7%, 82%);
   box-shadow: 0 0 0 0.125em hsla(223, 90%, 55%, 0);
   position: relative;
   border-radius: 20px;
@@ -109,23 +110,26 @@
     width: 34px;
     height: 34px;
     border-radius: 50%;
-    background-color: hsl(198, 90%, 55%);
+    // hsl(198, 90%, 55%);
+    background-color: hsl(0, 0%, 29%);
     display: flex;
     align-items: center;
     justify-content: center;
     transition: 0.2s;
     color: #fff;
+    // transform: translateX(36px);
   }
 
   &-active {
-    background-color: hsl(48, 90%, 85%);
+    // hsl(48, 90%, 85%)
+    background-color: hsl(200, 7%, 82%);
     box-shadow: 0 0 0 0.125em hsla(223, 90%, 55%, 0);
     transition: 0.5s;
 
     .switch__slider {
       transform: translateX(36px);
-      background-color: hsl(48, 90%, 55%);
+      // hsl(48, 90%, 55%);
+      background-color: hsl(0, 0%, 29%);
     }
   }
 }
-

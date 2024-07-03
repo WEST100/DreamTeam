@@ -3,7 +3,7 @@ import "./Header.scss";
 import logo from "/src/assets/images/home_img/logo.png";
 import { NavLink } from "react-router-dom";
 import { ThemeContext } from "../../Theme/ThemeContext";
-import { LuSunMedium, LuMoon } from "react-icons/lu";
+import { IoMoonOutline, IoSunnyOutline } from "react-icons/io5";
 
 const Header = () => {
   const setActiveLink = ({ isActive }) => (isActive ? "navbar__item navbar__item-active" : "navbar__item");
@@ -25,7 +25,7 @@ const Header = () => {
           <div className="header__action">
             <label className={`switch ${theme ? "" : "switch-active"}`}>
               <input type="checkbox" onChange={handleChangeSwitch} value={theme} />
-              <span className="switch__slider">{theme ? <LuSunMedium size={12} /> : <LuMoon size={12} />}</span>
+              <span className="switch__slider">{theme ? <IoSunnyOutline /> : <IoMoonOutline />}</span>
             </label>
           </div>
         </div>

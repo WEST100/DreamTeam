@@ -8,8 +8,6 @@ const SectionMain = () => {
  const { theme } = useContext(ThemeContext);
 
   return (
-    //     <header className={`header ${theme ? "header-dark" : "header-light"}`}>
-
     <section className={`main-content ${theme ? "main-content-dark" : "main-content-light"}`}>
       <div className="main-content__items">
         <img className="main-content__image" src={header} alt="header_image" />

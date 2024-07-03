@@ -5,7 +5,7 @@ const productsSlice = createSlice({
   name: "products",
   initialState: {
     products: [],
-    isFetching: false,
+    isLoading: false,
     error: null,
   },
 
@@ -13,23 +13,23 @@ const productsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getAllProductAction.pending, (state, action) => {
-        state.isFetching = true;
+        state.isLoading = true;
         state.error = null;
       })
       .addCase(getAllProductAction.fulfilled, (state, action) => {
-        state.isFetching = false;
+        state.isLoading = false;
         state.products = action.payload;
       })
       .addCase(getAllProductAction.rejected, (state, action) => {
-        state.isFetching = false;
+        state.isLoading = false;
         state.error = "Request execution error";
       })
       .addCase(getCategoriesProductsAction.fulfilled, (state, action) => {
-        state.isFetching = false;
+        state.isLoading = false;
         state.products = action.payload.data;
       })
       .addCase(getProductsCardDetailAction.fulfilled, (state, action) => {
-        state.isFetching = false;
+        state.isLoading = false;
         state.products = action.payload;
       });
   },

@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 const ProductList = () => {
   const dispatch = useDispatch();
 
-  const { products, isFetching } = useSelector((state) => state.products);
+  const { products, isLoading } = useSelector((state) => state.products);
 
   useEffect(() => {
     dispatch(getAllProductAction());
@@ -27,7 +27,7 @@ const ProductList = () => {
         <h2>All products</h2>
       </div>
       <Filter />
-      <div className="productListContainer">{isFetching ? <p>Please, wait...</p> : products && products.map((prod) => <ProductCard key={prod.id} product={prod} />)}</div>
+      <div className="productListContainer">{isLoading ? <div className="loader"></div> : products && products.map((prod) => <ProductCard key={prod.id} product={prod} />)}</div>
     </div>
   );
 };
