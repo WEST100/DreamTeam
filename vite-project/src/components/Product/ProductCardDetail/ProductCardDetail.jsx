@@ -11,7 +11,7 @@ const ProductCardDetail = () => {
 
   const dispatch = useDispatch();
 
-  const { products, isFetching } = useSelector((state) => state.products);
+  const { products, isLoading } = useSelector((state) => state.products);
   const { categories } = useSelector((state) => state.categories);
 
   useEffect(() => {
@@ -56,15 +56,15 @@ const ProductCardDetail = () => {
         <button className="breadcrumbs__button">{productTitle()}</button>
       </div>
       <section className="productContainer">
-        {isFetching ? (
-          <p>Please, wait...</p>
+        {isLoading ? (
+          <div className="loader"></div>
         ) : (
           products &&
           products.map((item) => (
             <div key={item.id}>
               <img src={`https://exam-server-5c4e.onrender.com${item.image}`} alt="product-image" />
               <div className="allPagesTitel">
-                <h2>{productTitle()}</h2>
+                <h2 className="titleH2">{productTitle()}</h2>
               </div>
               <p>{item.price}</p>
               <p>{item.discont_price}</p>

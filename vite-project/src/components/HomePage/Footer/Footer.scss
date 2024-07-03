@@ -1,6 +1,36 @@
 .footer {
-  margin-top: 80px;
-  margin-bottom: 80px;
+  padding-top: 80px;
+  padding-bottom: 80px;
+
+  svg {
+    fill: #424436;
+  }
+
+  &-dark {
+    background-color: #424436;
+
+    .homePageSectionTitle {
+      h2 {
+        color: #fff;
+      }
+    }
+
+    .footer__item {
+      background-color: #383a2c;
+
+      &_descr {
+        color: #8b8b8b;
+      }
+
+      &_info {
+        color: #fff;
+      }
+
+      svg {
+        fill: #fff;
+      }
+    }
+  }
 }
 .footer__title {
   font-weight: 700;

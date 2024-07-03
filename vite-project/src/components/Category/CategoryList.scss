@@ -1,12 +1,26 @@
 .categories {
-
   &__listContainer {
     display: flex;
     justify-content: space-between;
     gap: 30px;
-    margin-bottom: 80px;
+    padding-bottom: 80px;
+  }
+
+  &-dark {
+    .allPagesTitle {
+      h2 {
+        color: #fff;
+      }
+    }
+
+    .container .categories__listContainer .categories__card p a {
+      color: #fff;
+    }
+
+    .breadcrumbs__navigation {
+      button:last-of-type {
+        color: #fff; /* Цвет текста для правой кнопки */
+      }
+    }
   }
 }
-
-
-

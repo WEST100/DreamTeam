@@ -14,7 +14,9 @@ export default function ProductCard({ product }) {
   return (
     <div className="product__card">
       <div className="product__img">
-        <img src={`https://exam-server-5c4e.onrender.com${product.image}`} alt="Product img" />
+        <Link to={`/products/${product.id}`}>
+          <img src={`https://exam-server-5c4e.onrender.com${product.image}`} alt="Product img" />
+        </Link>
       </div>
       <div className="product__discount">
         <div className="product__discount__text">
