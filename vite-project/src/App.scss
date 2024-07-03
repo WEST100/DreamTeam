@@ -52,7 +52,7 @@ body {
 }
 
 .breadcrumbs__navigation {
-  margin: 40px 0;
+  padding: 40px 0;
 
   span {
     color: lightgrey;
@@ -103,6 +103,6 @@ body {
 
 .productListContainer {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(316px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(291px, 1fr));
   gap: 32px;
 }
