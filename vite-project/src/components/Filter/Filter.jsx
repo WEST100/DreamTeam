@@ -1,25 +1,46 @@
 import React, { useContext } from "react";
 import "./Filter.scss";
 import { ThemeContext } from "../Theme/ThemeContext";
+import { useDispatch, useSelector } from "react-redux";
+import { sortByPayload, sortByCheckBox, sortByMinMax } from "../../store/Reducers/ProductsReducer";
+
 const Filter = () => {
   const { theme } = useContext(ThemeContext);
+
+  const products = useSelector((store) => store.products.products);
+  console.log(products);
+
+  const dispatch = useDispatch();
+
+      function handleSelect(e) {
+        dispatch(sortByPayload(e.target.value));
+  }
+  
+      function handleInputs(e) {
+        let formData = new FormData(e.target.parentElement);
+        let data = Object.fromEntries(formData);
+        dispatch(sortByMinMax(data));
+      }
 
   return (
     <section className={`filter ${theme ? "filter-dark" : "filter-light"}`}>
       <div className="container">
-        <div className="price__block">
+        <form className="price__block" onChange={handleInputs}>
           <label htmlFor="price-from">Price</label>
-          <input type="number" id="price-from" name="price-from" placeholder="from" min="0" step="1" />
-          <input type="number" id="price-to" name="price-to" placeholder="to" min="0" step="1" />
-        </div>
+          <input type="number" id="price-from" name="min" placeholder="from" min="0" step="1" />
+          <input type="number" id="price-to" name="max" placeholder="to" min="0" step="1" />
+        </form>
         <div className="discounted">
           <label htmlFor="discounted-items">Discounted items</label>
-          <input type="checkbox" id="discounted-items" name="discounted-items" />
+          <input onClick={() => dispatch(sortByCheckBox())} type="checkbox" id="discounted-items" name="discounted-items" />
         </div>
         <div className="sort">
           <label htmlFor="sort">Sorted</label>
-          <select id="sort" name="sort">
-            <option value="default">by default</option>
+          <select id="sort" name="sort" onChange={handleSelect}>
+            <option value={"default"}>by default</option>
+            <option value={"newest"}>newest</option>
+            <option value={"high"}>price: high-low</option>
+            <option value={"low"}>price: low-high</option>
           </select>
         </div>
       </div>
