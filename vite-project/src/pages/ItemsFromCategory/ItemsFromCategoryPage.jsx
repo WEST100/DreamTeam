@@ -16,7 +16,7 @@ const ItemsFromCategoryPage = () => {
   const dispatch = useDispatch();
 
   const { products, isLoading } = useSelector((state) => state.products);
-  const { categories } = useSelector((state) => state.categories);
+  const { category } = useSelector((state) => state.categories);
 
   useEffect(() => {
     dispatch(getCategoriesProductsAction(categoryId));
@@ -28,7 +28,7 @@ const ItemsFromCategoryPage = () => {
 
   console.log(categoryId);
 
-  console.log(categories.title);
+  console.log(category?.title);
 
   return (
     <section className={`itemsFromCategoryPage ${theme ? "itemsFromCategoryPage-dark" : "itemsFromCategoryPage-light"}`}>
@@ -42,10 +42,10 @@ const ItemsFromCategoryPage = () => {
             <Link to={"/categories"}>Categories</Link>
           </button>
           <span>—</span>
-          <button className="breadcrumbs__button">{categories.title}</button>
+          <button className="breadcrumbs__button">{category?.title}</button>
         </div>
         <div className="allPagesTitle">
-          <h2>{categories.title}</h2>
+          <h2>{category?.title}</h2>
         </div>
         <Filter />
         <div className="productListContainer">{isLoading ? <div className="loader"></div> : products && products.map((item) => <ProductCard key={item.id} product={item} />)}</div>

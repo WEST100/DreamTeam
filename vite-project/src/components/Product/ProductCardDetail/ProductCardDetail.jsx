@@ -11,32 +11,14 @@ const ProductCardDetail = () => {
 
   const dispatch = useDispatch();
 
-  const { products, isLoading } = useSelector((state) => state.products);
+  const { product, isLoading } = useSelector((state) => state.products);
   const { categories } = useSelector((state) => state.categories);
 
   useEffect(() => {
     dispatch(getProductsCardDetailAction(productId));
-  }, [productId]);
-
-  useEffect(() => {
     dispatch(getAllCategoriesAction());
-  }, []);
-
-  let productTitle = () => {
-    let prod = "";
-    for (let key in products) {
-      prod = products[key].title;
-    }
-    return prod;
-  };
-
-  let getCategoryId = () => {
-    let prod = "";
-    for (let key in products) {
-      prod = products[key].categoryId;
-    }
-    return prod;
-  };
+    console.log(product);
+  }, [productId]);
 
   return (
     <div className="detailedProductPage container">
@@ -50,27 +32,26 @@ const ProductCardDetail = () => {
         </button>
         <span>—</span>
         <button className="breadcrumbs__button">
-          <Link to={`/categories/${getCategoryId()}`}>{categories && categories.map((item) => (item.id === getCategoryId() ? item.title : ""))}</Link>
+          <Link to={`/categories/${product?.categoryId}`}>{categories && categories.map((item) => (item.id === product?.categoryId ? item.title : ""))}</Link>
         </button>
         <span>—</span>
-        <button className="breadcrumbs__button">{productTitle()}</button>
+        <button className="breadcrumbs__button">{product?.title}</button>
       </div>
       <section className="productContainer">
         {isLoading ? (
           <div className="loader"></div>
         ) : (
-          products &&
-          products.map((item) => (
-            <div key={item.id}>
-              <img src={`https://exam-server-5c4e.onrender.com${item.image}`} alt="product-image" />
+          product && (
+            <div key={product?.id}>
+              <img src={`https://exam-server-5c4e.onrender.com${product?.image}`} alt="product-image" />
               <div className="allPagesTitel">
-                <h2 className="titleH2">{productTitle()}</h2>
+                <h2 className="titleH2">{product?.title}</h2>
               </div>
-              <p>{item.price}</p>
-              <p>{item.discont_price}</p>
-              <p>{item.description}</p>
+              <p>{product?.price}</p>
+              <p>{product?.discont_price}</p>
+              <p>{product?.description}</p>
             </div>
-          ))
+          )
         )}
       </section>
     </div>

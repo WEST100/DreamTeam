@@ -7,6 +7,7 @@ const productsSlice = createSlice({
     categories: [],
     isLoading: false,
     error: null,
+    category: null
   },
 
   reducers: {},
@@ -26,7 +27,7 @@ const productsSlice = createSlice({
       })
       .addCase(getCategoriesTitleAction.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.categories = action.payload.category;
+        state.category = action.payload.category;
       });
   },
 });
