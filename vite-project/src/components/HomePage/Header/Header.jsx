@@ -25,7 +25,15 @@ const Header = () => {
           <div className="header__action">
             <label className={`switch ${theme ? "" : "switch-active"}`}>
               <input type="checkbox" onChange={handleChangeSwitch} value={theme} />
-              <span className="switch__slider">{theme ? <IoSunnyOutline /> : <IoMoonOutline />}</span>
+              <div>
+                <span className="iconChangeColor">
+                  <IoMoonOutline />
+                </span>
+                <span>
+                  <IoSunnyOutline />
+                </span>
+              </div>
+              <span className="switch__slider"></span>
             </label>
           </div>
         </div>

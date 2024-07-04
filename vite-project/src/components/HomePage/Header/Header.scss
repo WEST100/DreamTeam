@@ -97,6 +97,24 @@
   padding: 2px;
   display: flex;
 
+  div {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    padding: 6px;
+    justify-content: space-between;
+    width: 100%;
+
+    .iconChangeColor {
+      color: #fff;
+    }
+
+    span {
+      display: inline-block;
+      padding: 2px;
+    }
+  }
+
   input {
     position: absolute;
     opacity: 0;
@@ -106,26 +124,23 @@
     width: 34px;
     height: 34px;
     border-radius: 50%;
-    // hsl(198, 90%, 55%);
     background-color: hsl(0, 0%, 29%);
     display: flex;
     align-items: center;
     justify-content: center;
     transition: 0.2s;
     color: #fff;
-    // transform: translateX(36px);
+    z-index: 2;
   }
 
   &-active {
-    // hsl(48, 90%, 85%)
-    background-color: hsl(200, 7%, 82%);
+    background-color: hsl(192, 2%, 46%);
     box-shadow: 0 0 0 0.125em hsla(223, 90%, 55%, 0);
     transition: 0.5s;
 
     .switch__slider {
       transform: translateX(36px);
-      // hsl(48, 90%, 55%);
-      background-color: hsl(0, 0%, 29%);
+      background-color: hsl(0, 19%, 95%);
     }
   }
 }
