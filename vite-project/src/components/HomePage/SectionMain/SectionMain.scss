@@ -21,7 +21,11 @@
 }
 
 .main-content {
-  padding-bottom: 80px;
+  padding-bottom: 40px;
+
+  &-light {
+    background-color: #fffff1;
+  }
 
   &-dark {
     background-color: #424436;
