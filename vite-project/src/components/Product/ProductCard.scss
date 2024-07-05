@@ -1,3 +1,23 @@
+.product__card {
+  &-dark {
+    .product__discount {
+      background-color: #383a2c;
+
+      &__text a {
+        color: #fff;
+      }
+
+      .product__price__real {
+        color: #fff;
+      }
+
+      .product__price__old {
+        color: #fff;
+      }
+    }
+  }
+}
+
 .product {
   &__card {
     display: grid;
@@ -8,6 +28,7 @@
     background: #fff;
     overflow: hidden;
   }
+
   &__img {
     img {
       width: 100%;
@@ -37,12 +58,12 @@
       position: absolute;
       top: 10px;
       left: 10px;
-      background: #92a134;
+      background: #f26d22;
       color: #ffffff;
       padding: 4px 8px;
       border-radius: 6px;
-      width: 68px;
-      height: 34px;
+      // width: 68px;
+      // height: 34px;
       align-items: center;
       justify-content: center;
 

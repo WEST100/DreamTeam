@@ -8,7 +8,7 @@ const Footer = () => {
   return (
     <footer className={`footer ${theme ? "footer-dark" : "footer-light"}`}>
       <div className="container">
-        <div className="homePageSectionTitle">
+        <div className="pageSectionTitle">
           <h2>Contact</h2>
         </div>
         <div className="footer__items">

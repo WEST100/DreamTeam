@@ -1,0 +1,17 @@
+.favorites {
+  &-dark {
+    background-color: #424436;
+
+    .allPagesTitle {
+      h2 {
+        color: #fff;
+      }
+    }
+
+    .breadcrumbs__navigation {
+      button:last-of-type {
+        color: #fff; /* Цвет текста для правой кнопки */
+      }
+    }
+  }
+}

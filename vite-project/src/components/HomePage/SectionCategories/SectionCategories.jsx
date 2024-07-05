@@ -22,7 +22,7 @@ const SectionCategories = () => {
   return (
     <section className={`categories ${theme ? "categories-dark" : "categories-light"}`}>
       <div className="container">
-        <div className="homePageSectionTitle">
+        <div className="pageSectionTitle">
           <h2>Categories</h2>
           <hr />
           <button className="breadcrumbs__button">

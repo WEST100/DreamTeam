@@ -44,7 +44,7 @@ const SectionSale = () => {
   return (
     <section className={`sale ${theme ? "sale-dark" : "sale-light"}`}>
       <div className="container">
-        <div className="homePageSectionTitle">
+        <div className="pageSectionTitle">
           <h2>Sale</h2>
           <hr />
           <button className="breadcrumbs__button">
