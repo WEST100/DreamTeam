@@ -7,10 +7,89 @@ const productsSlice = createSlice({
     products: [],
     isLoading: false,
     error: null,
-    product: null
+    product: null,
+    isToggle: true,
+    // itemsWithDiscont: [],
+    // itemsWithOutDiscont: [],
   },
 
-  reducers: {},
+  reducers: {
+    sortByPayload(state, action) {
+      if (action.payload === "default") {
+        return {
+          ...state,
+          products: state.products.slice().sort((a, b) => a.id - b.id),
+        };
+      } else if (action.payload === "newest") {
+        return {
+          ...state,
+          products: state.products.slice().sort((a, b) => b.createdAt - a.createdAt),
+        };
+      } else if (action.payload === "low") {
+        return {
+          ...state,
+          products: state.products.slice().sort((a, b) => a.price - b.price),
+        };
+      } else if (action.payload === "high") {
+        return {
+          ...state,
+          products: state.products.slice().sort((a, b) => b.price - a.price),
+        };
+      }
+    },
+    sortByCheckBox(state) {
+      // let itemsWithDiscont = state.products.filter((item) => item.discont_price);
+      // console.log(itemsWithDiscont);
+      // let itemsWithOutDiscont = state.products.filter((item) => item.discont_price === null);
+      // console.log(itemsWithOutDiscont);
+
+      // state.itemsWithDiscont = state.products.filter((item) => item.discont_price);
+      // console.log(itemsWithDiscont);
+      // state.itemsWithOutDiscont = state.products.filter((item) => item.discont_price === null);
+      // console.log(itemsWithOutDiscont);
+
+      // let isToggle = true;
+      // if (isToggle) {
+      //   isToggle = false;
+      //   console.log(isToggle);
+      //   return { ...state, products: state.products.filter((item) => item.discont_price) };
+      // } else {
+      //   isToggle = true;
+      //   console.log(isToggle);
+      //   return { ...state, products: state.products.filter((item) => item.discont_price === null) };
+      // }
+
+
+      // if (state.isToggle) {
+      //   state.isToggle = false;
+      //   console.log(state.isToggle);
+      //   return { ...state, products: state.products.filter((item) => item.discont_price) };
+      // } else {
+      //   state.isToggle = true;
+      //   console.log(state.isToggle);
+      //   return { ...state, products: state.products.filter((item) => item.discont_price === null) };
+      // }
+
+      state.products = state.products.filter((item) => item.discont_price);
+
+
+    },
+    sortByMinMax(state, action) {
+      action.payload.max = action.payload.max == "" ? Infinity : +action.payload.max;
+      action.payload.min = action.payload.min == "" ? 0 : +action.payload.min;
+      return {
+        ...state,
+        products: state.products.map((elem) => {
+          if (elem.price >= action.payload.min && elem.price <= action.payload.max) {
+            elem.isShow = true; // ?????????
+          } else {
+            elem.isShow = false;
+          }
+          return elem;
+        }),
+      };
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getAllProductAction.pending, (state, action) => {
@@ -53,4 +132,4 @@ const productsSlice = createSlice({
 });
 
 export default productsSlice.reducer;
-export const {} = productsSlice.actions;
+export const { sortByPayload, sortByCheckBox, sortByMinMax } = productsSlice.actions;
