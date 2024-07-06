@@ -12,15 +12,19 @@ const Filter = () => {
 
   const dispatch = useDispatch();
 
-      function handleSelect(e) {
-        dispatch(sortByPayload(e.target.value));
+  function handleSelect(e) {
+    dispatch(sortByPayload(e.target.value));
   }
-  
-      function handleInputs(e) {
-        let formData = new FormData(e.target.parentElement);
-        let data = Object.fromEntries(formData);
-        dispatch(sortByMinMax(data));
-      }
+
+  function handleInputs(e) {
+    let formData = new FormData(e.target.parentElement);
+    let data = Object.fromEntries(formData);
+    dispatch(sortByMinMax(data));
+  }
+
+const currentUrl = window.location.href;
+
+  let hideDiscountedItems = () => (currentUrl === "http://localhost:5173/discounted" || currentUrl === "http://localhost:5173/favorites" ? "discountedHide" : "");
 
   return (
     <section className={`filter ${theme ? "filter-dark" : "filter-light"}`}>
@@ -30,7 +34,7 @@ const Filter = () => {
           <input type="number" id="price-from" name="min" placeholder="from" min="0" step="1" />
           <input type="number" id="price-to" name="max" placeholder="to" min="0" step="1" />
         </form>
-        <div className="discounted">
+        <div className={`discounted ${hideDiscountedItems()}`}>
           <label htmlFor="discounted-items">Discounted items</label>
           <input onClick={() => dispatch(sortByCheckBox())} type="checkbox" id="discounted-items" name="discounted-items" />
         </div>
