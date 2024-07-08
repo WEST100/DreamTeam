@@ -1,13 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProductAction } from "../../../store/asyncActions/product";
 import ProductCard from "../../Product/ProductCard";
 import { Link } from "react-router-dom";
+import { ThemeContext } from "../../Theme/ThemeContext";
+import "./SectionSale.scss";
 
 const SectionSale = () => {
   let dispatch = useDispatch();
 
-  let { products, isFetching } = useSelector((state) => state.products);
+   const { theme } = useContext(ThemeContext);
+
+  let { products, isLoading } = useSelector((state) => state.products);
 
   useEffect(() => {
     dispatch(getAllProductAction());
@@ -38,15 +42,17 @@ const SectionSale = () => {
   // ------------------------------- end ------------------------------
 
   return (
-    <section className="sale container">
-      <div className="homePageSectionTitle">
-        <h2>Sale</h2>
-        <hr />
-        <button className="breadcrumbs__button">
-          <Link to={"/discounted"}>All sales</Link>
-        </button>
+    <section className={`sale ${theme ? "sale-dark" : "sale-light"}`}>
+      <div className="container">
+        <div className="pageSectionTitle">
+          <h2>Sale</h2>
+          <hr />
+          <button className="breadcrumbs__button">
+            <Link to={"/discounted"}>All sales</Link>
+          </button>
+        </div>
+        <div className="productListContainer">{isLoading ? <div className="loader"></div> : randomProducts && randomProducts.map((item) => <ProductCard key={item.id} product={item} />)}</div>
       </div>
-      <div className="productListContainer">{isFetching ? <p>Please, wait...</p> : randomProducts && randomProducts.map((item) => <ProductCard key={item.id} product={item} />)}</div>
     </section>
   );
 };

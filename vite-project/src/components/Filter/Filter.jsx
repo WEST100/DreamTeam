@@ -1,5 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Filter.scss";
+import { ThemeContext } from "../Theme/ThemeContext";
+import { useDispatch, useSelector } from "react-redux";
+import { sortByPayload, sortByCheckBox, sortByMinMax } from "../../store/Reducers/ProductsReducer";
+
 const Filter = () => {
   const { theme } = useContext(ThemeContext);
 
@@ -18,13 +22,9 @@ const Filter = () => {
     dispatch(sortByMinMax(data));
   }
 
-  const currentUrl = window.location.href;
+const currentUrl = window.location.href;
 
-  let hideDiscountedItems = () =>
-    currentUrl === "http://localhost:5173/discounted" ||
-    currentUrl === "http://localhost:5173/favorites"
-      ? "discountedHide"
-      : "";
+  let hideDiscountedItems = () => (currentUrl === "http://localhost:5173/discounted" || currentUrl === "http://localhost:5173/favorites" ? "discountedHide" : "");
 
   return (
     <section className={`filter ${theme ? "filter-dark" : "filter-light"}`}>

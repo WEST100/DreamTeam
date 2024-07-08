@@ -1,20 +1,11 @@
-.categories {
-  &__listContainer {
-    display: flex;
-    justify-content: space-between;
-    gap: 30px;
-    padding-bottom: 40px;
-  }
-
+.favorites {
   &-dark {
+    background-color: #424436;
+
     .allPagesTitle {
       h2 {
         color: #fff;
       }
-    }
-
-    .container .categories__listContainer .categories__card p a {
-      color: #fff;
     }
 
     .breadcrumbs__navigation {

@@ -5,28 +5,29 @@ const productsSlice = createSlice({
   name: "categories",
   initialState: {
     categories: [],
-    isFetching: false,
+    isLoading: false,
     error: null,
+    category: null
   },
 
   reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(getAllCategoriesAction.pending, (state, action) => {
-        state.isFetching = true;
+        state.isLoading = true;
         state.error = null;
       })
       .addCase(getAllCategoriesAction.fulfilled, (state, action) => {
-        state.isFetching = false;
+        state.isLoading = false;
         state.categories = action.payload;
       })
       .addCase(getAllCategoriesAction.rejected, (state, action) => {
-        state.isFetching = false;
+        state.isLoading = false;
         state.error = "Request execution error";
       })
       .addCase(getCategoriesTitleAction.fulfilled, (state, action) => {
-        state.isFetching = false;
-        state.categories = action.payload.category;
+        state.isLoading = false;
+        state.category = action.payload.category;
       });
   },
 });
