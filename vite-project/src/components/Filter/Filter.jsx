@@ -29,8 +29,8 @@ const Filter = () => {
   return (
     <section className={`filter ${theme ? "filter-dark" : "filter-light"}`}>
       <div className="container">
-        <div className="filter__box" onChange={handleInputs}>
-          <form className="price__block">
+        <div className="filter__box">
+          <form className="price__block" onChange={handleInputs}>
             <label htmlFor="price-from" className="box__label">
               Price
             </label>
