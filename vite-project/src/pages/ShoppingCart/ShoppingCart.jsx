@@ -1,10 +1,17 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ThemeContext } from "../../components/Theme/ThemeContext";
 import "./ShoppingCart.scss";
+import { useSelector } from "react-redux";
+import ProductCart from "../../components/Product/ProductCart/ProductCart";
 
 const ShoppingCart = () => {
   const { theme } = useContext(ThemeContext);
+
+  const navigate = useNavigate();
+  const goBack = () => navigate(-1);
+
+  const { cartProducts, isLoading } = useSelector((state) => state.products);
 
   return (
     <>
@@ -13,10 +20,11 @@ const ShoppingCart = () => {
           <div className="pageSectionTitle">
             <h2>Shopping cart</h2>
             <hr />
-            <button className="breadcrumbs__button">
-              <Link to={"/"}>Back to the store</Link>
+            <button onClick={goBack} className="breadcrumbs__button">
+              Back to the store
             </button>
           </div>
+          <div className="productListCartContainer">{isLoading ? <div className="loader"></div> : cartProducts && cartProducts.map((prod) => <ProductCart key={prod.id} product={prod} />)}</div>
         </div>
       </section>
     </>

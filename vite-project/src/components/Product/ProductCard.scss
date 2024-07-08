@@ -103,5 +103,13 @@
     width: 48px;
     height: 106px;
     gap: 10px;
+
+    .heart {
+      stroke: #424436;
+      stroke-linejoin: round;
+      stroke-linecap: round;
+      stroke-width: 2.2;
+      fill: #fff;
+    }
   }
 }

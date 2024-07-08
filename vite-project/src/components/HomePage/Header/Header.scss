@@ -6,7 +6,6 @@
 
 .header {
   &-light {
-
     .users-menu .heart {
       stroke: #424436;
       stroke-linejoin: round;
@@ -84,6 +83,20 @@
   display: flex;
   gap: 24px;
   align-items: center;
+  position: relative;
+
+  span {
+    position: absolute;
+    background-color: #92a134;
+    color: #fff;
+    width: 20px;
+    text-align: center;
+    border-radius: 50px;
+  }
+
+  .countProductsInCart {
+    top: 3.5px;
+  }
 }
 
 .switch {
