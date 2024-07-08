@@ -22,7 +22,7 @@ const Filter = () => {
     dispatch(sortByMinMax(data));
   }
 
-const currentUrl = window.location.href;
+  const currentUrl = window.location.href;
 
   let hideDiscountedItems = () => (currentUrl === "http://localhost:5173/discounted" || currentUrl === "http://localhost:5173/favorites" ? "discountedHide" : "");
 
@@ -34,38 +34,15 @@ const currentUrl = window.location.href;
             <label htmlFor="price-from" className="box__label">
               Price
             </label>
-            <input
-              className="price__input"
-              type="number"
-              id="price-from"
-              name="price-from"
-              placeholder="from"
-              min="0"
-              step="1"
-            />
-            <input
-              className="price__input"
-              type="number"
-              id="price-to"
-              name="price-to"
-              placeholder="to"
-              min="0"
-              step="1"
-            />
+            <input className="price__input" id="price-from" type="number" name="min" placeholder="from" min="0" step="1" />
+            <input className="price__input" type="number" name="max" placeholder="to" min="0" step="1" />
           </form>
           <div className={`discounted ${hideDiscountedItems()}`}>
             <label htmlFor="checkbox" className="box__label">
               Discounted items
             </label>
-            <input onClick={() => dispatch(sortByCheckBox())}
-              type="checkbox"
-              id="checkbox"
-              className="discounted__input"
-            />
-            <label
-              for="checkbox"
-              className="discounted__custom-checkbox"
-            ></label>
+            <input onClick={() => dispatch(sortByCheckBox())} type="checkbox" id="checkbox" className="discounted__input" />
+            <label htmlFor="checkbox" className="discounted__custom-checkbox"></label>
           </div>
           <div className="sort">
             <label htmlFor="sort" className="box__label">
