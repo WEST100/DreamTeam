@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getAllProductAction, getCategoriesProductsAction, getProductsCardDetailAction } from "../asyncActions/product";
+import { useState } from "react";
 
 const productsSlice = createSlice({
   name: "products",
@@ -8,9 +9,11 @@ const productsSlice = createSlice({
     isLoading: false,
     error: null,
     product: null,
+    favoritesProducts: [],
+    cartProducts: [],
     isToggle: true,
-    // itemsWithDiscont: [],
-    // itemsWithOutDiscont: [],
+    itemsWithDiscont: [],
+    itemsWithOutDiscont: [],
   },
 
   reducers: {
@@ -59,7 +62,6 @@ const productsSlice = createSlice({
       //   return { ...state, products: state.products.filter((item) => item.discont_price === null) };
       // }
 
-
       // if (state.isToggle) {
       //   state.isToggle = false;
       //   console.log(state.isToggle);
@@ -70,9 +72,19 @@ const productsSlice = createSlice({
       //   return { ...state, products: state.products.filter((item) => item.discont_price === null) };
       // }
 
+      // const [isDiscounted, setIsDiscounted] = useState(true);
+      // const checkDiscountItems = () => {
+      //   setIsDiscounted(!isDiscounted);
+      // };
+      // if (isDiscounted) {
+      //   checkDiscountItems();
+      //   return { ...state, products: state.products.filter((item) => item.discont_price) };
+      // } else {
+      //   checkDiscountItems();
+      //   return { ...state, products: state.products.filter((item) => item.discont_price === null) };
+      // }
+
       state.products = state.products.filter((item) => item.discont_price);
-
-
     },
     sortByMinMax(state, action) {
       action.payload.max = action.payload.max == "" ? Infinity : +action.payload.max;
@@ -88,6 +100,12 @@ const productsSlice = createSlice({
           return elem;
         }),
       };
+    },
+    addFavoritesProducts(state, action) {
+      state.favoritesProducts = action.payload;
+    },
+    addCartProducts(state, action) {
+      state.cartProducts = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -132,4 +150,4 @@ const productsSlice = createSlice({
 });
 
 export default productsSlice.reducer;
-export const { sortByPayload, sortByCheckBox, sortByMinMax } = productsSlice.actions;
+export const { sortByPayload, sortByCheckBox, sortByMinMax, addFavoritesProducts, addCartProducts } = productsSlice.actions;
