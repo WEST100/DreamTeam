@@ -5,6 +5,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProductsCardDetailAction } from "../../../store/asyncActions/product";
 import "./ProductCardDetail.scss";
 import { getAllCategoriesAction } from "../../../store/asyncActions/categorie";
+import minus from "/src/assets/images/minus.png";
+import plus from "/src/assets/images/plus.png";
+import { FiPlus, FiMinus } from "react-icons/fi";
+
 
 const ProductCardDetail = () => {
   const { productId } = useParams();
@@ -50,25 +54,62 @@ const ProductCardDetail = () => {
         </button>
         <span>—</span>
         <button className="breadcrumbs__button">
-          <Link to={`/categories/${getCategoryId()}`}>{categories && categories.map((item) => (item.id === getCategoryId() ? item.title : ""))}</Link>
+          <Link to={`/categories/${getCategoryId()}`}>
+            {categories &&
+              categories.map((item) =>
+                item.id === getCategoryId() ? item.title : ""
+              )}
+          </Link>
         </button>
         <span>—</span>
         <button className="breadcrumbs__button">{productTitle()}</button>
       </div>
-      <section className="productContainer">
+      <section>
         {isFetching ? (
           <p>Please, wait...</p>
         ) : (
           products &&
           products.map((item) => (
-            <div key={item.id}>
-              <img src={`https://exam-server-5c4e.onrender.com${item.image}`} alt="product-image" />
-              <div className="allPagesTitel">
-                <h2>{productTitle()}</h2>
+            <div className="product-single" key={item.id}>
+              <img
+                  src={`https://exam-server-5c4e.onrender.com${item.image}`}
+                  alt="product-image"
+                  className="product-single__image"
+                />
+
+              <div className="product-single__details">
+                <h2 className="product-single__title">{productTitle()}</h2>
+
+                <div className="product-single__price">
+                    <h3>${item.price}</h3>
+
+                    <h6>
+                      {item.discont_price > 0
+                        ? `$${item.discont_price}`
+                        : item.discont_price}
+
+                        <span>-17%</span>
+                    </h6>
+                </div>
+
+                <div className="product-single__actions">
+                  <div className="quantity">
+                    <button className="quantity__action"><img src={minus} alt="Icon Minus" /></button>
+                    <input type="text" value={1} disabled className="quantity__input"/>
+                    <button className="quantity__action"><img src={plus} alt="Icon Plus" /></button>
+                  </div>
+
+                  <button className="btn">Add to cart</button>
+                </div>
+
+                <div className="description">
+                  <h3 className="description__title">Description</h3>
+
+                  <p className="description__text">{item.description}</p>
+
+                  <p className="description__more">Read more</p>
+                </div>
               </div>
-              <p>{item.price}</p>
-              <p>{item.discont_price}</p>
-              <p>{item.description}</p>
             </div>
           ))
         )}
