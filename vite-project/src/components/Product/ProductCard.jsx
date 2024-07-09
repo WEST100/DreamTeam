@@ -57,7 +57,7 @@ export default function ProductCard({ product }) {
         <svg
           onClick={() => {
             handleSvgClickHeart();
-            dispatch(addFavoritesProducts([product]));
+            dispatch(addFavoritesProducts(product));
           }}
           className="heart"
           width="48"
@@ -71,7 +71,7 @@ export default function ProductCard({ product }) {
         <svg
           onClick={() => {
             handleSvgClickCart();
-            dispatch(addCartProducts([product]));
+            dispatch(addCartProducts(product));
           }}
           className="cart"
           width="48"

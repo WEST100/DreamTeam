@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./Filter.scss";
 import { ThemeContext } from "../Theme/ThemeContext";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,7 +8,6 @@ const Filter = () => {
   const { theme } = useContext(ThemeContext);
 
   const products = useSelector((store) => store.products.products);
-  console.log(products);
 
   const dispatch = useDispatch();
 
@@ -26,6 +25,10 @@ const Filter = () => {
 
   let hideDiscountedItems = () => (currentUrl === "http://localhost:5173/discounted" || currentUrl === "http://localhost:5173/favorites" ? "discountedHide" : "");
 
+  const sortItemsByCheckBox = (e) => {
+    dispatch(sortByCheckBox(e.target.checked));
+  }
+
   return (
     <section className={`filter ${theme ? "filter-dark" : "filter-light"}`}>
       <div className="container">
@@ -41,7 +44,7 @@ const Filter = () => {
             <label htmlFor="checkbox" className="box__label">
               Discounted items
             </label>
-            <input onClick={() => dispatch(sortByCheckBox())} type="checkbox" id="checkbox" className="discounted__input" />
+            <input onClick={sortItemsByCheckBox} type="checkbox" id="checkbox" className="discounted__input" />
             <label htmlFor="checkbox" className="discounted__custom-checkbox"></label>
           </div>
           <div className="sort">
