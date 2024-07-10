@@ -79,6 +79,7 @@ const productsSlice = createSlice({
     },
     // Добавление товаров в корзину
     addCartProducts(state, action) {
+      
       state.cartProducts.push(action.payload);
 
       let localCart = JSON.parse(localStorage.getItem("cart"));

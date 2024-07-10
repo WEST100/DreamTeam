@@ -56,15 +56,6 @@ const ProductCardDetail = () => {
                 </div>
                 <div className="product-single__actions">
                   <Quantity/>
-                  {/* <div className="quantity">
-                    <button className="quantity__action">
-                      <img src={minus} alt="Icon Minus" />
-                    </button>
-                    <input type="text" value={1} disabled className="quantity__input" />
-                    <button className="quantity__action">
-                      <img src={plus} alt="Icon Plus" />
-                    </button>
-                  </div> */}
                   <button className="btn">Add to cart</button>
                 </div>
                 <div className="description">
