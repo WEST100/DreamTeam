@@ -1,0 +1,25 @@
+.quantity {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr 1fr;
+    align-items: center;
+    
+    &__input {
+      max-width: 82px;
+      background: none;
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 130%;
+      text-align: center;
+      padding: 14px;
+      border: none;
+      border-bottom: 1px solid #ddd;
+      border-top: 1px solid #ddd;
+    }
+
+    &__action {
+      background: none;
+      padding: 14px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+    }
+}

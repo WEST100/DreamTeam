@@ -5,9 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProductsCardDetailAction } from "../../../store/asyncActions/product";
 import "./ProductCardDetail.scss";
 import { getAllCategoriesAction } from "../../../store/asyncActions/categorie";
-import minus from "/src/assets/images/minus.png";
-import plus from "/src/assets/images/plus.png";
-import { FiPlus, FiMinus } from "react-icons/fi";
+import Quantity from "../../Quantity/Quantity";
+
 
 const ProductCardDetail = () => {
   const { productId } = useParams();
@@ -56,7 +55,8 @@ const ProductCardDetail = () => {
                   </h6>
                 </div>
                 <div className="product-single__actions">
-                  <div className="quantity">
+                  <Quantity/>
+                  {/* <div className="quantity">
                     <button className="quantity__action">
                       <img src={minus} alt="Icon Minus" />
                     </button>
@@ -64,7 +64,7 @@ const ProductCardDetail = () => {
                     <button className="quantity__action">
                       <img src={plus} alt="Icon Plus" />
                     </button>
-                  </div>
+                  </div> */}
                   <button className="btn">Add to cart</button>
                 </div>
                 <div className="description">
