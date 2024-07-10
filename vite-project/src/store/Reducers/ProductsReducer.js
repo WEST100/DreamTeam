@@ -1,115 +1,118 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getAllProductAction, getCategoriesProductsAction, getProductsCardDetailAction } from "../asyncActions/product";
-import { useState } from "react";
 
 const productsSlice = createSlice({
   name: "products",
   initialState: {
     products: [],
+    filteredProducts: [],
     isLoading: false,
     error: null,
     product: null,
     favoritesProducts: [],
     cartProducts: [],
-    isToggle: true,
-    itemsWithDiscont: [],
-    itemsWithOutDiscont: [],
   },
 
   reducers: {
+    // сортировка из выпадающего списка
     sortByPayload(state, action) {
+      let data = state.filteredProducts.length > 0 ? state.filteredProducts : state.products;
+
       if (action.payload === "default") {
-        return {
-          ...state,
-          products: state.products.slice().sort((a, b) => a.id - b.id),
-        };
+        state.filteredProducts = data.slice().sort((a, b) => a.id - b.id);
       } else if (action.payload === "newest") {
-        return {
-          ...state,
-          products: state.products.slice().sort((a, b) => b.createdAt - a.createdAt),
-        };
+        state.filteredProducts = data.slice().sort((a, b) => b.createdAt - a.createdAt);
       } else if (action.payload === "low") {
-        return {
-          ...state,
-          products: state.products.slice().sort((a, b) => a.price - b.price),
-        };
+        state.filteredProducts = data.slice().sort((a, b) => a.price - b.price);
       } else if (action.payload === "high") {
-        return {
-          ...state,
-          products: state.products.slice().sort((a, b) => b.price - a.price),
-        };
+        state.filteredProducts = data.slice().sort((a, b) => b.price - a.price);
       }
     },
-    sortByCheckBox(state) {
-      // let itemsWithDiscont = state.products.filter((item) => item.discont_price);
-      // console.log(itemsWithDiscont);
-      // let itemsWithOutDiscont = state.products.filter((item) => item.discont_price === null);
-      // console.log(itemsWithOutDiscont);
+    // сортировка по нажатию на checkBox
+    sortByCheckBox(state, action) {
+      let data = state.filteredProducts.length > 0 ? state.filteredProducts : state.products;
 
-      // state.itemsWithDiscont = state.products.filter((item) => item.discont_price);
-      // console.log(itemsWithDiscont);
-      // state.itemsWithOutDiscont = state.products.filter((item) => item.discont_price === null);
-      // console.log(itemsWithOutDiscont);
+      let prevState = action.payload === false ? state.filteredProducts : []; // ?????? как запомнить PrevState
 
-      // let isToggle = true;
-      // if (isToggle) {
-      //   isToggle = false;
-      //   console.log(isToggle);
-      //   return { ...state, products: state.products.filter((item) => item.discont_price) };
-      // } else {
-      //   isToggle = true;
-      //   console.log(isToggle);
-      //   return { ...state, products: state.products.filter((item) => item.discont_price === null) };
-      // }
-
-      // if (state.isToggle) {
-      //   state.isToggle = false;
-      //   console.log(state.isToggle);
-      //   return { ...state, products: state.products.filter((item) => item.discont_price) };
-      // } else {
-      //   state.isToggle = true;
-      //   console.log(state.isToggle);
-      //   return { ...state, products: state.products.filter((item) => item.discont_price === null) };
-      // }
-
-      // const [isDiscounted, setIsDiscounted] = useState(true);
-      // const checkDiscountItems = () => {
-      //   setIsDiscounted(!isDiscounted);
-      // };
-      // if (isDiscounted) {
-      //   checkDiscountItems();
-      //   return { ...state, products: state.products.filter((item) => item.discont_price) };
-      // } else {
-      //   checkDiscountItems();
-      //   return { ...state, products: state.products.filter((item) => item.discont_price === null) };
-      // }
-
-      state.products = state.products.filter((item) => item.discont_price);
+      state.filteredProducts = action.payload ? data.filter((item) => item.discont_price) : [];
     },
-    sortByMinMax(state, action) {
-      action.payload.max = action.payload.max == "" ? Infinity : +action.payload.max;
-      action.payload.min = action.payload.min == "" ? 0 : +action.payload.min;
-      return {
-        ...state,
-        products: state.products.map((elem) => {
-          if (elem.price >= action.payload.min && elem.price <= action.payload.max) {
-            elem.isShow = true; // ?????????
-          } else {
-            elem.isShow = false;
-          }
-          return elem;
-        }),
-      };
+    // сортировка от Мин цены до Макс цены.
+    sortByMinMax(state, { payload }) {
+      let maxValue = payload.max === "" ? Infinity : +payload.max;
+      let minValue = payload.min === "" ? 0 : +payload.min;
+
+      let data = state.filteredProducts.length > 0 ? state.filteredProducts : state.products;
+
+      state.filteredProducts = data.filter((item) => item.price >= minValue && item.price <= maxValue);
     },
+    // Добавление избранных товаров
     addFavoritesProducts(state, action) {
-      state.favoritesProducts = action.payload;
+      state.favoritesProducts.push(action.payload);
+
+      let localFavorites = JSON.parse(localStorage.getItem("favorites"));
+      let currentProduct = state.products.find((item) => item.id === action.payload.id);
+
+      if (localFavorites) {
+        let foundProduct = localFavorites.find((item) => item.id === action.payload.id);
+
+        if (foundProduct) {
+          localFavorites = localFavorites.map((item) => {
+            if (item.id === action.payload.id) {
+              item.count = item.count + 1;
+            }
+            return item;
+          });
+          localStorage.setItem("favorites", JSON.stringify(localFavorites));
+        } else {
+          currentProduct.count = 1;
+          localFavorites.push(currentProduct);
+          localStorage.setItem("favorites", JSON.stringify(localFavorites));
+        }
+      } else {
+        let cartItems = [];
+
+        currentProduct.count = 1;
+        cartItems.push(currentProduct);
+
+        localStorage.setItem("favorites", JSON.stringify(cartItems));
+      }
     },
+    // Добавление товаров в корзину
     addCartProducts(state, action) {
-      state.cartProducts = action.payload;
+      state.cartProducts.push(action.payload);
+
+      let localCart = JSON.parse(localStorage.getItem("cart"));
+      let currentProduct = state.products.find((item) => item.id === action.payload.id);
+
+      if (localCart) {
+        let foundProduct = localCart.find((item) => item.id === action.payload.id);
+
+        if (foundProduct) {
+          localCart = localCart.map((item) => {
+            if (item.id === action.payload.id) {
+              item.count = item.count + 1;
+            }
+            return item;
+          });
+          localStorage.setItem("cart", JSON.stringify(localCart));
+        } else {
+          currentProduct.count = 1;
+          localCart.push(currentProduct);
+          localStorage.setItem("cart", JSON.stringify(localCart));
+        }
+      } else {
+        let cartItems = [];
+
+        currentProduct.count = 1;
+        cartItems.push(currentProduct);
+
+        localStorage.setItem("cart", JSON.stringify(cartItems));
+      }
     },
   },
   extraReducers: (builder) => {
     builder
+      // получение всех продуктов
       .addCase(getAllProductAction.pending, (state, action) => {
         state.isLoading = true;
         state.error = null;
@@ -122,6 +125,7 @@ const productsSlice = createSlice({
         state.isLoading = false;
         state.error = "Request execution error";
       })
+      // получение продуктов из категории
       .addCase(getCategoriesProductsAction.pending, (state, action) => {
         state.isLoading = true;
         state.error = null;
@@ -134,6 +138,7 @@ const productsSlice = createSlice({
         state.isLoading = false;
         state.error = "Request execution error";
       })
+      // получение одного продукта
       .addCase(getProductsCardDetailAction.pending, (state, action) => {
         state.isLoading = true;
         state.error = null;

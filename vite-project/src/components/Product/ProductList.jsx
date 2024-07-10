@@ -13,11 +13,14 @@ const ProductList = () => {
 
   const dispatch = useDispatch();
 
-  const { products, isLoading } = useSelector((state) => state.products);
+  const { products, isLoading, filteredProducts } = useSelector((state) => state.products);
 
   useEffect(() => {
     dispatch(getAllProductAction());
   }, []);
+
+
+  const data = filteredProducts.length > 0 ? filteredProducts : products;
 
   return (
     <section className={`all_products ${theme ? "all_products-dark" : "all_products-light"}`}>
@@ -33,7 +36,7 @@ const ProductList = () => {
           <h2>All products</h2>
         </div>
         <Filter />
-        <div className="productListContainer">{isLoading ? <div className="loader"></div> : products && products.map((prod) => <ProductCard key={prod.id} product={prod} />)}</div>
+        <div className="productListContainer">{isLoading ? <div className="loader"></div> : data && data.map((prod) => <ProductCard key={prod.id} product={prod} />)}</div>
       </div>
     </section>
   );
