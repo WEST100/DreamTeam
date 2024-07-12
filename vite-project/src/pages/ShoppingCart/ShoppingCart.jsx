@@ -15,7 +15,11 @@ const ShoppingCart = () => {
 
   let data = cartProducts.length > 0 ? true : false;
   return (
-    <section className={`shoppingCart ${theme ? "shoppingCart-dark" : "shoppingCart-light"}`}>
+    <section
+      className={`shoppingCart ${
+        theme ? "shoppingCart-dark" : "shoppingCart-light"
+      }`}
+    >
       <div className="container">
         <div className="pageSectionTitle">
           <h2>Shopping cart</h2>
@@ -24,11 +28,49 @@ const ShoppingCart = () => {
             Back to the store
           </button>
         </div>
-        {!data
-          ?
-          <div>no items!!!!!!!!!!!!!!!!!!!!!!!!!</div>
-          :
-          <div className="productListCartContainer">{isLoading ? <div className="loader"></div> : cartProducts && cartProducts.map((prod) => <ProductCart key={prod.id} product={prod} />)}</div>}
+        <div className="shop">
+          <div className="list">
+            {!data ? (
+              <div>no items!!!!!!!!!!!!!!!!!!!!!!!!!</div>
+            ) : (
+              <div className="shop__ListCartContainer">
+                {isLoading ? (
+                  <div className="loader"></div>
+                ) : (
+                  cartProducts &&
+                  cartProducts.map((prod) => (
+                    <ProductCart key={prod.id} product={prod} />
+                  ))
+                )}
+              </div>
+            )}
+          </div>
+          <div className="shop__form">
+            <div className="shop__form__text">
+              <h2>Order details</h2>
+              <div className="shop__form__text__frame">
+                <p>3 items</p>
+                <div className="shop__form__text__frame__price">
+                  <p>Total</p>
+                  <span>$541,00</span>
+                </div>
+              </div>
+            </div>
+            <div className="shop__form__container">
+              <form>
+                <input type="text" name="name" placeholder="Name" required />
+                <input
+                  type="tel"
+                  name="phone"
+                  placeholder="Phone number"
+                  required
+                />
+                <input type="email" name="email" placeholder="Email" required />
+                <button type="submit">Order</button>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

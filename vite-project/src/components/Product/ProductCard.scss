@@ -1,7 +1,7 @@
 .product__card {
   &-dark {
     .product__discount {
-      background-color: #383a2c;
+      background:  #424436;
 
       &__text a {
         color: #fff;
@@ -25,7 +25,7 @@
     position: relative;
     border: 1px solid #ddd;
     border-radius: 12px;
-    background: #fff;
+   
     overflow: hidden;
   }
 
@@ -33,18 +33,21 @@
     img {
       width: 100%;
       object-fit: cover;
-      grid-row: 1 / 2;
+      display: block;
     }
   }
 
   &__discount {
-    grid-row: 2 / 3;
-    padding: 0px 32px 32px 32px;
-    margin-top: 16px;
+    // grid-row: 2 / 3;
+    padding: 20px 30px 30px 30px;
+    // margin-top: 16px;
     text-align: left;
+    color: #424436;
+    background: #fff;
 
     &__text {
       margin-bottom: 16px;
+      min-height: 60px;
 
       a {
         font-size: 20px;
@@ -62,8 +65,6 @@
       color: #ffffff;
       padding: 4px 8px;
       border-radius: 6px;
-      // width: 68px;
-      // height: 34px;
       align-items: center;
       justify-content: center;
 
