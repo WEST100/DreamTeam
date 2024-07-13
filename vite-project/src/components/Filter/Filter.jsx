@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./Filter.scss";
 import { ThemeContext } from "../Theme/ThemeContext";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,17 +9,24 @@ const Filter = () => {
 
   const products = useSelector((store) => store.products.products);
 
+  const [fromPrice, setFromPrice] = useState(0);
+  const [toPrice, setToPrice] = useState(Infinity);
+
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(sortByMinMax({ min: fromPrice, max: toPrice }));
+  }, [fromPrice, toPrice]);
 
   function handleSelect(e) {
     dispatch(sortByPayload(e.target.value));
   }
 
-  function handleInputs(e) {
-    let formData = new FormData(e.target.parentElement);
-    let data = Object.fromEntries(formData);
-    dispatch(sortByMinMax(data));
-  }
+  // function handleInputs(e) {
+  //   let formData = new FormData(e.target.parentElement);
+  //   let data = Object.fromEntries(formData);
+  //   dispatch(sortByMinMax({data}));
+  // }
 
   const currentUrl = window.location.href;
 
@@ -27,18 +34,19 @@ const Filter = () => {
 
   const sortItemsByCheckBox = (e) => {
     dispatch(sortByCheckBox(e.target.checked));
-  }
+    dispatch(sortByMinMax({ min: fromPrice, max: toPrice }));
+  };
 
   return (
     <section className={`filter ${theme ? "filter-dark" : "filter-light"}`}>
       <div className="container">
         <div className="filter__box">
-          <form className="price__block" onChange={handleInputs}>
+          <form className="price__block">
             <label htmlFor="price-from" className="box__label">
               Price
             </label>
-            <input className="price__input" id="price-from" type="number" name="min" placeholder="from" min="0" step="1" />
-            <input className="price__input" type="number" name="max" placeholder="to" min="0" step="1" />
+            <input className="price__input" id="price-from" type="number" name="min" placeholder="from" min="0" step="1" onChange={(e) => setFromPrice(e.target.value)} />
+            <input className="price__input" type="number" name="max" placeholder="to" min="0" step="1" onChange={(e) => setToPrice(e.target.value)} />
           </form>
           <div className={`discounted ${hideDiscountedItems()}`}>
             <label htmlFor="checkbox" className="box__label">
