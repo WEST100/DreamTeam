@@ -12,12 +12,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 32px;
     margin: 0 auto;
   }
-  &__image {
-    // background: url("/src/assets/images/imageForm.jpeg") no-repeat center center;
-    background-size: cover;
-  }
+  
   &__form {
     border-radius: 12px;
     padding: 32px 32px 0px 32px;
@@ -29,11 +27,12 @@
       font-weight: 700;
       font-size: 64px;
       line-height: 110%;
+      margin-bottom: 24px;
     }
     &__container {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      // justify-content: space-between;
 
       & form {
         width: 100%;
