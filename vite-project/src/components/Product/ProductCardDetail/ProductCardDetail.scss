@@ -1,3 +1,26 @@
+.detailedProductPage {
+  &-dark {
+    background-color: #424436;
+
+    p,
+    h3,
+    h2 {
+      color: #fff;
+    }
+
+    .breadcrumbs__navigation {
+      button:last-of-type {
+        color: #fff; /* Цвет текста для правой кнопки */
+      }
+    }
+
+    .container .productContainer .product-single .product-single__details .product-single__price {
+      h3 {
+        color: #fff;
+      }
+    }
+  }
+}
 
 .product-single {
   display: flex;
@@ -61,7 +84,7 @@
       letter-spacing: 0.03em;
       color: #fff;
       max-width: 63px;
-    } 
+    }
   }
 
   &__actions {
@@ -70,7 +93,6 @@
     justify-content: space-between;
   }
 
-  
   .btn {
     color: #fff;
     line-height: 130%;
