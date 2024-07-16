@@ -3,6 +3,7 @@ import "./ErrorPage.scss";
 import img1 from "/src/assets/images/error_img/left_num.png";
 import img2 from "/src/assets/images/error_img/cactus.png";
 import img3 from "/src/assets/images/error_img/right_num.png";
+import Button from '../../components/Buttons/Button';
 
 const ErrorPage = () => {
   return (
@@ -26,7 +27,7 @@ const ErrorPage = () => {
             <p> Please go back to the homepage.</p>
 
             <a href="/">
-              <button className="error__message__button">Go Home</button>
+              <Button name={"Go Home"} link={"/"} />
             </a>
           </div>
         </div>
