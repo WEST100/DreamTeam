@@ -126,12 +126,12 @@ export default function ProductCard({ product }) {
           <Link to={`/products/${product.id}`}>{shortText(product.title, 30)}</Link>
         </div>
         <div className="product__price">
-          <p className="product__price__real">${product.price}</p>
-          <p className="product__price__old">{product.discont_price > 0 ? `$${product.discont_price}` : product.discont_price}</p>
+          <p className="product__price__real">${product.discont_price > 0 ? product.discont_price : product.price}</p>
+          <p className="product__price__old">{product.discont_price > 0 ? `$${product.price}` : ""}</p>
         </div>
       </div>
       <div className={product.discont_price === null ? "" : "product__discount__Perc"}>
-        <p>{product.discont_price ? `${parseInt((product.discont_price / product.price) * 100 - 100)}%` : ""}</p>
+        <p>{product.discont_price ? `${Math.round((product.discont_price / product.price) * 100 - 100)}%` : ""}</p>
       </div>
       <div className="product__icons">
         <svg

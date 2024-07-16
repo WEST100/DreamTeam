@@ -63,71 +63,7 @@ const productsSlice = createSlice({
 
       state.filteredProducts = data.filter((item) => item.price >= minValue && item.price <= maxValue);
     },
-    // Добавление избранных товаров
-    // addFavoritesProducts(state, action) {
-    //   state.favoritesProducts.push(action.payload);
-
-    //   let localFavorites = JSON.parse(localStorage.getItem("favorites"));
-    //   let currentProduct = state.products.find((item) => item.id === action.payload.id);
-
-    //   if (localFavorites) {
-    //     let foundProduct = localFavorites.find((item) => item.id === action.payload.id);
-
-    //     if (foundProduct) {
-    //       localFavorites = localFavorites.map((item) => {
-    //         if (item.id === action.payload.id) {
-    //           item.count = item.count + 1;
-    //         }
-    //         return item;
-    //       });
-    //       localStorage.setItem("favorites", JSON.stringify(localFavorites));
-    //     } else {
-    //       currentProduct.count = 1;
-    //       localFavorites.push(currentProduct);
-    //       localStorage.setItem("favorites", JSON.stringify(localFavorites));
-    //     }
-    //   } else {
-    //     let cartItems = [];
-
-    //     currentProduct.count = 1;
-    //     cartItems.push(currentProduct);
-
-    //     localStorage.setItem("favorites", JSON.stringify(cartItems));
-    //   }
-    // },
-
     // Добавление товаров в корзину
-    // addProductToCart(state, action) {
-    //   state.cartProducts.push(action.payload);
-
-    //   let localCart = JSON.parse(localStorage.getItem("cart"));
-    //   let currentProduct = state.products.find((item) => item.id === action.payload.id);
-
-    //   if (localCart) {
-    //     let foundProduct = localCart.find((item) => item.id === action.payload.id);
-
-    //     if (foundProduct) {
-    //       localCart = localCart.map((item) => {
-    //         if (item.id === action.payload.id) {
-    //           item.count = item.count + 1;
-    //         }
-    //         return item;
-    //       });
-    //       localStorage.setItem("cart", JSON.stringify(localCart));
-    //     } else {
-    //       currentProduct.count = 1;
-    //       localCart.push(currentProduct);
-    //       localStorage.setItem("cart", JSON.stringify(localCart));
-    //     }
-    //   } else {
-    //     let cartItems = [];
-
-    //     currentProduct.count = 1;
-    //     cartItems.push(currentProduct);
-
-    //     localStorage.setItem("cart", JSON.stringify(cartItems));
-    //   }
-    // },
     addProductToCart: (state, { payload }) => {
       let foundProduct = state.cartProducts.find((item) => item.id === payload.id);
 
@@ -137,6 +73,7 @@ const productsSlice = createSlice({
         localStorage.setItem("cart", JSON.stringify(state.cartProducts));
       }
     },
+    // Добавление избранных товаров
     addFavoritesProducts: (state, { payload }) => {
       let foundProduct = state.favoritesProducts.find((item) => item === payload);
 
@@ -149,6 +86,7 @@ const productsSlice = createSlice({
         localStorage.setItem("favorites", JSON.stringify(state.favoritesProducts));
       }
     },
+    // уменьшение кол-ва товаров
     incrementProduct: (state, { payload }) => {
       state.cartProducts = state.cartProducts.map((item) => {
         if (item.id === payload) {
@@ -160,6 +98,7 @@ const productsSlice = createSlice({
 
       localStorage.setItem("cart", JSON.stringify(state.cartProducts));
     },
+    // увеличение кол-ва товаров
     decrementProduct: (state, { payload }) => {
       state.cartProducts = state.cartProducts
         .map((item) => {
@@ -177,11 +116,13 @@ const productsSlice = createSlice({
 
       localStorage.setItem("cart", JSON.stringify(state.cartProducts));
     },
+    // удаление из корзины
     removeProductFromCart: (state, { payload }) => {
       state.cartProducts = state.cartProducts.filter((item) => item.id !== payload.id);
 
       localStorage.setItem("cart", JSON.stringify(state.cartProducts));
     },
+    // удаление из избранного
     removeProductFromFavorites: (state, { payload }) => {
       state.favoritesProducts = state.favoritesProducts.filter((item) => item.id !== payload.id);
 

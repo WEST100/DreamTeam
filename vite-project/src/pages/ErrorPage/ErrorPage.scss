@@ -52,25 +52,7 @@
       line-height: 130%;
       text-align: center;
       color: #8b8b8b;
-    }
-    &__button {
-      display: inline-block;
-      border: none;
-      background-color: #92a134;
-      color: #fffff1;
-      text-decoration: none;
-      padding: 16px 56px;
-      border-radius: 6px;
-      margin-top: 32px;
-      font-weight: 600;
-      font-size: 20px;
-      line-height: 130%;
-      text-align: center;
-      transition: background-color 0.3s;
-
-      &:hover {
-        background-color: #7a8f2a;
-      }
+      margin-bottom: 32px;
     }
   }
 }
