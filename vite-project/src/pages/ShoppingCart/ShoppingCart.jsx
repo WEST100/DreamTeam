@@ -55,7 +55,7 @@ const ShoppingCart = () => {
                   <p>{cartProducts.length} items</p>
                   <div className="shop__form__text__frame__price">
                     <p>Total</p>
-                    <span>${result}</span>
+                    <span>${(result).toFixed(2)}</span>
                   </div>
                 </div>
               </div>
