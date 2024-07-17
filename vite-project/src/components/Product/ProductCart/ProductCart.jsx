@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { FaPlus } from "react-icons/fa6";
 import { FaMinus } from "react-icons/fa6";
 import { decrementProduct, incrementProduct, removeProductFromCart } from "../../../store/Reducers/ProductsReducer";
+import { Link } from "react-router-dom";
 
 const ProductCart = ({ product }) => {
   const [count, setCount] = useState(0);
@@ -60,8 +61,12 @@ const ProductCart = ({ product }) => {
       <img className="list__item__image" src={`https://exam-server-5c4e.onrender.com${product.image}`} alt="product-image" />
       <div className="list__content">
         <div className="list__content__title">
-          <h3>{product.title} </h3>
-          <IoMdClose onClick={() => dispatch(removeProductFromCart(product))} />
+          <Link to={`/products/${product.id}`}>
+            <h3>{product.title} </h3>
+          </Link>
+          <div className="closeImage">
+            <IoMdClose onClick={() => dispatch(removeProductFromCart(product))} />
+          </div>
         </div>
         <div className="list__content__price">
           {/* <Quantity /> */}
