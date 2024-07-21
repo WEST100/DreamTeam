@@ -64,12 +64,6 @@
   }
 }
 
-// .shoppingCart {
-//   .breadcrumbs__button {
-//     color: #424436;
-//   }
-// }
-
 .shop {
   display: flex;
   justify-content: space-between;
@@ -87,7 +81,7 @@
     border-radius: 12px;
     padding: 32px;
     max-width: 548px;
-    max-height: 582px;
+    max-height: 640px;
     background: #f2f6d3;
 
     &__text {
@@ -178,8 +172,59 @@
   }
 }
 
-// .shop__form__text__frame p, .shop__form__text__frame__price p {
-//   font-size: 40px;
-//   line-height: 130%;
-//   color: #8b8b8b;
+// .modalCart {
+//   &__text {
+//     font-weight: 600;
+//     font-size: 20px;
+//     line-height: 110%;
+//     color: #fff;
+//   }
+
+//   &__title {
+//     display: flex;
+//     justify-content: space-between;
+
+//     h3 {
+//       font-weight: 600;
+//       font-size: 40px;
+//       line-height: 110%;
+//       color: #fff;
+//       margin-bottom: 24px;
+//     }
+
+//     svg {
+//       color: #fff;
+//       height: 24px;
+//       width: 24px;
+//     }
+//   }
 // }
+
+.modalCart {
+  display: flex;
+  gap: 16px;
+
+  &__description {
+    h3 {
+      font-weight: 600;
+      font-size: 40px;
+      line-height: 110%;
+      color: #fff;
+      margin-bottom: 24px;
+    }
+
+    p {
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 110%;
+      color: #fff;
+    }
+  }
+  &__close {
+    svg {
+      color: #fff;
+      height: 44px;
+      width: 44px;
+    }
+  }
+}
