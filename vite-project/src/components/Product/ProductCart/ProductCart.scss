@@ -37,7 +37,8 @@
 
             & h3 {
                 font-size: 20px;
-                line-height: 130%; 
+                line-height: 130%;
+                
             }
             & svg {
                 width: 24px;
@@ -50,38 +51,25 @@
             gap: 32px;
             align-items: center;
 
-            &__block {
-                display: flex;
-                gap: 16px;
-                align-items: baseline;
-            
-            
-                & h3 {
-                    font-weight: 600;
-                    font-size: 40px;
-                    line-height: 110%;
-                    color: #424436;
-                }
-                & h6 {
-                    font-size: 20px;
-                    line-height: 130%;
-                    text-decoration: line-through;
-                    text-decoration-thickness: 2px;
-                    color: #8b8b8b;
-                }
-            }
+      &__block {
+        display: flex;
+        gap: 16px;
+        align-items: baseline;
+
+        & h3 {
+          font-weight: 600;
+          font-size: 40px;
+          line-height: 110%;
+          color: #424436;
         }
+        & h6 {
+          font-size: 20px;
+          line-height: 130%;
+          text-decoration: line-through;
+          text-decoration-thickness: 2px;
+          color: #8b8b8b;
+        }
+      }
     }
+  }
 }
-
-
-
-
-
-
-
-
-
-
-
-
