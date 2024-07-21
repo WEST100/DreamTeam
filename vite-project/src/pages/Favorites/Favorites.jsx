@@ -1,16 +1,49 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Filter from "../../components/Filter/Filter";
 import { ThemeContext } from "../../components/Theme/ThemeContext";
 import { Link } from "react-router-dom";
 import "./Favorites.scss";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ProductCard from "../../components/Product/ProductCard";
+import { getAllProductAction } from "../../store/asyncActions/product";
 
 const Favorites = () => {
   const { theme } = useContext(ThemeContext);
 
-  const { favoritesProducts, isLoading } = useSelector((state) => state.products);
+  const dispatch = useDispatch();
+
+  const { favoritesProducts, isLoading, filteredProducts, products } = useSelector((state) => state.products);
   console.log(favoritesProducts);
+  console.log(products);
+
+  useEffect(() => {
+    dispatch(getAllProductAction());
+  }, []);
+
+  const data = filteredProducts.length > 0 ? filteredProducts : favoritesProducts;
+  console.log(data);
+
+
+ /// ----------- ?????????
+  const findFavoritesItems = data.filter((item) => {
+    return filteredProducts.some((item2) => item2.id === item.id)
+  });
+  console.log(findFavoritesItems)
+/// --------------------
+
+   // ------------------сравнение массивов работает но с ошибками не фильтрует от minPrice до bigPrice и наоборот----------
+
+// const leastArr = filteredProducts.length < favoritesProducts.length ? filteredProducts : favoritesProducts;
+// const biggestArr = filteredProducts.length >= favoritesProducts.length ? filteredProducts : favoritesProducts;
+// console.log(leastArr);
+// console.log(biggestArr);
+
+// const resultArray = leastArr.filter((item) => {
+//   return biggestArr.some((item2) => item2.id === item.id)
+// });
+
+// console.log(resultArray);
+ // ---------------------------------------------------
 
   return (
     <>

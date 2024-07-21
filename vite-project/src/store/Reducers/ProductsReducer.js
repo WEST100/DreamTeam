@@ -11,6 +11,7 @@ const productsSlice = createSlice({
     product: null,
     favoritesProducts: [],
     cartProducts: [],
+    productsFromCategory: [],
   },
 
   reducers: {
@@ -46,6 +47,8 @@ const productsSlice = createSlice({
         state.filteredProducts = data.slice().sort((a, b) => a.price - b.price);
       } else if (action.payload === "high") {
         state.filteredProducts = data.slice().sort((a, b) => b.price - a.price);
+      } else if (action.payload === "name") {
+        state.filteredProducts = data.slice().sort((a, b) => a.title.localeCompare(b.title));
       }
     },
     // сортировка по нажатию на checkBox
@@ -56,10 +59,12 @@ const productsSlice = createSlice({
     },
     // сортировка от Мин цены до Макс цены.
     sortByMinMax(state, { payload }) {
-      let maxValue = payload.max === "" ? Infinity : +payload.max;
-      let minValue = payload.min === "" ? 0 : +payload.min;
+      let maxValue = !payload.max && payload.max === "" ? Infinity : +payload.max;
+      let minValue = !payload.min && payload.min === "" ? 0 : +payload.min;
 
       let data = state.filteredProducts.length > 0 ? state.filteredProducts : state.products;
+
+      console.log(data)
 
       state.filteredProducts = data.filter((item) => item.price >= minValue && item.price <= maxValue);
     },
@@ -151,7 +156,7 @@ const productsSlice = createSlice({
       })
       .addCase(getCategoriesProductsAction.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.products = action.payload.data;
+        state.productsFromCategory = action.payload.data;
       })
       .addCase(getCategoriesProductsAction.rejected, (state, action) => {
         state.isLoading = false;
