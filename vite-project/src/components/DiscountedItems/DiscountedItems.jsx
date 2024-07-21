@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./DiscountedItems.scss";
 import { getAllProductAction } from "../../store/asyncActions/product";
-import ProductCard from "../Product/ProductCard";
+import ProductCard from "../Product/ProductCard/ProductCard";
 import Filter from "../Filter/Filter";
 import { Link } from "react-router-dom";
 import { ThemeContext } from "../Theme/ThemeContext";

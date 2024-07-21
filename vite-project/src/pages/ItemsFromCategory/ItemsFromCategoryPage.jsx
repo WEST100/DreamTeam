@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProductAction, getCategoriesProductsAction } from "../../store/asyncActions/product";
 import { Link, useParams } from "react-router-dom";
-import ProductCard from "../../components/Product/ProductCard";
+import ProductCard from "../../components/Product/ProductCard/ProductCard";
 import { getCategoriesTitleAction } from "../../store/asyncActions/categorie";
 import Filter from "../../components/Filter/Filter";
 import { ThemeContext } from "../../components/Theme/ThemeContext";

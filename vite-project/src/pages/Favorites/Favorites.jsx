@@ -4,7 +4,7 @@ import { ThemeContext } from "../../components/Theme/ThemeContext";
 import { Link } from "react-router-dom";
 import "./Favorites.scss";
 import { useDispatch, useSelector } from "react-redux";
-import ProductCard from "../../components/Product/ProductCard";
+import ProductCard from "../../components/Product/ProductCard/ProductCard";
 import { getAllProductAction } from "../../store/asyncActions/product";
 
 const Favorites = () => {

@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
 import "./ProductCard.scss";
 import { Link } from "react-router-dom";
-import { ThemeContext } from "../Theme/ThemeContext";
+import { ThemeContext } from "../../Theme/ThemeContext";
 import { useDispatch, useSelector } from "react-redux";
-import { addProductToCart, addFavoritesProducts, removeProductFromCart, removeProductFromFavorites } from "../../store/Reducers/ProductsReducer";
+import { addProductToCart, addFavoritesProducts, removeProductFromCart, removeProductFromFavorites } from "../../../store/Reducers/ProductsReducer";
 
 export default function ProductCard({ product }) {
   const dispatch = useDispatch();

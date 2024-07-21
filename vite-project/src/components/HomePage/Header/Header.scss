@@ -157,7 +157,6 @@
   }
 }
 
-
 .menu {
 
   @media (max-width: 768px){
@@ -179,8 +178,6 @@
       z-index: 99;
       display: flex;
       justify-content: flex-end;
-
-      display: none;
     }
 
     &__list {
