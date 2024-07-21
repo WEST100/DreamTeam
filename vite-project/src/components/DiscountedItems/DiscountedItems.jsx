@@ -12,13 +12,17 @@ const DiscountedItems = () => {
 
   const dispatch = useDispatch();
 
-  const { products, isLoading } = useSelector((state) => state.products);
+  const { products, isLoading, filteredProducts } = useSelector((state) => state.products);
 
   useEffect(() => {
     dispatch(getAllProductAction());
   }, []);
 
-  const findDiscountedItems = products.filter((item) => {
+  const data = filteredProducts.length > 0 ? filteredProducts : products;
+  console.log(data);
+  console.log(products);
+
+  const findDiscountedItems = data.filter((item) => {
     if (item.discont_price != null) {
       return item;
     }

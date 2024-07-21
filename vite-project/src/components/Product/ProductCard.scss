@@ -1,7 +1,7 @@
 .product__card {
   &-dark {
     .product__discount {
-      background:  #424436;
+      background: #424436;
 
       &__text a {
         color: #fff;
@@ -25,8 +25,8 @@
     position: relative;
     border: 1px solid #ddd;
     border-radius: 12px;
-    overflow: hidden;
     background: #fff;
+    overflow: hidden;
   }
 
   &__img {

@@ -1,12 +1,45 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { ThemeContext } from "../../components/Theme/ThemeContext";
 import "./ShoppingCart.scss";
 import { useSelector } from "react-redux";
 import ProductCart from "../../components/Product/ProductCart/ProductCart";
 import Button from "../../components/Buttons/Button";
+import {useForm} from 'react-hook-form'
 
 const ShoppingCart = () => {
+
+  //создание хука useForm
+  const { register, handleSubmit} = useForm({
+    defaultValues: {
+        name: '',
+        phone: '',
+        email: '',
+    }
+});
+
+// создаем ф-ю onSubmit и вешаем ее на форму
+const onSubmit = data => {
+ 
+// отправка данных на сервер
+  const fetchApi = async () => {
+    const res = await fetch("https://exam-server-5c4e.onrender.com/order/send", {
+      method: "POST",
+      body:JSON.stringify({...data, order: cartProducts.map(item => (`${item.title} * ${item.count} - ${item.price}`)).join(",")}), 
+
+    });
+    const results = await res.json();
+
+    console.log(result)
+    if (!res.ok) {
+      throw new Error(results);
+    }
+  };
+
+  fetchApi()
+};
+
+
   const { theme } = useContext(ThemeContext);
   const { cartProducts, isLoading } = useSelector((state) => state.products);
 
@@ -60,10 +93,25 @@ const ShoppingCart = () => {
                 </div>
               </div>
               <div className="shop__form__container">
-                <form>
-                  <input type="text" name="name" placeholder="Name" required />
-                  <input type="tel" name="phone" placeholder="Phone number" required />
-                  <input type="email" name="email" placeholder="Email" required />
+                <form onSubmit={handleSubmit(onSubmit)}>
+                  <input type="text" placeholder="Name" 
+                                          {
+                                            ...register("name", { 
+                                                required: "name is required", 
+                                                maxLength: 30,
+                                            })
+                                        }/>
+                  <input type="tel" placeholder="Phone number"       {
+                                            ...register("phone", { 
+                                                required: "phone is required", 
+                                                maxLength: 30,
+                                            })
+                                        }/>
+                  <input type="email" placeholder="e-mail"       {
+                                            ...register("email", { 
+                                                required: "email is required", 
+                                            })
+                                        } />
                   <button type="submit">Order</button>
                 </form>
               </div>

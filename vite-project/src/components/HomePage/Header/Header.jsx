@@ -41,35 +41,39 @@ const Header = () => {
             </label>
           </div>
         </div>
-        <div className="menu">
-          <div className="menu__button">
-            <button className="menu__button_small">1 day discount!</button>
+
+        <div className="menu-opacity">
+          <div className="menu">
+            <div className="menu__button">
+              <button className="menu__button_small">1 day discount!</button>
+            </div>
+            <nav className="nav">
+              <ul className="menu__list">
+                <li className="menu__item">
+                  <NavLink to="/" className={setActiveLink}>
+                    Main Page
+                  </NavLink>
+                </li>
+                <li className="menu__item">
+                  <NavLink to="/categories" className={setActiveLink}>
+                    Categories
+                  </NavLink>
+                </li>
+                <li className="menu__item">
+                  <NavLink to="/products" className={setActiveLink}>
+                    All products
+                  </NavLink>
+                </li>
+                <li className="menu__item">
+                  <NavLink to="/discounted" className={setActiveLink}>
+                    All sales
+                  </NavLink>
+                </li>
+              </ul>
+            </nav>
           </div>
-          <nav className="nav">
-            <ul className="menu__list">
-              <li className="menu__item">
-                <NavLink to="/" className={setActiveLink}>
-                  Main Page
-                </NavLink>
-              </li>
-              <li className="menu__item">
-                <NavLink to="/categories" className={setActiveLink}>
-                  Categories
-                </NavLink>
-              </li>
-              <li className="menu__item">
-                <NavLink to="/products" className={setActiveLink}>
-                  All products
-                </NavLink>
-              </li>
-              <li className="menu__item">
-                <NavLink to="/discounted" className={setActiveLink}>
-                  All sales
-                </NavLink>
-              </li>
-            </ul>
-          </nav>
         </div>
+
         <div className="users-menu">
           <Link to={"/favorites"}>
             {favoritesProducts ? <span>{`${favoritesProducts.length}`}</span> : ""}
