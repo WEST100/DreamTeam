@@ -77,7 +77,7 @@
     }
   }
   &__price {
-    font-size: 24px;
+    // font-size: 24px;
 
     &__real {
       display: inline-block;
@@ -112,5 +112,13 @@
       stroke-width: 2.2;
       fill: #fff;
     }
+  }
+}
+@media(max-width:480px), (max-width:360px) {
+  .product__price__real {
+    font-size: 36px;
+  }
+  .product__price__old {
+    font-size: 18px;
   }
 }

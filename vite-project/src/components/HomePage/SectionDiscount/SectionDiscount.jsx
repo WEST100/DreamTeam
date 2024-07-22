@@ -12,9 +12,10 @@ const SectionDiscount = () => {
         <div className="discount__form">
           <h3>5% off on the first order</h3>
           <div className="discount__content">
-            <div className="discount__image">
-              <img src={imageForm} alt="Hands holding garden tools" />
-            </div>
+            {/* <div> */}
+              <img src={imageForm} alt="Hands holding garden tools"/>
+            {/* </div> */}
+              
             <div className="discount__form__container">
               <form>
                 <input type="text" name="name" placeholder="Name" required />

@@ -10,12 +10,22 @@
 
 body {
   background-color: #fffff1;
+  max-width: 1440px;
 }
 
 .container {
-  max-width: 1360px;
+  width: calc(100vw - 80px); /* Прямая установка разницы */
+    max-width: 1360px; /* Прямая установка максимальной ширины */
+  // max-width: 1360px;
   margin: 0 auto;
 }
+@media(max-width: 1000px), (max-width: 768px), 
+(max-width: 480px),(max-width: 360px)  {
+  .container {
+    width: calc(100vw - 40px); /* Прямая установка уменьшенной разницы */
+  } 
+}
+
 
 /* HTML: <div class="loader"></div> */
 .loader {
@@ -104,6 +114,18 @@ body {
 
 .productListContainer {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  // grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 32px;
+}
+@media(max-width: 768px),
+(max-width: 480px) {
+  .productListContainer { 
+    grid-template-columns: repeat(2, 1fr);
+  }  
+}
+@media(max-width: 360px) {
+  .productListContainer { 
+    grid-template-columns: repeat(1, 1fr);
+  }  
 }
