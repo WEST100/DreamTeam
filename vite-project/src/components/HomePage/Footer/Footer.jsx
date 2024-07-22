@@ -14,7 +14,7 @@ const Footer = () => {
         <div className="footer__items">
           <div className="footer__item">
             <p className="footer__item_descr">Phone</p>
-            <p className="footer__item_info-nowrap">+49 999 999 99 99</p>
+            <p className="footer__item_info">+49 999 999 99 99</p>
           </div>
           <div className="footer__item">
             <p className="footer__item_descr">Socials</p>

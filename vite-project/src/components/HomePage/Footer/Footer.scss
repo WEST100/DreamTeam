@@ -63,15 +63,22 @@
   margin-bottom: 16px;
 }
 
-.footer__item_info, .footer__item_info-nowrap{
+// .footer__item_info, .footer__item_info-nowrap{
+//   font-weight: 600;
+//   font-size: 40px;
+//   line-height: 110%;
+//   color: #424436;
+
+//   &-nowrap {
+//     white-space: nowrap; /* Предотвращает перенос текста на другую строку */
+//   }
+// }
+
+.footer__item_info {
   font-weight: 600;
   font-size: 40px;
   line-height: 110%;
   color: #424436;
-
-  &-nowrap {
-    white-space: nowrap; /* Предотвращает перенос текста на другую строку */
-  }
 }
 
 .footer__item_image {
