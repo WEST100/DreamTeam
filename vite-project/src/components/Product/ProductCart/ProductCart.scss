@@ -1,5 +1,3 @@
-
-
 .list {
 
     &__item {
@@ -18,66 +16,60 @@
     }
     
     &__content {
-        padding: 32px 32px 32px 0px;
+        padding: 22px 32px 22px 0px;
         max-width: 548px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         flex-grow: 1;
+        gap: 10px;
 
         &__title {
             display: flex;
             justify-content: space-between;
             max-width: 516px; 
-            gap: 16px
+            gap: 16px;
+
+            & a {
+                text-decoration: none;
+                color: #424436;
+                }
 
             & h3 {
                 font-size: 20px;
                 line-height: 130%;
-                color: #424436;
+                
             }
-            & img {
-                max-width: 24px;
-                max-height: 24px;
+            & svg {
+                width: 24px;
+                height: 24px;
             }
         }
         &__price {
             max-width: 516px;
             display: flex;
             gap: 32px;
+            align-items: center;
 
-            &__block {
-                display: flex;
-                gap: 16px;
-                align-items: baseline;
-            
-            
-                & h3 {
-                    font-weight: 600;
-                    font-size: 40px;
-                    line-height: 110%;
-                    color: #424436;
-                }
-                & h6 {
-                    font-size: 20px;
-                    line-height: 130%;
-                    text-decoration: line-through;
-                    text-decoration-thickness: 2px;
-                    color: #8b8b8b;
-                }
-            }
+      &__block {
+        display: flex;
+        gap: 16px;
+        align-items: baseline;
+
+        & h3 {
+          font-weight: 600;
+          font-size: 40px;
+          line-height: 110%;
+          color: #424436;
         }
+        & h6 {
+          font-size: 20px;
+          line-height: 130%;
+          text-decoration: line-through;
+          text-decoration-thickness: 2px;
+          color: #8b8b8b;
+        }
+      }
     }
+  }
 }
-
-
-
-
-
-
-
-
-
-
-
-

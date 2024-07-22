@@ -156,3 +156,32 @@
     }
   }
 }
+
+.menu {
+
+  @media (max-width: 768px){
+    background: #fff;
+    padding: 20px;
+    height: 100%;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    &-opacity {
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.3137254902);
+      width: 100%;
+      height: 100%;
+      z-index: 99;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    &__list {
+      flex-direction: column;
+    }
+  }
+}

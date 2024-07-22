@@ -11,9 +11,30 @@ const productsSlice = createSlice({
     product: null,
     favoritesProducts: [],
     cartProducts: [],
+    productsFromCategory: [],
   },
 
   reducers: {
+    // вытягиваем продукты в корзину при первой загрузке страницы из LocalStorage если они были ранее туда добавлены
+    getProductsFromLocalStorage: (state) => {
+      let cartStorage = JSON.parse(localStorage.getItem("cart"));
+
+      if (cartStorage) {
+        state.cartProducts = [...cartStorage];
+      } else {
+        localStorage.setItem("cart", JSON.stringify([]));
+      }
+    },
+    // вытягиваем избранные товары в Favorites при первой загрузке страницы из LocalStorage если они были ранее туда добавлены
+    getFavoritesFromLocalStorage: (state) => {
+      let favoriteStorage = JSON.parse(localStorage.getItem("favorites"));
+
+      if (favoriteStorage) {
+        state.favoritesProducts = [...favoriteStorage];
+      } else {
+        localStorage.setItem("favorites", JSON.stringify([]));
+      }
+    },
     // сортировка из выпадающего списка
     sortByPayload(state, action) {
       let data = state.filteredProducts.length > 0 ? state.filteredProducts : state.products;
@@ -26,89 +47,91 @@ const productsSlice = createSlice({
         state.filteredProducts = data.slice().sort((a, b) => a.price - b.price);
       } else if (action.payload === "high") {
         state.filteredProducts = data.slice().sort((a, b) => b.price - a.price);
+      } else if (action.payload === "name") {
+        state.filteredProducts = data.slice().sort((a, b) => a.title.localeCompare(b.title));
       }
     },
     // сортировка по нажатию на checkBox
     sortByCheckBox(state, action) {
       let data = state.filteredProducts.length > 0 ? state.filteredProducts : state.products;
 
-      let prevState = action.payload === false ? state.filteredProducts : []; // ?????? как запомнить PrevState
-
       state.filteredProducts = action.payload ? data.filter((item) => item.discont_price) : [];
     },
     // сортировка от Мин цены до Макс цены.
     sortByMinMax(state, { payload }) {
-      let maxValue = payload.max === "" ? Infinity : +payload.max;
-      let minValue = payload.min === "" ? 0 : +payload.min;
+      let maxValue = !payload.max && payload.max === "" ? Infinity : +payload.max;
+      let minValue = !payload.min && payload.min === "" ? 0 : +payload.min;
 
       let data = state.filteredProducts.length > 0 ? state.filteredProducts : state.products;
 
+      console.log(data)
+
       state.filteredProducts = data.filter((item) => item.price >= minValue && item.price <= maxValue);
     },
-    // Добавление избранных товаров
-    addFavoritesProducts(state, action) {
-      state.favoritesProducts.push(action.payload);
+    // Добавление товаров в корзину
+    addProductToCart: (state, { payload }) => {
+      let foundProduct = state.cartProducts.find((item) => item.id === payload.id);
 
-      let localFavorites = JSON.parse(localStorage.getItem("favorites"));
-      let currentProduct = state.products.find((item) => item.id === action.payload.id);
+      if (!foundProduct) {
+        state.cartProducts.push({ ...payload, count: 1 });
 
-      if (localFavorites) {
-        let foundProduct = localFavorites.find((item) => item.id === action.payload.id);
-
-        if (foundProduct) {
-          localFavorites = localFavorites.map((item) => {
-            if (item.id === action.payload.id) {
-              item.count = item.count + 1;
-            }
-            return item;
-          });
-          localStorage.setItem("favorites", JSON.stringify(localFavorites));
-        } else {
-          currentProduct.count = 1;
-          localFavorites.push(currentProduct);
-          localStorage.setItem("favorites", JSON.stringify(localFavorites));
-        }
-      } else {
-        let cartItems = [];
-
-        currentProduct.count = 1;
-        cartItems.push(currentProduct);
-
-        localStorage.setItem("favorites", JSON.stringify(cartItems));
+        localStorage.setItem("cart", JSON.stringify(state.cartProducts));
       }
     },
-    // Добавление товаров в корзину
-    addCartProducts(state, action) {
-      
-      state.cartProducts.push(action.payload);
+    // Добавление избранных товаров
+    addFavoritesProducts: (state, { payload }) => {
+      let foundProduct = state.favoritesProducts.find((item) => item === payload);
 
-      let localCart = JSON.parse(localStorage.getItem("cart"));
-      let currentProduct = state.products.find((item) => item.id === action.payload.id);
+      if (!foundProduct) {
+        state.favoritesProducts.push(payload);
 
-      if (localCart) {
-        let foundProduct = localCart.find((item) => item.id === action.payload.id);
-
-        if (foundProduct) {
-          localCart = localCart.map((item) => {
-            if (item.id === action.payload.id) {
-              item.count = item.count + 1;
-            }
-            return item;
-          });
-          localStorage.setItem("cart", JSON.stringify(localCart));
-        } else {
-          currentProduct.count = 1;
-          localCart.push(currentProduct);
-          localStorage.setItem("cart", JSON.stringify(localCart));
-        }
+        localStorage.setItem("favorites", JSON.stringify(state.favoritesProducts));
       } else {
-        let cartItems = [];
-
-        currentProduct.count = 1;
-        cartItems.push(currentProduct);
-
-        localStorage.setItem("cart", JSON.stringify(cartItems));
+        state.favoritesProducts = state.favoritesProducts.filter((item) => item !== payload);
+        localStorage.setItem("favorites", JSON.stringify(state.favoritesProducts));
       }
+    },
+    // уменьшение кол-ва товаров
+    incrementProduct: (state, { payload }) => {
+      state.cartProducts = state.cartProducts.map((item) => {
+        if (item.id === payload) {
+          item.count += 1;
+        }
+
+        return item;
+      });
+
+      localStorage.setItem("cart", JSON.stringify(state.cartProducts));
+    },
+    // увеличение кол-ва товаров
+    decrementProduct: (state, { payload }) => {
+      state.cartProducts = state.cartProducts
+        .map((item) => {
+          if (item.id === payload) {
+            item.count -= 1;
+
+            if (item.count === 0) {
+              return null;
+            }
+          }
+
+          return item;
+        })
+        .filter((item) => item);
+
+      localStorage.setItem("cart", JSON.stringify(state.cartProducts));
+    },
+    // удаление из корзины
+    removeProductFromCart: (state, { payload }) => {
+      state.cartProducts = state.cartProducts.filter((item) => item.id !== payload.id);
+
+      localStorage.setItem("cart", JSON.stringify(state.cartProducts));
+    },
+    // удаление из избранного
+    removeProductFromFavorites: (state, { payload }) => {
+      state.favoritesProducts = state.favoritesProducts.filter((item) => item.id !== payload.id);
+
+      localStorage.setItem("favorites", JSON.stringify(state.favoritesProducts));
     },
   },
   extraReducers: (builder) => {
@@ -133,7 +156,7 @@ const productsSlice = createSlice({
       })
       .addCase(getCategoriesProductsAction.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.products = action.payload.data;
+        state.productsFromCategory = action.payload.data;
       })
       .addCase(getCategoriesProductsAction.rejected, (state, action) => {
         state.isLoading = false;
@@ -156,4 +179,4 @@ const productsSlice = createSlice({
 });
 
 export default productsSlice.reducer;
-export const { sortByPayload, sortByCheckBox, sortByMinMax, addFavoritesProducts, addCartProducts } = productsSlice.actions;
+export const { sortByPayload, sortByCheckBox, sortByMinMax, addFavoritesProducts, addProductToCart, getProductsFromLocalStorage, getFavoritesFromLocalStorage, incrementProduct, decrementProduct, removeProductFromCart, removeProductFromFavorites } = productsSlice.actions;

@@ -11,8 +11,19 @@ import { ThemeProvider } from "./components/Theme/ThemeContext";
 import ProductCardDetailPage from "./pages/ProductCartDetailPage/ProductCardDetailPage";
 import ShoppingCart from "./pages/ShoppingCart/ShoppingCart";
 import Favorites from "./pages/Favorites/Favorites";
+import { useDispatch } from "react-redux";
+import { getFavoritesFromLocalStorage, getProductsFromLocalStorage } from "./store/Reducers/ProductsReducer";
+import { useEffect } from "react";
 
 function App() {
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getProductsFromLocalStorage());
+    dispatch(getFavoritesFromLocalStorage());
+  }, []);
+
   return (
     <main>
       <ThemeProvider>
