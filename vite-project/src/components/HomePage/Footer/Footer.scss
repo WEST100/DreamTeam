@@ -42,7 +42,7 @@
 
 .footer__items {
   display: grid;
-  grid-template-columns: repeat(2, 2fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 32px;
   margin-bottom: 32px;
 }
@@ -52,7 +52,7 @@
   border-radius: 12px;
   padding: 32px;
   max-width: 780px;
-  max-height: 194px;
+  // max-height: 194px;
 }
 
 .footer__item_descr {
@@ -63,11 +63,15 @@
   margin-bottom: 16px;
 }
 
-.footer__item_info {
+.footer__item_info, .footer__item_info-nowrap{
   font-weight: 600;
   font-size: 40px;
   line-height: 110%;
   color: #424436;
+
+  &-nowrap {
+    white-space: nowrap; /* Предотвращает перенос текста на другую строку */
+  }
 }
 
 .footer__item_image {
@@ -77,3 +81,22 @@
 iframe {
   width: 100%;
 }
+@media(max-width: 768px) {
+  .footer__items {
+    grid-template-columns: 2fr, 1fr;
+  }
+}
+@media(max-width: 480px),(max-width: 360px) {
+  .footer__items {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+@media(max-width: 480px),(max-width: 360px) {
+  .footer__item_descr {
+    font-size: 18px;
+  }
+  .footer__item_info {
+    font-size: 28px;
+  }
+}
+

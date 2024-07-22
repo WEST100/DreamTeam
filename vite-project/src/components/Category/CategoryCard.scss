@@ -12,6 +12,7 @@
       max-width: 317px;
       height: 100%;
       object-fit: cover;
+      min-height: 392px;
     }
   }
 
@@ -24,5 +25,19 @@
       text-decoration: none;
       color: #424436;
     }
+  }
+}
+@media (max-width: 1000px), (max-width: 768px){.categories__card-item img {
+  min-height: 292px;
+  }
+}
+@media (max-width: 480px) {
+  .categories__card-item img {
+  min-height: 289px;
+  }
+}
+@media (max-width: 360px) {
+  .categories__card-item img {
+  min-height: 255px;
   }
 }

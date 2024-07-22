@@ -10,13 +10,31 @@
 
   &__content {
     display: flex;
-    justify-content: space-between;
+    
+    // display: grid;
+    // grid-template-columns: 1,5fr 1fr;
     align-items: center;
     gap: 32px;
     margin: 0 auto;
+    overflow: hidden; /* Скрыть выходящие за пределы части изображения */
+    position: relative;
+
+    // & div {
+    //   overflow: hidden; 
+    //   position: relative;
+    // }
+
+    & img {
+      width: 100%;
+      height: auto;
+      position: relative;
+      left: 0; /* Начальная позиция */
+      transition: transform 0.3s ease-in-out; /* Плавный переход для свойства transform */
+    }
   }
   
   &__form {
+    
     border-radius: 12px;
     padding: 32px 32px 0px 32px;
     background: linear-gradient(220deg, #0b710b 0%, #393 100%);
@@ -25,7 +43,7 @@
 
     & h3 {
       font-weight: 700;
-      font-size: 64px;
+      font-size:calc(40px + 24 * (100vw - 320px) / 1120);
       line-height: 110%;
       margin-bottom: 24px;
     }
@@ -36,12 +54,12 @@
 
       & form {
         width: 100%;
+        max-width: 516px;
       }
       & input {
-        width: 100%;
-        height: 58px;
+        width: 100%;      
         margin-bottom: 16px;
-        padding: 0 16px;
+        padding: 16px;
         border: 1px solid #ffffff;
         border-radius: 6px;
         font-size: 20px;
@@ -74,5 +92,66 @@
         color: #ffffff;
       }
     }
+  }
+}
+@media(max-width: 1000px) {
+  .discount__content {
+    gap: 20px;
+    padding: 0px 20px 32px 0px;
+  }
+  .discount__form {
+    padding: 32px 0px 0px 0px;
+  }
+  .discount__form__container form {
+    max-width: 450px;
+  }
+  .discount__content img {
+    transform: translateX(-25%); /* Перемещение изображения влево на 25% */
+  }
+}
+@media(max-width: 768px) {
+  .discount__content {
+    gap: 20px;
+    padding: 0px 0px 32px 0px;
+  }
+  .discount__form {
+    padding: 32px 20px 0px 20px;
+  }
+  .discount__form__container form {
+    max-width: 334px;
+  }
+  .discount__content img {
+    transform: translateX(-35%); /* Перемещение изображения влево на 35% */
+  }
+  
+}
+@media(max-width: 480px) {
+  .discount__form {
+    padding: 24px 20px 0px 20px;
+  }
+  .discount__form__container form {
+    max-width: 400px;
+  }
+}
+@media(max-width: 360px) {
+  .discount__form__container form {
+    max-width: 280px;
+  }
+}
+@media (max-width: 768px) {
+  .responsive-image {
+      transform: translateX(-25%); /* Перемещение изображения влево на 25% */
+  }
+}
+
+@media (max-width: 480px) {
+  .responsive-image {
+      transform: translateX(-50%); /* Перемещение изображения влево на 50% */
+  }
+}
+
+@media (max-width: 360px) {
+  .responsive-image {
+      transform: translateX(-75%); /* Перемещение изображения влево на 75% */
   }
 }

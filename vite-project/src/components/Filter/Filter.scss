@@ -8,6 +8,8 @@
     gap: 40px;
     margin-bottom: 40px;
 
+    align-items: center;
+
     &__label {
       font-weight: 600;
       font-size: 20px;
@@ -108,4 +110,20 @@
 
 .discountedHide {
   display: none;
+}
+
+@media (max-width: 768px) {
+  .filter__box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+  }
+}
+
+@media (max-width: 480px), (max-width: 360px) {
+  .filter__box {
+    display: grid;
+    grid-template-columns: 1fr;
+
+  }
 }
