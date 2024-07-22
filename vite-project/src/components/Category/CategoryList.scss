@@ -1,7 +1,7 @@
 .categories {
   &__listContainer {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    justify-content: space-between;
     gap: 30px;
     padding-bottom: 40px;
   }

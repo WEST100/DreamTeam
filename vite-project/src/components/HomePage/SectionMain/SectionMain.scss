@@ -1,10 +1,10 @@
 .main__text {
   font-weight: 700;
-  // font-size: 96px;
+  font-size: 96px;
   line-height: 110%;
   color: #fffff1;
   margin-bottom: 40px;
-  font-size: calc(24px + (72 + 72 * 0.75) * ((100vw - 360px) / 1440));
+  // font-size: calc(52px + 44 * ((100vw - 360px) / 1080));
   // font-size: calc(52px + (44 + 44 * 0.55) * ((100vw - 360px) / 1440));
     
 }
@@ -43,7 +43,7 @@
 }
 
 .main-content {
- margin-bottom: 40px;
+ padding-bottom: 40px;
  
   &-light {
     background-color: #fffff1;

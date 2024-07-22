@@ -10,11 +10,10 @@
 
 body {
   background-color: #fffff1;
-  max-width: 1440px;
 }
 
 .container {
-  width: calc(100vw - 80px); /* Прямая установка разницы */
+  // width: calc(100vw - 80px); /* Прямая установка разницы */
     max-width: 1360px; /* Прямая установка максимальной ширины */
   // max-width: 1360px;
   margin: 0 auto;
