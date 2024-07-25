@@ -14,12 +14,14 @@ import Favorites from "./pages/Favorites/Favorites";
 import { useDispatch } from "react-redux";
 import { getFavoritesFromLocalStorage, getProductsFromLocalStorage } from "./store/Reducers/ProductsReducer";
 import { useEffect } from "react";
+import { getAllProductAction } from "./store/asyncActions/product";
 
 function App() {
 
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(getAllProductAction());
     dispatch(getProductsFromLocalStorage());
     dispatch(getFavoritesFromLocalStorage());
   }, []);

@@ -65,6 +65,7 @@
     .burger-menu {
       height: 48px;
       width: 44px;
+      display: none;
     }
   }
 
@@ -172,7 +173,7 @@
     flex-direction: column;
     gap: 40px;
 
-    display: none;
+    // display: none;
 
     &-opacity {
       position: fixed;
@@ -201,5 +202,11 @@
 @media (max-width: 768px) {
   .navbar__item {
     font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header .users-menu .burger-menu {
+    display: block;
   }
 }

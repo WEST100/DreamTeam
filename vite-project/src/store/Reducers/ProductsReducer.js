@@ -10,6 +10,8 @@ const productsSlice = createSlice({
     error: null,
     product: null,
     favoritesProducts: [],
+    filteredFavoritesProducts: [],
+    filteredProductsFromCategory: [],
     cartProducts: [],
     productsFromCategory: [],
   },
@@ -35,38 +37,120 @@ const productsSlice = createSlice({
         localStorage.setItem("favorites", JSON.stringify([]));
       }
     },
-    // сортировка из выпадающего списка
+    // сортировка из выпадающего списка для всех товаров
     sortByPayload(state, action) {
       let data = state.filteredProducts.length > 0 ? state.filteredProducts : state.products;
 
-      if (action.payload === "default") {
+      if (action.payload.value === "default") {
         state.filteredProducts = data.slice().sort((a, b) => a.id - b.id);
-      } else if (action.payload === "newest") {
+      } else if (action.payload.value === "newest") {
         state.filteredProducts = data.slice().sort((a, b) => b.createdAt - a.createdAt);
-      } else if (action.payload === "low") {
-        state.filteredProducts = data.slice().sort((a, b) => a.price - b.price);
-      } else if (action.payload === "high") {
-        state.filteredProducts = data.slice().sort((a, b) => b.price - a.price);
-      } else if (action.payload === "name") {
+      } else if (action.payload.value === "low") {
+        state.filteredProducts = data.slice().sort((a, b) => {
+          const aDiscontPrice = a.discont_price !== null ? a.discont_price : a.price;
+          const bDiscontPrice = b.discont_price !== null ? b.discont_price : b.price;
+          return aDiscontPrice - bDiscontPrice;
+        });
+      } else if (action.payload.value === "high") {
+        state.filteredProducts = data.slice().sort((a, b) => { 
+           const aDiscontPrice = a.discont_price !== null ? a.discont_price : a.price;
+           const bDiscontPrice = b.discont_price !== null ? b.discont_price : b.price;
+           return bDiscontPrice - aDiscontPrice;
+        });
+       
+      } else if (action.payload.value === "name") {
         state.filteredProducts = data.slice().sort((a, b) => a.title.localeCompare(b.title));
       }
     },
-    // сортировка по нажатию на checkBox
+    // сортировка из выпадающего списка для избранного
+    sortByPayloadFromFavorites(state, action) {
+      let data = state.filteredFavoritesProducts.length > 0 ? state.filteredFavoritesProducts : state.favoritesProducts;
+
+      if (action.payload.value === "default") {
+        state.filteredFavoritesProducts = data.slice().sort((a, b) => a.id - b.id);
+      } else if (action.payload.value === "newest") {
+        state.filteredFavoritesProducts = data.slice().sort((a, b) => b.createdAt - a.createdAt);
+      } else if (action.payload.value === "low") {
+        state.filteredFavoritesProducts = data.slice().sort((a, b) => {
+          const aDiscontPrice = a.discont_price !== null ? a.discont_price : a.price;
+          const bDiscontPrice = b.discont_price !== null ? b.discont_price : b.price;
+          return aDiscontPrice - bDiscontPrice;
+        });
+      } else if (action.payload.value === "high") {
+        state.filteredFavoritesProducts = data.slice().sort((a, b) => {
+          const aDiscontPrice = a.discont_price !== null ? a.discont_price : a.price;
+          const bDiscontPrice = b.discont_price !== null ? b.discont_price : b.price;
+          return bDiscontPrice - aDiscontPrice;
+        });
+      } else if (action.payload.value === "name") {
+        state.filteredFavoritesProducts = data.slice().sort((a, b) => a.title.localeCompare(b.title));
+      }
+    },
+    // сортировка по нажатию на checkBox для товаров из категорий
+    sortByPayloadFromCategories(state, action) {
+      let data = state.filteredProductsFromCategory.length > 0 ? state.filteredProductsFromCategory : state.productsFromCategory;
+
+      if (action.payload.value === "default") {
+        state.filteredProductsFromCategory = data.slice().sort((a, b) => a.id - b.id);
+      } else if (action.payload.value === "newest") {
+        state.filteredProductsFromCategory = data.slice().sort((a, b) => b.createdAt - a.createdAt);
+      } else if (action.payload.value === "low") {
+        state.filteredProductsFromCategory = data.slice().sort((a, b) => {
+          const aDiscontPrice = a.discont_price !== null ? a.discont_price : a.price;
+          const bDiscontPrice = b.discont_price !== null ? b.discont_price : b.price;
+          return aDiscontPrice - bDiscontPrice;
+        });
+      } else if (action.payload.value === "high") {
+        state.filteredProductsFromCategory = data.slice().sort((a, b) => {
+          const aDiscontPrice = a.discont_price !== null ? a.discont_price : a.price;
+          const bDiscontPrice = b.discont_price !== null ? b.discont_price : b.price;
+          return bDiscontPrice - aDiscontPrice;
+        });
+      } else if (action.payload.value === "name") {
+        state.filteredProductsFromCategory = data.slice().sort((a, b) => a.title.localeCompare(b.title));
+      }
+    },
+    // сортировка по нажатию на checkBox для всех товаров
     sortByCheckBox(state, action) {
       let data = state.filteredProducts.length > 0 ? state.filteredProducts : state.products;
 
-      state.filteredProducts = action.payload ? data.filter((item) => item.discont_price) : [];
+      state.filteredProducts = action.payload.value ? data.filter((item) => item.discont_price) : [];
     },
-    // сортировка от Мин цены до Макс цены.
+    // сортировка по нажатию на checkBox для товаров из категорий
+    sortByCheckBoxFromCategories(state, action) {
+      let data = state.filteredProductsFromCategory.length > 0 ? state.filteredProductsFromCategory : state.productsFromCategory;
+
+      state.filteredProductsFromCategory = action.payload.value ? data.filter((item) => item.discont_price) : [];
+    },
+    // сортировка от Мин цены до Макс цены. для всех товаров
     sortByMinMax(state, { payload }) {
       let maxValue = !payload.max && payload.max === "" ? Infinity : +payload.max;
       let minValue = !payload.min && payload.min === "" ? 0 : +payload.min;
 
       let data = state.filteredProducts.length > 0 ? state.filteredProducts : state.products;
 
-      console.log(data)
+      state.filteredProducts = data.filter((item) => (item.discont_price >= minValue && item.discont_price <= maxValue) || (item.price >= minValue && item.price <= maxValue));
+    },
+    // сортировка от Мин цены до Макс цены. для избранного
+    sortByMinMaxFromFavorites(state, { payload }) {
+      let maxValue = !payload.max && payload.max === "" ? Infinity : +payload.max;
+      let minValue = !payload.min && payload.min === "" ? 0 : +payload.min;
 
-      state.filteredProducts = data.filter((item) => item.price >= minValue && item.price <= maxValue);
+      let data = state.filteredFavoritesProducts.length > 0 ? state.filteredFavoritesProducts : state.favoritesProducts;
+
+      state.filteredFavoritesProducts = data.filter((item) => (item.discont_price >= minValue && item.discont_price <= maxValue) || (item.price >= minValue && item.price <= maxValue));
+
+      // state.filteredFavoritesProducts = data.filter((item) => item.price >= minValue && item.price <= maxValue);
+    },
+    // сортировка от Мин цены до Макс цены. для всех товаров из категорий
+    sortByMinMaxFromCategories(state, { payload }) {
+      let maxValue = !payload.max && payload.max === "" ? Infinity : +payload.max;
+      let minValue = !payload.min && payload.min === "" ? 0 : +payload.min;
+
+      let data = state.filteredProductsFromCategory.length > 0 ? state.filteredProductsFromCategory : state.productsFromCategory;
+  
+      state.filteredProductsFromCategory = data.filter((item) => (item.discont_price >= minValue && item.discont_price <= maxValue) || (item.price >= minValue && item.price <= maxValue));
+      // state.filteredProductsFromCategory = data.filter((item) => item.price >= minValue && item.price <= maxValue);
     },
     // Добавление товаров в корзину
     addProductToCart: (state, { payload }) => {
@@ -179,4 +263,4 @@ const productsSlice = createSlice({
 });
 
 export default productsSlice.reducer;
-export const { sortByPayload, sortByCheckBox, sortByMinMax, addFavoritesProducts, addProductToCart, getProductsFromLocalStorage, getFavoritesFromLocalStorage, incrementProduct, decrementProduct, removeProductFromCart, removeProductFromFavorites } = productsSlice.actions;
+export const { sortByPayload, sortByCheckBox, sortByMinMax, addFavoritesProducts, addProductToCart, getProductsFromLocalStorage, getFavoritesFromLocalStorage, incrementProduct, decrementProduct, removeProductFromCart, removeProductFromFavorites, sortByPayloadFromFavorites, sortByMinMaxFromFavorites, sortByPayloadFromCategories, sortByCheckBoxFromCategories, sortByMinMaxFromCategories } = productsSlice.actions;

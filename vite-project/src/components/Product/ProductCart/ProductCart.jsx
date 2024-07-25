@@ -15,6 +15,7 @@ const ProductCart = ({ product }) => {
 
   const { cartProducts } = useSelector((state) => state.products);
 
+  // установка счетчика кол-ва товара
   useEffect(() => {
     let cartFound = cartProducts.find((item) => item.id === product?.id);
     if (cartFound) {

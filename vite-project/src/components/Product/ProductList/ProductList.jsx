@@ -1,24 +1,15 @@
-import React, { useContext, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useContext } from "react";
+import { useSelector } from "react-redux";
 import ProductCard from "../ProductCard/ProductCard";
-import { getAllProductAction } from "../../../store/asyncActions/product";
 import Filter from "../../Filter/Filter";
 import { Link } from "react-router-dom";
 import "./ProductList.scss";
 import { ThemeContext } from "../../Theme/ThemeContext";
 
 const ProductList = () => {
-
   const { theme } = useContext(ThemeContext);
 
-  const dispatch = useDispatch();
-
   const { products, isLoading, filteredProducts } = useSelector((state) => state.products);
-
-  useEffect(() => {
-    dispatch(getAllProductAction());
-  }, []);
-
 
   const data = filteredProducts.length > 0 ? filteredProducts : products;
 
