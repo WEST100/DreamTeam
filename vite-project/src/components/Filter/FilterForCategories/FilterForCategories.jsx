@@ -1,11 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
-import "./Filter.scss";
-import { ThemeContext } from "../Theme/ThemeContext";
-import { useDispatch, useSelector } from "react-redux";
-import { sortByPayload, sortByCheckBox, sortByMinMax } from "../../store/Reducers/ProductsReducer";
-import { useLocation } from "react-router-dom";
+import "./FilterForCategories.scss";
+import { useDispatch } from "react-redux";
+import { ThemeContext } from "../../Theme/ThemeContext";
+import { sortByMinMaxFromCategories, sortByPayloadFromCategories, sortByCheckBoxFromCategories } from "../../../store/Reducers/ProductsReducer";
 
-const Filter = () => {
+const FilterForCategories = () => {
   const dispatch = useDispatch();
 
   const { theme } = useContext(ThemeContext);
@@ -15,18 +14,22 @@ const Filter = () => {
   const [isChecked, setIsChecked] = useState(false);
   const [select, setSelect] = useState("default");
 
+  // как??? как такое может быть??? почему?? не работает два на вид одинаковых useEffect'a
+  // useEffect(() => {
+  //   dispatch(sortByMinMaxFromCategories({ min: fromPrice, max: toPrice }));
+  //   dispatch(sortByPayloadFromCategories({ value: select }));
+  //   dispatch(sortByCheckBoxFromCategories({ value: isChecked }));
+  // }, [fromPrice, toPrice, select, isChecked, dispatch]);
+
   useEffect(() => {
-    dispatch(sortByCheckBox({ value: isChecked }));
-    dispatch(sortByMinMax({ min: fromPrice, max: toPrice }));
-    dispatch(sortByPayload({ value: select }));
+    dispatch(sortByCheckBoxFromCategories({ value: isChecked }));
+    dispatch(sortByMinMaxFromCategories({ min: fromPrice, max: toPrice }));
+    dispatch(sortByPayloadFromCategories({ value: select }));
   }, [isChecked, fromPrice, toPrice, select, dispatch]);
 
   function handleSelect(e) {
     setSelect(e.target.value);
   }
-  // const location = useLocation(); ???????????????????????????????????????????????????
-  console.log(location.pathname);
-  let hideDiscountedItems = () => (location.pathname === "/discounted" ? "discountedHide" : "");
 
   return (
     <section className={`filter ${theme ? "filter-dark" : "filter-light"}`}>
@@ -39,8 +42,7 @@ const Filter = () => {
             <input className="price__input" id="price-from" type="number" name="min" placeholder="from" min="0" step="1" onChange={(e) => setFromPrice(+e.target.value)} />
             <input value={toPrice} className="price__input" type="number" name="max" placeholder="to" min="0" step="1" onChange={(e) => setToPrice(+e.target.value)} />
           </form>
-          <div className={`discounted ${hideDiscountedItems()}`}>
-            {/* <div className="discounted"> */}
+          <div className="discounted">
             <label htmlFor="checkbox" className="box__label">
               Discounted items
             </label>
@@ -75,4 +77,4 @@ const Filter = () => {
   );
 };
 
-export default Filter;
+export default FilterForCategories;

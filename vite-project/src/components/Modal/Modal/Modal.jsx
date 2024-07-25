@@ -8,7 +8,7 @@ const ModalCart = ({ active, setActive, setResponce, children }) => {
       className={active ? "modal active" : "modal"}
       onClick={() => {
         setActive(false);
-        setResponce(false);
+        setResponce && setResponce(false);
       }}
     >
       <div className={active ? "modal__content active" : "modal__content"} onClick={(e) => e.stopPropagation()}>
