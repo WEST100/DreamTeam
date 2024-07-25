@@ -5,14 +5,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProductsCardDetailAction } from "../../../store/asyncActions/product";
 import "./ProductCardDetail.scss";
 import { getAllCategoriesAction } from "../../../store/asyncActions/categorie";
-import Quantity from "../../Quantity/Quantity";
 import { addProductToCart, incrementProduct, decrementProduct, removeProductFromCart, removeProductFromFavorites, addFavoritesProducts } from "../../../store/Reducers/ProductsReducer";
 import { FaPlus } from "react-icons/fa6";
 import { FaMinus } from "react-icons/fa6";
 import { ThemeContext } from "../../Theme/ThemeContext";
 import Button from "../../Buttons/Button";
+import Modal from "../../Modal/Modal/Modal";
 
 const ProductCardDetail = () => {
+  // состояние отвечающее за видимость модального окна
+  const [modalActive, setModalActive] = useState(false);
+
   // получаем айди продукта из ссылки
   const { productId } = useParams();
 
@@ -147,7 +150,7 @@ const ProductCardDetail = () => {
         return (product?.price * count).toFixed(2);
       }
     } else {
-      return ""
+      return "";
     }
   }
 
@@ -175,7 +178,7 @@ const ProductCardDetail = () => {
           ) : (
             product && (
               <div className="product-single" key={product?.id}>
-                <img src={`https://exam-server-5c4e.onrender.com${product?.image}`} alt="product-image" className="product-single__image" />
+                <img src={`https://exam-server-5c4e.onrender.com${product?.image}`} alt="product-image" className="product-single__image" onClick={() => setModalActive(true)} />
                 <div className="product-single__details">
                   <div className="product-single__details__topContainer">
                     <h2 className="product-single__title">{product?.title}</h2>
@@ -208,12 +211,11 @@ const ProductCardDetail = () => {
                     )}
 
                     {count > 0 ? (
-                        // <Button name={"Remove from cart"} dispatch={dispatch(removeProductFromCart(product))} />
-                       <button className="btn" onClick={() => dispatch(removeProductFromCart(product))}>
+                      // <Button name={"Remove from cart"} dispatch={dispatch(removeProductFromCart(product))} />
+                      <button className="btn" onClick={() => dispatch(removeProductFromCart(product))}>
                         Remove from cart
                       </button>
                     ) : (
-                   
                       <button className="btn" onClick={() => dispatch(addProductToCart(product))}>
                         Add to cart
                       </button>
@@ -236,6 +238,11 @@ const ProductCardDetail = () => {
             )
           )}
         </div>
+        {modalActive && (
+          <Modal active={modalActive} setActive={setModalActive}>
+              <img src={`https://exam-server-5c4e.onrender.com${product?.image}`} alt="product-image" />
+          </Modal>
+        )}
       </div>
     </section>
   );
