@@ -3,7 +3,7 @@ import "./SectionDiscount.scss";
 import imageForm from "/src/assets/images/imageForm.jpeg";
 import { ThemeContext } from "../../Theme/ThemeContext";
 import { useForm } from "react-hook-form";
-import ModalCart from "../../Modal/Modal/Modal";
+import Modal from "../../Modal/Modal/Modal";
 import { IoMdClose } from "react-icons/io";
 
 const SectionDiscount = () => {
@@ -103,7 +103,7 @@ const SectionDiscount = () => {
           </div>
         </div>
         {isResponce && (
-          <ModalCart active={modalActive} setActive={setModalActive} setResponce={setIsResponce}>
+          <Modal active={modalActive} setActive={setModalActive} setResponce={setIsResponce}>
             <div className="modalCart">
               <div className="modalCart__description">
                 <h3>Congratulations!</h3>
@@ -120,7 +120,7 @@ const SectionDiscount = () => {
                 />
               </div>
             </div>
-          </ModalCart>
+          </Modal>
         )}
       </div>
     </section>

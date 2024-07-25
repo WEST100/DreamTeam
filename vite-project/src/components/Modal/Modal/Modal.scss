@@ -23,12 +23,12 @@
   padding: 32px;
   border-radius: 12px;
   background-color: #92a134;
-  // width: 50vh;
+  // width: 50vw;
   max-width: 548px;
   transform: scale(0.5);
   transition: 0.4s all;
 }
 
 .modal__content.active {
-  transform:scale(1);
+  transform: scale(1);
 }

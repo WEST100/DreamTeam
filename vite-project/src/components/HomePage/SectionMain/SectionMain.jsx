@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import header from "/src/assets/images/home_img/header.jpg";
 import "./SectionMain.scss";
 import { ThemeContext } from '../../Theme/ThemeContext';
+import { Link } from 'react-router-dom';
 
 const SectionMain = () => {
 
@@ -14,11 +15,13 @@ const SectionMain = () => {
         <div className="container">
           <div className="main-content__item">
             <h1 className="main__text">
-              Amazing Discounts 
+              Amazing Discounts
               <br />
               on Garden Products!
             </h1>
-            <button className="main__button_large">Check out</button>
+            <Link to={"/discounted"}>
+              <button className="main__button_large">Check out</button>
+            </Link>
           </div>
         </div>
       </div>

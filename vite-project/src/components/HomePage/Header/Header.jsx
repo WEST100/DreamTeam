@@ -6,7 +6,7 @@ import { ThemeContext } from "../../Theme/ThemeContext";
 import { IoMoonOutline, IoSunnyOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
 import { RxHamburgerMenu } from "react-icons/rx";
-import ModalCart from "../../Modal/Modal/Modal";
+import Modal from "../../Modal/Modal/Modal";
 import { IoMdClose } from "react-icons/io";
 import Button from "../../Buttons/Button";
 import ProductCard from "../../Product/ProductCard/ProductCard";
@@ -120,7 +120,7 @@ const Header = () => {
           <RxHamburgerMenu onClick={() => setIsBurgerMenuOn(!isBurgerMenuOn)} className="burger-menu" />
         </div>
         {modalActive && (
-          <ModalCart active={modalActive} setActive={setModalActive}>
+          <Modal active={modalActive} setActive={setModalActive}>
             <div className="modalCart">
               <div className="modalCart__description">
                 <h3>50% discount on product of the day</h3>
@@ -131,7 +131,7 @@ const Header = () => {
                 <IoMdClose onClick={() => setModalActive(false)} />
               </div>
             </div>
-          </ModalCart>
+          </Modal>
         )}
       </div>
     </header>

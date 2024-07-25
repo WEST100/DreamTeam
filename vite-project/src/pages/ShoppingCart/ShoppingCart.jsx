@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import ProductCart from "../../components/Product/ProductCart/ProductCart";
 import Button from "../../components/Buttons/Button";
 import { useForm } from "react-hook-form";
-import ModalCart from "../../components/Modal/Modal/Modal";
+import Modal from "../../components/Modal/Modal/Modal";
 import { IoMdClose } from "react-icons/io";
 
 const ShoppingCart = () => {
@@ -147,7 +147,7 @@ const ShoppingCart = () => {
           )}
         </div>
         {isResponce && (
-          <ModalCart active={modalActive} setActive={setModalActive} setResponce={setIsResponce}>
+          <Modal active={modalActive} setActive={setModalActive} setResponce={setIsResponce}>
             <div className="modalCart">
               <div className="modalCart__description">
                 <h3>Congratulations!</h3>
@@ -166,7 +166,7 @@ const ShoppingCart = () => {
                 />
               </div>
             </div>
-          </ModalCart>
+          </Modal>
         )}
       </div>
     </section>
