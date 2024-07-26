@@ -13,6 +13,8 @@ import Button from "../../Buttons/Button";
 import Modal from "../../Modal/Modal/Modal";
 
 const ProductCardDetail = () => {
+  const dispatch = useDispatch();
+
   // состояние отвечающее за видимость модального окна
   const [modalActive, setModalActive] = useState(false);
 
@@ -21,9 +23,6 @@ const ProductCardDetail = () => {
 
   // тема страницы
   const { theme } = useContext(ThemeContext);
-
-  // диспатч
-  const dispatch = useDispatch();
 
   // UseSelectors
   const { product, isLoading, cartProducts } = useSelector((state) => state.products);
@@ -34,7 +33,7 @@ const ProductCardDetail = () => {
   const [count, setCount] = useState(0);
   const [isReadMe, setIsReadMe] = useState(true);
 
-  // следим за изменением страницы
+  // отправляем id продукта и список категорий
   useEffect(() => {
     dispatch(getProductsCardDetailAction(productId));
     dispatch(getAllCategoriesAction());
@@ -219,7 +218,7 @@ const ProductCardDetail = () => {
                       <button className="btn" onClick={() => dispatch(addProductToCart(product))}>
                         Add to cart
                       </button>
-                      // <Button name={"Add to cart"} dispatch={dispatch(addProductToCart(product))} />
+                      // <Button name={"Add to cart"} newDispatch={product} />
                     )}
                   </div>
                   <div className="description">
@@ -240,7 +239,7 @@ const ProductCardDetail = () => {
         </div>
         {modalActive && (
           <Modal active={modalActive} setActive={setModalActive}>
-              <img src={`https://exam-server-5c4e.onrender.com${product?.image}`} alt="product-image" />
+            <img src={`https://exam-server-5c4e.onrender.com${product?.image}`} alt="product-image" />
           </Modal>
         )}
       </div>
