@@ -1,0 +1,11 @@
+.sale {
+  &-dark {
+    background-color: #424436;
+
+    .pageSectionTitle {
+      h2 {
+        color: #fff;
+      }
+    }
+  }
+}

@@ -1,0 +1,58 @@
+.not-found__error {
+  padding: 80px 0;
+}
+
+.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  &__code {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #92a134;
+    gap: 16px;
+    margin-bottom: 32px;
+
+    &__number {
+      max-width: 180px;
+    }
+
+    &__image {
+      max-width: 300px;
+      height: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      & img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+      }
+    }
+  }
+  &__message {
+    max-width: 664px;
+
+    & h2 {
+      font-weight: 700px;
+      font-size: 64px;
+      line-height: 110%;
+      text-align: center;
+      color: #424436;
+      margin-bottom: 16px;
+    }
+    & p,
+    span {
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 130%;
+      text-align: center;
+      color: #8b8b8b;
+      margin-bottom: 32px;
+    }
+  }
+}

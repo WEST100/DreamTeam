@@ -1,0 +1,257 @@
+.header {
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .company-style {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+
+    .logo {
+      width: 70px;
+      height: 70px;
+      margin: 30px 0;
+    }
+  }
+  .menu {
+    &__list {
+      list-style: none;
+      display: flex;
+      gap: 32px;
+    }
+
+    &__button {
+      text-align: center;
+      margin-bottom: 12px;
+
+      &_small {
+        border: none;
+        border-radius: 6px;
+        padding: 6px 16px;
+        width: 151px;
+        height: 32px;
+        background: #92a134;
+        text-align: center;
+        color: #fffff1;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 126%;
+      }
+    }
+  }
+
+  .users-menu {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    position: relative;
+
+    span {
+      position: absolute;
+      background-color: #92a134;
+      color: #fff;
+      width: 20px;
+      text-align: center;
+      border-radius: 50px;
+    }
+
+    .countProductsInCart {
+      top: 3.5px;
+    }
+
+    .burger-menu {
+      height: 48px;
+      width: 44px;
+      display: none;
+    }
+  }
+
+  .modalHeader {
+    &__product {
+      margin-bottom: 16px;
+    }
+
+    &__items {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 16px;
+
+      &_title h3 {
+        color: #fff;
+        font-weight: 600;
+        font-size: 40px;
+        line-height: 110%;
+      }
+
+      &_close svg {
+        height: 44px;
+        width: 44px;
+        color: #fff;
+      }
+    }
+
+    &__btn {
+      border-radius: 6px;
+      margin-top: 16px;
+      padding: 16px 32px;
+      width: 100%;
+      border: none;
+      background: #fff;
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 130%;
+      text-align: center;
+      color: #424436;
+      cursor: pointer;
+
+      &:hover {
+        background: #424436;
+        color: #fff;
+      }
+    }
+  }
+
+  &-light {
+    .users-menu .heart {
+      stroke: #424436;
+      stroke-linejoin: round;
+      stroke-linecap: round;
+      stroke-width: 2.2;
+    }
+
+    .users-menu .cart {
+      fill: #424436;
+    }
+  }
+
+  &-dark {
+    background-color: #424436;
+
+    a {
+      color: #fff;
+    }
+
+    .navbar__item-active {
+      border-bottom: 2px solid #fff;
+    }
+
+    .users-menu .heart {
+      stroke: #fffff1;
+      stroke-linejoin: round;
+      stroke-linecap: round;
+      stroke-width: 2.2;
+    }
+
+    .users-menu .cart {
+      fill: #fffff1;
+    }
+  }
+}
+
+.switch {
+  background-color: hsl(200, 7%, 82%);
+  box-shadow: 0 0 0 0.125em hsla(223, 90%, 55%, 0);
+  position: relative;
+  border-radius: 20px;
+  width: 74px;
+  padding: 2px;
+  display: flex;
+
+  div {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    padding: 6px;
+    justify-content: space-between;
+    width: 100%;
+
+    .iconChangeColor {
+      color: #fff;
+    }
+
+    span {
+      display: inline-block;
+      padding: 2px;
+    }
+  }
+
+  input {
+    position: absolute;
+    opacity: 0;
+  }
+
+  &__slider {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background-color: hsl(0, 0%, 29%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+    color: #fff;
+    z-index: 2;
+  }
+
+  &-active {
+    background-color: hsl(192, 2%, 46%);
+    box-shadow: 0 0 0 0.125em hsla(223, 90%, 55%, 0);
+    transition: 0.5s;
+
+    .switch__slider {
+      transform: translateX(36px);
+      background-color: hsl(0, 19%, 95%);
+    }
+  }
+}
+
+.menu {
+  @media (max-width: 480px) {
+    background: #fff;
+    padding: 20px;
+    height: 100%;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    // display: none;
+
+    &-opacity {
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.3137254902);
+      width: 100%;
+      height: 100%;
+      z-index: 99;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    &__list {
+      flex-direction: column;
+    }
+  }
+}
+
+// @media(max-width: 480px),(max-width: 360px) {
+//   .footer__items {
+//     grid-template-columns: repeat(1, 1fr);
+//   }
+// }
+
+@media (max-width: 768px) {
+  .navbar__item {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header .users-menu .burger-menu {
+    display: block;
+  }
+}

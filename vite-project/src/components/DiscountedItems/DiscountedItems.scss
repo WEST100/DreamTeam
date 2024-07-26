@@ -1,0 +1,17 @@
+.discountedItems {
+  &-dark {
+    background-color: #424436;
+
+    .breadcrumbs__navigation {
+      button:last-of-type {
+        color: #fff; /* Цвет текста для правой кнопки */
+      }
+    }
+
+    .allPagesTitle {
+      h2 {
+        color: #fff;
+      }
+    }
+  }
+}

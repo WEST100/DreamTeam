@@ -1,0 +1,124 @@
+.product__card {
+  &-dark {
+    .product__discount {
+      background: #424436;
+
+      &__text a {
+        color: #fff;
+      }
+
+      .product__price__real {
+        color: #fff;
+      }
+
+      .product__price__old {
+        color: #fff;
+      }
+    }
+  }
+}
+
+.product {
+  &__card {
+    display: grid;
+    grid-template-rows: 1fr auto;
+    position: relative;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    background: #fff;
+    overflow: hidden;
+  }
+
+  &__img {
+    img {
+      width: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  }
+
+  &__discount {
+    // grid-row: 2 / 3;
+    padding: 20px 30px 30px 30px;
+    // margin-top: 16px;
+    text-align: left;
+    color: #424436;
+    background: #fff;
+
+    &__text {
+      margin-bottom: 16px;
+      min-height: 60px;
+
+      a {
+        font-size: 20px;
+        line-height: 130%;
+        text-decoration: none;
+        color: #424436;
+      }
+    }
+
+    &__Perc {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: #f26d22;
+      color: #ffffff;
+      padding: 4px 8px;
+      border-radius: 6px;
+      align-items: center;
+      justify-content: center;
+
+      & p {
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 130%;
+        letter-spacing: 0.03em;
+      }
+    }
+  }
+  &__price {
+    // font-size: 24px;
+
+    &__real {
+      display: inline-block;
+      font-weight: 600;
+      font-size: 40px;
+      color: #424436;
+      line-height: 110%;
+    }
+    &__old {
+      display: inline-block;
+      font-size: 20px;
+      color: #8b8b8b;
+      text-decoration: line-through;
+      line-height: 130%;
+      padding-left: 16px;
+    }
+  }
+  &__icons {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 48px;
+    height: 106px;
+    gap: 10px;
+
+    .heart {
+      stroke: #424436;
+      stroke-linejoin: round;
+      stroke-linecap: round;
+      stroke-width: 2.2;
+      fill: #fff;
+    }
+  }
+}
+@media(max-width:480px), (max-width:360px) {
+  .product__price__real {
+    font-size: 36px;
+  }
+  .product__price__old {
+    font-size: 18px;
+  }
+}

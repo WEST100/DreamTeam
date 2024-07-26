@@ -13,8 +13,118 @@ body {
 }
 
 .container {
-  max-width: 1360px;
+  // width: calc(100vw - 80px); /* Прямая установка разницы */
+    max-width: 1360px; /* Прямая установка максимальной ширины */
+  // max-width: 1360px;
   margin: 0 auto;
-  // border: 1px solid black;
+}
+@media(max-width: 1000px), (max-width: 768px), 
+(max-width: 480px),(max-width: 360px)  {
+  .container {
+    width: calc(100vw - 40px); /* Прямая установка уменьшенной разницы */
+  } 
 }
 
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  margin: 0 auto;
+  align-items: center;
+  --d: 22px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  color: #25b09b;
+  box-shadow: calc(1 * var(--d)) calc(0 * var(--d)) 0 0, calc(0.707 * var(--d)) calc(0.707 * var(--d)) 0 1px, calc(0 * var(--d)) calc(1 * var(--d)) 0 2px, calc(-0.707 * var(--d)) calc(0.707 * var(--d)) 0 3px, calc(-1 * var(--d)) calc(0 * var(--d)) 0 4px, calc(-0.707 * var(--d)) calc(-0.707 * var(--d)) 0 5px, calc(0 * var(--d)) calc(-1 * var(--d)) 0 6px;
+  animation: l27 1s infinite steps(8);
+}
+@keyframes l27 {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+.breadcrumbs__button {
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 8px 16px;
+  font-size: 16px;
+  line-height: 126%;
+  text-align: center;
+
+  a {
+    text-decoration: none;
+    color: #8b8b8b;
+  }
+}
+
+.breadcrumbs__navigation {
+  padding: 40px 0;
+
+  span {
+    color: lightgrey;
+  }
+
+  button:last-of-type {
+    color: #424436; /* Цвет текста для правой кнопки */
+    cursor: auto;
+  }
+}
+
+.navbar__item {
+  font-size: 20px;
+  line-height: 130%;
+  text-decoration: none;
+  cursor: pointer;
+  color: black;
+
+  &-active {
+    border-bottom: 2px solid black;
+  }
+}
+
+.pageSectionTitle {
+  display: flex;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+  h2 {
+    font-weight: 700;
+    font-size: 64px;
+    padding-right: 10px;
+  }
+
+  hr {
+    flex-grow: 1; /* Заставляем <hr> занять оставшееся пространство */
+    border: none;
+    border-top: 2px solid lightgray; /*Определяем стиль линии */
+    margin: 0 0 0 10px; /* Отступы по бокам */
+  }
+}
+
+.allPagesTitle h2 {
+  font-weight: 700;
+  font-size: 64px;
+  padding-bottom: 40px;
+}
+
+.productListContainer {
+  display: grid;
+  // grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+@media(max-width: 768px),
+(max-width: 480px) {
+  .productListContainer { 
+    grid-template-columns: repeat(2, 1fr);
+  }  
+}
+@media(max-width: 360px) {
+  .productListContainer { 
+    grid-template-columns: repeat(1, 1fr);
+  }  
+}

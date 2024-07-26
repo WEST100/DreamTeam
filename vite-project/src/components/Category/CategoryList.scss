@@ -1,0 +1,36 @@
+.categories {
+  &__listContainer {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    padding-bottom: 40px;
+  }
+
+  &-dark {
+    .allPagesTitle {
+      h2 {
+        color: #fff;
+      }
+    }
+
+    .container .categories__listContainer .categories__card p a {
+      color: #fff;
+    }
+
+    .breadcrumbs__navigation {
+      button:last-of-type {
+        color: #fff; /* Цвет текста для правой кнопки */
+      }
+    }
+  }
+}
+@media(max-width: 768px),
+(max-width: 480px) {
+  .categories__listContainer { 
+    grid-template-columns: repeat(2, 1fr);
+  }  
+}
+@media(max-width: 360px) {
+  .categories__listContainer { grid-template-columns: repeat(1, 1fr);
+  }  
+}
