@@ -6,25 +6,21 @@ import { ThemeContext } from "../../Theme/ThemeContext";
 import { IoMoonOutline, IoSunnyOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
 import { RxHamburgerMenu } from "react-icons/rx";
-import Modal from "../../Modal/Modal/Modal";
 import { IoMdClose } from "react-icons/io";
 import Button from "../../Buttons/Button";
-import ProductCard from "../../Product/ProductCard/ProductCard";
-import { getAllProductAction } from "../../../store/asyncActions/product";
+import ModalCartOneDayDiscount from "../../Modal/ModalCartOneDayDiscount/ModalCartOneDayDiscount";
+import { addProductToCart } from "../../../store/Reducers/ProductsReducer";
+import ProductCardOneDayDiscount from "../../Product/ProductCardOneDayDiscount/ProductCardOneDayDiscount";
 
 const Header = () => {
   const dispatch = useDispatch();
 
   const { products } = useSelector((state) => state.products);
 
-  useEffect(() => {
-    dispatch(getAllProductAction());
-  }, []);
-
- let filteredProducts = products.filter((item) => item.discont_price === null);
+  let filteredProducts = products.filter((item) => item.discont_price === null);
 
   let randomProducts = filteredProducts.sort(() => Math.random() - 0.5).slice(0, 1);
-  console.log(randomProducts);
+  console.log(randomProducts[0]);
 
   // установка класса для активных ссылок
   const setActiveLink = ({ isActive }) => (isActive ? "navbar__item navbar__item-active" : "navbar__item");
@@ -120,18 +116,33 @@ const Header = () => {
           <RxHamburgerMenu onClick={() => setIsBurgerMenuOn(!isBurgerMenuOn)} className="burger-menu" />
         </div>
         {modalActive && (
-          <Modal active={modalActive} setActive={setModalActive}>
-            <div className="modalCart">
-              <div className="modalCart__description">
-                <h3>50% discount on product of the day</h3>
-                <div className="product__container">{randomProducts && randomProducts.map((prod) => <ProductCard key={prod.id} product={prod} />)}</div>
-                <Button className={"btn-white"} name={"Add to cart"} link={"/shopping-cart"} />
+          <ModalCartOneDayDiscount active={modalActive} setActive={setModalActive}>
+            <div className="modalHeader">
+              <div className="modalHeader__items">
+                <div className="modalHeader__items_title">
+                  <h3>50% discount on product of the day</h3>
+                </div>
+                <div className="modalHeader__items_close">
+                  <IoMdClose onClick={() => setModalActive(false)} />
+                </div>
               </div>
-              <div className="modalCart__close">
-                <IoMdClose onClick={() => setModalActive(false)} />
+              <div className="modalHeader__product">
+                <div className="product__container">{randomProducts && randomProducts.map((prod) => <ProductCardOneDayDiscount key={prod.id} product={prod} />)}</div>
               </div>
+              {/* <Button className={"btn-white"} name={"Add to cart"} newDispatch={randomProducts[0]} onClick={() => setModalActive(false)} /> */}
+              <Link to={"/shopping-cart"}>
+                <button
+                  className="modalHeader__btn"
+                  onClick={() => {
+                    dispatch(addProductToCart(randomProducts[0]));
+                    setModalActive(false);
+                  }}
+                >
+                  Add to cart
+                </button>
+              </Link>
             </div>
-          </Modal>
+          </ModalCartOneDayDiscount>
         )}
       </div>
     </header>
