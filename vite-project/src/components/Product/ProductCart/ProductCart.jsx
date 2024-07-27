@@ -13,7 +13,7 @@ const ProductCart = ({ product }) => {
 
   const dispatch = useDispatch();
 
-  const { cartProducts } = useSelector((state) => state.products);
+  const { cartProducts, products } = useSelector((state) => state.products);
 
   // установка счетчика кол-ва товара
   useEffect(() => {
@@ -56,6 +56,7 @@ const ProductCart = ({ product }) => {
       return "";
     }
   }
+
 
   return (
     <div className="list__item">

@@ -40,6 +40,7 @@ function App() {
             <Route path="/shopping-cart" element={<ShoppingCart />} />
             <Route path="/favorites" element={<Favorites />} />
             <Route path="*" element={<ErrorPage />} />
+            <Route path="/products/36" element={<ErrorPage />} />
           </Route>
         </Routes>
       </ThemeProvider>
