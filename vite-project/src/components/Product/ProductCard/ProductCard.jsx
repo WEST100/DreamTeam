@@ -124,7 +124,7 @@ export default function ProductCard({ product }) {
       </div>
       <div className="product__discount">
         <div className="product__discount__text">
-          <Link to={`/products/${product.id}`}>{shortText(product.title, 27)}</Link>
+          <Link to={`/products/${product.id}`}>{shortText(product.title, 17)}</Link>
         </div>
         <div className="product__price">
           <p className="product__price__real">${product.discont_price > 0 ? product.discont_price : product.price}</p>

@@ -66,7 +66,7 @@
 
 .shop {
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
   gap: 32px;
 
   &__ListCartContainer {
@@ -76,12 +76,12 @@
   }
   &__form {
     display: flex;
+    // flex: 1;
     flex-direction: column;
-    justify-content: space-between;
     border-radius: 12px;
     padding: 32px;
     max-width: 548px;
-    max-height: 640px;
+    max-height: 582px;
     background: #f2f6d3;
 
     &__text {
@@ -100,7 +100,7 @@
       &__frame {
         & p,
         &__price p {
-          font-size: 40px;
+          font-size:calc(32px + 8 * (100vw - 360px) / 1080);
           line-height: 130%;
           color: #8b8b8b;
         }
@@ -112,7 +112,8 @@
 
           & span {
             font-weight: 700;
-            font-size: 64px;
+            font-size: calc(40px + 24 * (100vw - 360px) / 1080);
+            
             line-height: 110%;
             color: #424436;
           }
@@ -172,34 +173,6 @@
   }
 }
 
-// .modalCart {
-//   &__text {
-//     font-weight: 600;
-//     font-size: 20px;
-//     line-height: 110%;
-//     color: #fff;
-//   }
-
-//   &__title {
-//     display: flex;
-//     justify-content: space-between;
-
-//     h3 {
-//       font-weight: 600;
-//       font-size: 40px;
-//       line-height: 110%;
-//       color: #fff;
-//       margin-bottom: 24px;
-//     }
-
-//     svg {
-//       color: #fff;
-//       height: 24px;
-//       width: 24px;
-//     }
-//   }
-// }
-
 .modalCart {
   display: flex;
   gap: 16px;
@@ -228,3 +201,21 @@
     }
   }
 }
+
+@media (max-width: 1000px) {
+  .shop {
+    grid-template-columns: repeat(auto-fill, minmax(470px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .shop {
+      flex-direction: column;
+      gap: 20px;
+
+      &__form {
+          max-width: 100%;
+      }
+  }
+}
+

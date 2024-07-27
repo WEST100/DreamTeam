@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: 1fr 1.4fr 1fr;
   align-items: center;
+  max-width: 200px;
 
   &__input {
     max-width: 82px;
@@ -27,5 +28,16 @@
       width: 24px;
       color: #8b8b8b;
     }
+  }
+}
+
+@media (max-width: 768px) {
+  .quantity {
+    max-width: 176px;
+  }
+}
+@media (max-width: 480px), (max-width: 360px){
+  .quantity {
+    max-width: 164px;
   }
 }
