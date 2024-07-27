@@ -52,12 +52,11 @@ const productsSlice = createSlice({
           return aDiscontPrice - bDiscontPrice;
         });
       } else if (action.payload.value === "high") {
-        state.filteredProducts = data.slice().sort((a, b) => { 
-           const aDiscontPrice = a.discont_price !== null ? a.discont_price : a.price;
-           const bDiscontPrice = b.discont_price !== null ? b.discont_price : b.price;
-           return bDiscontPrice - aDiscontPrice;
+        state.filteredProducts = data.slice().sort((a, b) => {
+          const aDiscontPrice = a.discont_price !== null ? a.discont_price : a.price;
+          const bDiscontPrice = b.discont_price !== null ? b.discont_price : b.price;
+          return bDiscontPrice - aDiscontPrice;
         });
-       
       } else if (action.payload.value === "name") {
         state.filteredProducts = data.slice().sort((a, b) => a.title.localeCompare(b.title));
       }
@@ -148,7 +147,7 @@ const productsSlice = createSlice({
       let minValue = !payload.min && payload.min === "" ? 0 : +payload.min;
 
       let data = state.filteredProductsFromCategory.length > 0 ? state.filteredProductsFromCategory : state.productsFromCategory;
-  
+
       state.filteredProductsFromCategory = data.filter((item) => (item.discont_price >= minValue && item.discont_price <= maxValue) || (item.price >= minValue && item.price <= maxValue));
       // state.filteredProductsFromCategory = data.filter((item) => item.price >= minValue && item.price <= maxValue);
     },
@@ -217,6 +216,28 @@ const productsSlice = createSlice({
 
       localStorage.setItem("favorites", JSON.stringify(state.favoritesProducts));
     },
+    // добавление товара из 1daydiscount
+    addProductFromOneDayDiscount: (state, { payload }) => {
+      const { title, price, description, image, createdAt, updatedAt, categoryId } = payload;
+      const maxId = Math.max(...state.products.map((el) => el.id)) + 1;
+      const newProduct = {
+        id: maxId < 0 ? 1 : maxId,
+        title,
+        price,
+        discont_price: price / 2,
+        count: 1,
+        description,
+        image,
+        createdAt,
+        updatedAt,
+        categoryId,
+      };
+
+      state.cartProducts = [...state.cartProducts, newProduct];
+      state.products = [...state.products, newProduct];
+
+      localStorage.setItem("cart", JSON.stringify(state.cartProducts));
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -263,4 +284,4 @@ const productsSlice = createSlice({
 });
 
 export default productsSlice.reducer;
-export const { sortByPayload, sortByCheckBox, sortByMinMax, addFavoritesProducts, addProductToCart, getProductsFromLocalStorage, getFavoritesFromLocalStorage, incrementProduct, decrementProduct, removeProductFromCart, removeProductFromFavorites, sortByPayloadFromFavorites, sortByMinMaxFromFavorites, sortByPayloadFromCategories, sortByCheckBoxFromCategories, sortByMinMaxFromCategories } = productsSlice.actions;
+export const { sortByPayload, sortByCheckBox, sortByMinMax, addFavoritesProducts, addProductToCart, getProductsFromLocalStorage, getFavoritesFromLocalStorage, incrementProduct, decrementProduct, removeProductFromCart, removeProductFromFavorites, sortByPayloadFromFavorites, sortByMinMaxFromFavorites, sortByPayloadFromCategories, sortByCheckBoxFromCategories, sortByMinMaxFromCategories, addProductFromOneDayDiscount } = productsSlice.actions;

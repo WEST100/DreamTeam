@@ -82,12 +82,12 @@ export default function ProductCardOneDayDiscount({ product }) {
           <Link to={`/products/${product.id}`}>{shortText(product.title, 27)}</Link>
         </div>
         <div className="product__price">
-          <p className="product__price__real">${product.discont_price > 0 ? product.discont_price : product.price}</p>
-          <p className="product__price__old">{product.discont_price > 0 ? `$${product.price}` : ""}</p>
+          <p className="product__price__real">${(product.price / 2).toFixed(2)}</p>
+          <p className="product__price__old">${product.price}</p>
         </div>
       </div>
-      <div className={product.discont_price === null ? "" : "product__discount__Perc"}>
-        <p>{product.discont_price ? `${Math.round((product.discont_price / product.price) * 100 - 100)}%` : ""}</p>
+      <div className="product__discount__Perc">
+        <p>-50%</p>
       </div>
       <div className="product__icons">
         <svg
