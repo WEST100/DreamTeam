@@ -1,21 +1,14 @@
 import React, { useContext, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getAllProductAction } from "../../../store/asyncActions/product";
+import { useSelector } from "react-redux";
 import ProductCard from "../../Product/ProductCard/ProductCard";
 import { Link } from "react-router-dom";
 import { ThemeContext } from "../../Theme/ThemeContext";
 import "./SectionSale.scss";
 
 const SectionSale = () => {
-  let dispatch = useDispatch();
-
-   const { theme } = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
 
   let { products, isLoading } = useSelector((state) => state.products);
-
-  useEffect(() => {
-    dispatch(getAllProductAction());
-  }, []);
 
   let filteredProducts = products.filter((item) => item.discont_price);
 

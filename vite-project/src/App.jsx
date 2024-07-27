@@ -14,12 +14,14 @@ import Favorites from "./pages/Favorites/Favorites";
 import { useDispatch } from "react-redux";
 import { getFavoritesFromLocalStorage, getProductsFromLocalStorage } from "./store/Reducers/ProductsReducer";
 import { useEffect } from "react";
+import { getAllProductAction } from "./store/asyncActions/product";
 
 function App() {
 
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(getAllProductAction());
     dispatch(getProductsFromLocalStorage());
     dispatch(getFavoritesFromLocalStorage());
   }, []);
@@ -38,6 +40,7 @@ function App() {
             <Route path="/shopping-cart" element={<ShoppingCart />} />
             <Route path="/favorites" element={<Favorites />} />
             <Route path="*" element={<ErrorPage />} />
+            <Route path="/products/36" element={<ErrorPage />} />
           </Route>
         </Routes>
       </ThemeProvider>

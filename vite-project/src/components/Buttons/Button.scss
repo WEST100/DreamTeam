@@ -9,8 +9,19 @@
   padding: 16px 56px;
   border: none;
   cursor: pointer;
+  width: 100%;
 
   &:hover {
     background: #424436;
   }
+}
+
+.btn-white {
+  background: #fff;
+  color: black;
+
+    &:hover {
+    color: #fff;
+  }
+
 }

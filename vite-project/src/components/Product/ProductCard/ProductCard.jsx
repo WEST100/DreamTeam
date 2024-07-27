@@ -17,16 +17,17 @@ export default function ProductCard({ product }) {
     return text.length > length ? `${text.slice(0, length)} ...` : text;
   };
 
-  const [isColoredHeart, setIsColoredHeart] = useState(false);
-  const [isColoredCart, setIsColoredCart] = useState(false);
+  // стейты для смены фона иконок, раньше были мной использованы пока я не перешел на функции. Если хватит время то использую их потом.
+  // const [isColoredHeart, setIsColoredHeart] = useState(false);
+  // const [isColoredCart, setIsColoredCart] = useState(false);
 
-  const handleSvgClickHeart = () => {
-    setIsColoredHeart(!isColoredHeart);
-  };
+  // const handleSvgClickHeart = () => {
+  //   setIsColoredHeart(!isColoredHeart);
+  // };
 
-  const handleSvgClickCart = () => {
-    setIsColoredCart(!isColoredCart);
-  };
+  // const handleSvgClickCart = () => {
+  //   setIsColoredCart(!isColoredCart);
+  // };
 
   // функция сравнения при клике на сумку, если продукт есть в корзине то удаляем, если нету то добавляем
   function compareProductsFromCart() {
@@ -136,7 +137,7 @@ export default function ProductCard({ product }) {
       <div className="product__icons">
         <svg
           onClick={() => {
-            handleSvgClickHeart();
+            // handleSvgClickHeart();
             compareProductsFromFavorites();
           }}
           className="heart"
@@ -150,7 +151,7 @@ export default function ProductCard({ product }) {
 
         <svg
           onClick={() => {
-            handleSvgClickCart();
+            // handleSvgClickCart();
             compareProductsFromCart();
           }}
           className="cart"

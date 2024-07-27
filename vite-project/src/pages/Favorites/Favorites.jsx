@@ -1,49 +1,17 @@
-import React, { useContext, useEffect } from "react";
-import Filter from "../../components/Filter/Filter";
+import React, { useContext } from "react";
 import { ThemeContext } from "../../components/Theme/ThemeContext";
 import { Link } from "react-router-dom";
 import "./Favorites.scss";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import ProductCard from "../../components/Product/ProductCard/ProductCard";
-import { getAllProductAction } from "../../store/asyncActions/product";
+import FilterForFavorites from "../../components/Filter/FilterForFavorites/FilterForFavorites";
 
 const Favorites = () => {
   const { theme } = useContext(ThemeContext);
 
-  const dispatch = useDispatch();
+  const { favoritesProducts, isLoading, filteredFavoritesProducts } = useSelector((state) => state.products);
 
-  const { favoritesProducts, isLoading, filteredProducts, products } = useSelector((state) => state.products);
-  console.log(favoritesProducts);
-  console.log(products);
-
-  useEffect(() => {
-    dispatch(getAllProductAction());
-  }, []);
-
-  const data = filteredProducts.length > 0 ? filteredProducts : favoritesProducts;
-  console.log(data);
-
-
- /// ----------- ?????????
-  const findFavoritesItems = data.filter((item) => {
-    return filteredProducts.some((item2) => item2.id === item.id)
-  });
-  console.log(findFavoritesItems)
-/// --------------------
-
-   // ------------------сравнение массивов работает но с ошибками не фильтрует от minPrice до bigPrice и наоборот----------
-
-// const leastArr = filteredProducts.length < favoritesProducts.length ? filteredProducts : favoritesProducts;
-// const biggestArr = filteredProducts.length >= favoritesProducts.length ? filteredProducts : favoritesProducts;
-// console.log(leastArr);
-// console.log(biggestArr);
-
-// const resultArray = leastArr.filter((item) => {
-//   return biggestArr.some((item2) => item2.id === item.id)
-// });
-
-// console.log(resultArray);
- // ---------------------------------------------------
+  const data = filteredFavoritesProducts.length > 0 ? filteredFavoritesProducts : favoritesProducts;
 
   return (
     <>
@@ -59,8 +27,8 @@ const Favorites = () => {
           <div className="allPagesTitle">
             <h2>Liked products</h2>
           </div>
-          <Filter />
-          <div className="productListContainer">{isLoading ? <div className="loader"></div> : favoritesProducts && favoritesProducts.map((prod) => <ProductCard key={prod.id} product={prod} />)}</div>
+          <FilterForFavorites />
+          <div className="productListContainer">{isLoading ? <div className="loader"></div> : data && data.map((prod) => <ProductCard key={prod.id} product={prod} />)}</div>
         </div>
       </section>
     </>

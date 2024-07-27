@@ -1,7 +1,7 @@
 import React from "react";
-import "./Modal.scss";
+import "./ModalCartOneDayDiscount.scss";
 
-const Modal = ({ active, setActive, setResponce, children }) => {
+const ModalCartOneDayDiscount = ({ active, setActive, setResponce, children }) => {
   // добавил children чтобы компонент был переиспользуемый
   return (
     <div
@@ -18,4 +18,4 @@ const Modal = ({ active, setActive, setResponce, children }) => {
   );
 };
 
-export default Modal;
+export default ModalCartOneDayDiscount;

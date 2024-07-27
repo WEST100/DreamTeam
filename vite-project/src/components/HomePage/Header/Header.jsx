@@ -1,21 +1,72 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./Header.scss";
 import logo from "/src/assets/images/home_img/logo.png";
 import { Link, NavLink } from "react-router-dom";
 import { ThemeContext } from "../../Theme/ThemeContext";
 import { IoMoonOutline, IoSunnyOutline } from "react-icons/io5";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RxHamburgerMenu } from "react-icons/rx";
+import { IoMdClose } from "react-icons/io";
+import Button from "../../Buttons/Button";
+import ModalCartOneDayDiscount from "../../Modal/ModalCartOneDayDiscount/ModalCartOneDayDiscount";
+import { addProductFromOneDayDiscount, addProductToCart } from "../../../store/Reducers/ProductsReducer";
+import ProductCardOneDayDiscount from "../../Product/ProductCardOneDayDiscount/ProductCardOneDayDiscount";
 
 const Header = () => {
+  const dispatch = useDispatch();
+
+  const { products, favoritesProducts, cartProducts } = useSelector((state) => state.products);
+
+  let filteredProducts = products.filter((item) => item.discont_price === null);
+
+  let date = new Date();
+  let day = date.getDate();
+
+  let findOneDayDiscountProduct = () => {
+    if (day >= 1 && day <= 5) {
+      return filteredProducts.slice(0, 1);
+    } else if (day >= 6 && day <= 10) {
+      return filteredProducts.slice(1, 2);
+    } else if (day >= 11 && day <= 15) {
+      return filteredProducts.slice(2, 3);
+    } else if (day >= 16 && day <= 20) {
+      return filteredProducts.slice(3, 4);
+    } else if (day >= 21 && day <= 25) {
+      return filteredProducts.slice(4, 5);
+    } else if (day >= 26 && day <= 31) {
+      return filteredProducts.slice(5, 6);
+    }
+  };
+
+  let discountProductOfTheDay = findOneDayDiscountProduct();
+
+  // метод случайной сортировки массива и слайс 1-го товара (метод работает, но при клике на сердечко, компонент постоянно обновляется, пришлось решить через new Date)
+  // let randomProducts = filteredProducts.sort(() => Math.random() - 0.5).slice(0, 1);
+  // console.log(randomProducts[0]);
+
+  // функция сравнения есть ли товар со скидкой 50% уже в корзине или нет
+  let checkForUniqueProductInCart = () => {
+    let title = discountProductOfTheDay[0].title;
+    let arrTitle = cartProducts.map((item) => item.title);
+    let answer = arrTitle.filter((item) => item === title);
+    if (answer[0] === title) {
+      console.log("product already been in cart");
+    } else {
+      dispatch(addProductFromOneDayDiscount(discountProductOfTheDay[0]));
+    }
+  };
+
   // установка класса для активных ссылок
   const setActiveLink = ({ isActive }) => (isActive ? "navbar__item navbar__item-active" : "navbar__item");
 
   // переключатель темы
   const { theme, toggleTheme } = useContext(ThemeContext);
 
-  // обращение к стейтам для отображения кол-ва избранного и товаров в корзине в сердечках
-  const { favoritesProducts, cartProducts } = useSelector((state) => state.products);
+  // состояние отвечающее за видимость модального окна
+  const [modalActive, setModalActive] = useState(false);
+
+  // стейт для отслеживания состояния нажатия на бургер
+  const [isBurgerMenuOn, setIsBurgerMenuOn] = useState(false);
 
   // функция для темы, которая забирает состояние переключателя
   const handleChangeSwitch = (e) => {
@@ -46,10 +97,12 @@ const Header = () => {
           </div>
         </div>
 
-        <div className="menu-opacity">
+        <div className={isBurgerMenuOn ? "menu-opacity" : ""}>
           <div className="menu">
             <div className="menu__button">
-              <button className="menu__button_small">1 day discount!</button>
+              <button className="menu__button_small" onClick={() => setModalActive(true)}>
+                1 day discount!
+              </button>
             </div>
             <nav className="nav">
               <ul className="menu__list">
@@ -91,8 +144,37 @@ const Header = () => {
               <path d="M22 0C16.4961 0 12.0565 4.37373 12.0565 9.79592V11.7551H4.19492L4.10169 12.6122L0.124294 46.898L0 48H44L43.8757 46.898L39.8983 12.6122L39.8051 11.7551H31.9435V9.79592C31.9435 4.37373 27.5039 0 22 0ZM22 1.95918C26.4396 1.95918 29.9548 5.42219 29.9548 9.79592V11.7551H14.0452V9.79592C14.0452 5.42219 17.5604 1.95918 22 1.95918ZM5.99717 13.7143H12.0565V15.949C11.4622 16.2895 11.0621 16.9094 11.0621 17.6327C11.0621 18.7156 11.9516 19.5918 13.0508 19.5918C14.1501 19.5918 15.0395 18.7156 15.0395 17.6327C15.0395 16.9094 14.6395 16.2895 14.0452 15.949V13.7143H29.9548V15.949C29.3605 16.2895 28.9605 16.9094 28.9605 17.6327C28.9605 18.7156 29.8499 19.5918 30.9492 19.5918C32.0484 19.5918 32.9379 18.7156 32.9379 17.6327C32.9379 16.9094 32.5378 16.2895 31.9435 15.949V13.7143H38.0028L41.7627 46.0408H2.23729L5.99717 13.7143Z" />
             </svg>
           </Link>
-          <RxHamburgerMenu className="burger-menu"/>
+          <RxHamburgerMenu onClick={() => setIsBurgerMenuOn(!isBurgerMenuOn)} className="burger-menu" />
         </div>
+        {modalActive && (
+          <ModalCartOneDayDiscount active={modalActive} setActive={setModalActive}>
+            <div className="modalHeader">
+              <div className="modalHeader__items">
+                <div className="modalHeader__items_title">
+                  <h3>50% discount on product of the day</h3>
+                </div>
+                <div className="modalHeader__items_close">
+                  <IoMdClose onClick={() => setModalActive(false)} />
+                </div>
+              </div>
+              <div className="modalHeader__product">
+                <div className="product__container">{discountProductOfTheDay && discountProductOfTheDay.map((prod) => <ProductCardOneDayDiscount key={prod.id} product={prod} />)}</div>
+              </div>
+              {/* <Button className={"btn-white"} name={"Add to cart"} newDispatch={randomProducts[0]} onClick={() => setModalActive(false)} /> */}
+              <Link to={"/shopping-cart"}>
+                <button
+                  className="modalHeader__btn"
+                  onClick={() => {
+                    setModalActive(false);
+                    checkForUniqueProductInCart();
+                  }}
+                >
+                  Add to cart
+                </button>
+              </Link>
+            </div>
+          </ModalCartOneDayDiscount>
+        )}
       </div>
     </header>
   );
