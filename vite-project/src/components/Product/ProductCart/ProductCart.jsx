@@ -56,13 +56,17 @@ const ProductCart = ({ product }) => {
     }
   }
 
+  const shortText = (text, length) => {
+    return text.length > length ? `${text.slice(0, length)} ...` : text;
+  };
+
   return (
     <div className="list__item">
       <img className="list__item__image" src={`https://exam-server-5c4e.onrender.com${product.image}`} alt="product-image" />
       <div className="list__content">
         <div className="list__content__title">
           <Link to={`/products/${product.id}`}>
-            <h3>{product.title} </h3>
+            <h3>{shortText(product.title, 17)}</h3>
           </Link>
           <div className="closeImage">
             <IoMdClose onClick={() => dispatch(removeProductFromCart(product))} />
