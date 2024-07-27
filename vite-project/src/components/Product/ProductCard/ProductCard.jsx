@@ -17,6 +17,7 @@ export default function ProductCard({ product }) {
     return text.length > length ? `${text.slice(0, length)} ...` : text;
   };
 
+  // стейты для смены фона иконок, раньше были мной использованы пока я не перешел на функции. Если хватит время то использую их потом.
   // const [isColoredHeart, setIsColoredHeart] = useState(false);
   // const [isColoredCart, setIsColoredCart] = useState(false);
 

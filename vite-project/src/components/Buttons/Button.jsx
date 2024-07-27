@@ -5,7 +5,6 @@ import { addProductToCart } from "../../store/Reducers/ProductsReducer";
 import { useDispatch } from "react-redux";
 
 const Button = ({ name, link, newDispatch, className }) => {
-  console.log(newDispatch);
 
   const dispatch = useDispatch();
 
