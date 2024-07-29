@@ -3,6 +3,7 @@ import header from "/src/assets/images/home_img/header.jpg";
 import "./SectionMain.scss";
 import { ThemeContext } from '../../Theme/ThemeContext';
 import { Link } from 'react-router-dom';
+import Button from '../../Buttons/Button';
 
 const SectionMain = () => {
 
@@ -19,9 +20,7 @@ const SectionMain = () => {
               <br />
               on Garden Products!
             </h1>
-            <Link to={"/discounted"}>
-              <button className="main__button_large">Check out</button>
-            </Link>
+              <Button name={"Check out"} className="main__button_large" link={"/discounted"} />
           </div>
         </div>
       </div>

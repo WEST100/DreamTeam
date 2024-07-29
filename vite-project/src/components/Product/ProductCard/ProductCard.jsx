@@ -59,61 +59,82 @@ export default function ProductCard({ product }) {
     }
   }
 
-  function IsColoredHeartFill() {
-    let foundProduct = favoritesProducts.find((item) => item.id === product.id);
+  const IsColoredHeartFill = () => {
+    const foundProduct = favoritesProducts.find((item) => item.id === product.id);
+    return foundProduct ? "#92a134" : "white";
+  };
+  
+  // старый вариант функции IsColoredHeartFill оставлю здесь для себя на память))
+  // function IsColoredHeartFill() {
+  //   let foundProduct = favoritesProducts.find((item) => item.id === product.id);
 
-    if (favoritesProducts.length > 0) {
-      if (foundProduct) {
-        return "#92a134";
-      } else {
-        return "white";
-      }
-    } else {
-      return "white";
-    }
-  }
+  //   if (favoritesProducts.length > 0) {
+  //     if (foundProduct) {
+  //       return "#92a134";
+  //     } else {
+  //       return "white";
+  //     }
+  //   } else {
+  //     return "white";
+  //   }
+  // }
 
-  function IsColoredHeartStroke() {
-    let foundProduct = favoritesProducts.find((item) => item.id === product.id);
+  const IsColoredHeartStroke = () => {
+    const foundProduct = favoritesProducts.find((item) => item.id === product.id);
+    return foundProduct ? "#92a134" : "#424436";
+  };
+  // старый вариант функции IsColoredHeartStroke оставлю здесь для себя на память))
+  // function IsColoredHeartStroke() {
+  //   let foundProduct = favoritesProducts.find((item) => item.id === product.id);
 
-    if (favoritesProducts.length > 0) {
-      if (foundProduct) {
-        return "#92a134";
-      } else {
-        return "#424436";
-      }
-    } else {
-      return "#424436";
-    }
-  }
+  //   if (favoritesProducts.length > 0) {
+  //     if (foundProduct) {
+  //       return "#92a134";
+  //     } else {
+  //       return "#424436";
+  //     }
+  //   } else {
+  //     return "#424436";
+  //   }
+  // }
 
-  function IsColoredCartFill() {
-    let foundProduct = cartProducts.find((item) => item.id === product.id);
+  const IsColoredCartFill = () => {
+    const foundProduct = cartProducts.find((item) => item.id === product.id);
+    return foundProduct ? "#92a134" : "white";
+  };
 
-    if (cartProducts.length > 0) {
-      if (foundProduct) {
-        return "#92a134";
-      } else {
-        return "white";
-      }
-    } else {
-      return "white";
-    }
-  }
+  // старый вариант функции IsColoredCartFill оставлю здесь для себя на память))
+  // function IsColoredCartFill() {
+  //   let foundProduct = cartProducts.find((item) => item.id === product.id);
+  //   if (cartProducts.length > 0) {
+  //     if (foundProduct) {
+  //       return "#92a134";
+  //     } else {
+  //       return "white";
+  //     }
+  //   } else {
+  //     return "white";
+  //   }
+  // }
 
-  function IsColoredCartFill2() {
-    let foundProduct = cartProducts.find((item) => item.id === product.id);
+  const IsColoredCartFill2 = () => {
+    const foundProduct = cartProducts.find((item) => item.id === product.id);
+    return foundProduct ? "#92a134" : "#424436";
+  };
 
-    if (cartProducts.length > 0) {
-      if (foundProduct) {
-        return "#92a134";
-      } else {
-        return "#424436";
-      }
-    } else {
-      return "#424436";
-    }
-  }
+  // старый вариант функции IsColoredCartFill2 оставлю здесь для себя на память))
+  // function IsColoredCartFill2() {
+  //   let foundProduct = cartProducts.find((item) => item.id === product.id);
+  //   if (cartProducts.length > 0) {
+  //     if (foundProduct) {
+  //       return "#92a134";
+  //     } else {
+  //       return "#424436";
+  //     }
+  //   } else {
+  //     return "#424436";
+  //   }
+  // }
 
   return (
     <div className={`product__card ${theme ? "product__card-dark" : "product__card-light"}`}>
@@ -124,7 +145,7 @@ export default function ProductCard({ product }) {
       </div>
       <div className="product__discount">
         <div className="product__discount__text">
-          <Link to={`/products/${product.id}`}>{shortText(product.title, 27)}</Link>
+          <Link to={`/products/${product.id}`}>{shortText(product.title, 17)}</Link>
         </div>
         <div className="product__price">
           <p className="product__price__real">${product.discont_price > 0 ? product.discont_price : product.price}</p>

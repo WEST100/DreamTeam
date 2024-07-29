@@ -9,6 +9,9 @@ import { IoMdClose } from "react-icons/io";
 const SectionDiscount = () => {
   const { theme } = useContext(ThemeContext);
 
+  // состояние отвечающее за смену кнопки при клике
+  const [isActive, setIsActive] = useState(false);
+
   // состояние отвечающее за видимость модального окна
   const [modalActive, setModalActive] = useState(false);
 
@@ -63,10 +66,7 @@ const SectionDiscount = () => {
         <div className="discount__form">
           <h3>5% off on the first order</h3>
           <div className="discount__content">
-            {/* <div> */}
             <img src={imageForm} alt="Hands holding garden tools" />
-            {/* </div> */}
-
             <div className="discount__form__container">
               <form onSubmit={handleSubmit(onSubmit)}>
                 {errors.name && <span className="alert">{errors.name?.message}</span>}
@@ -95,8 +95,15 @@ const SectionDiscount = () => {
                     required: "email is required",
                   })}
                 />
-                <button type="submit" onClick={() => setModalActive(true)}>
-                  Get a discount
+                <button
+                  type="submit"
+                  className={isResponce && isActive ? "button-active" : ""}
+                  onClick={() => {
+                    setModalActive(true);
+                    setIsActive(!isActive);
+                  }}
+                >
+                  {isResponce && isActive ? "Request Submitted" : "Get a discount"}
                 </button>
               </form>
             </div>
@@ -107,9 +114,7 @@ const SectionDiscount = () => {
             <div className="modalCart">
               <div className="modalCart__description">
                 <h3>Congratulations!</h3>
-                <p>
-                  You have a discount coupon 5%.
-                </p>
+                <p>You have a discount coupon 5%.</p>
               </div>
               <div className="modalCart__close">
                 <IoMdClose

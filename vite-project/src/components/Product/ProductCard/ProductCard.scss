@@ -27,6 +27,7 @@
     border-radius: 12px;
     background: #fff;
     overflow: hidden;
+    // gap: 20px;
   }
 
   &__img {
@@ -114,7 +115,16 @@
     }
   }
 }
+@media(max-width:768px) {
+  .product__discount {
+    padding: 20px;
+  }
+  
+}
 @media(max-width:480px), (max-width:360px) {
+  .product__discount {
+    padding: 20px
+  }
   .product__price__real {
     font-size: 36px;
   }

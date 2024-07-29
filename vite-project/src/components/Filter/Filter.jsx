@@ -10,6 +10,8 @@ const Filter = () => {
 
   const { theme } = useContext(ThemeContext);
 
+  const location = useLocation();
+
   const [fromPrice, setFromPrice] = useState(0);
   const [toPrice, setToPrice] = useState(Infinity);
   const [isChecked, setIsChecked] = useState(false);
@@ -24,8 +26,18 @@ const Filter = () => {
   function handleSelect(e) {
     setSelect(e.target.value);
   }
-  // const location = useLocation(); ???????????????????????????????????????????????????
-  console.log(location.pathname);
+
+    function handleFromPriceChange(e) {
+      const value = e.target.value;
+      setFromPrice(value === "" ? 0 : Number(value));
+    }
+
+    function handleToPriceChange(e) {
+      const value = e.target.value;
+      setToPrice(value === "" ? Infinity : Number(value));
+    }
+
+  // вытягиваем локацию url и на странице товаров со скидкой скрываем div с чекбоксом, не надо писать отдельный фильтр для страницы discountedItems (p.s работает и без - const location = useLocation(); только вот почему не пойму)) )
   let hideDiscountedItems = () => (location.pathname === "/discounted" ? "discountedHide" : "");
 
   return (
@@ -36,11 +48,10 @@ const Filter = () => {
             <label htmlFor="price-from" className="box__label">
               Price
             </label>
-            <input className="price__input" id="price-from" type="number" name="min" placeholder="from" min="0" step="1" onChange={(e) => setFromPrice(+e.target.value)} />
-            <input value={toPrice} className="price__input" type="number" name="max" placeholder="to" min="0" step="1" onChange={(e) => setToPrice(+e.target.value)} />
+            <input value={fromPrice === 0 ? "" : fromPrice} className="price__input" id="price-from" type="number" name="min" placeholder="from" min="0" step="1" onChange={handleFromPriceChange} />
+            <input value={toPrice === Infinity ? "" : toPrice} className="price__input" type="number" name="max" placeholder="to" min="0" step="1" onChange={handleToPriceChange} />
           </form>
           <div className={`discounted ${hideDiscountedItems()}`}>
-            {/* <div className="discounted"> */}
             <label htmlFor="checkbox" className="box__label">
               Discounted items
             </label>

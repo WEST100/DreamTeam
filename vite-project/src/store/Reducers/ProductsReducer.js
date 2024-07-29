@@ -85,7 +85,7 @@ const productsSlice = createSlice({
         state.filteredFavoritesProducts = data.slice().sort((a, b) => a.title.localeCompare(b.title));
       }
     },
-    // сортировка по нажатию на checkBox для товаров из категорий
+    // сортировка из выпадающего списка для категорий
     sortByPayloadFromCategories(state, action) {
       let data = state.filteredProductsFromCategory.length > 0 ? state.filteredProductsFromCategory : state.productsFromCategory;
 
@@ -128,29 +128,53 @@ const productsSlice = createSlice({
 
       let data = state.filteredProducts.length > 0 ? state.filteredProducts : state.products;
 
-      state.filteredProducts = data.filter((item) => (item.discont_price >= minValue && item.discont_price <= maxValue) || (item.price >= minValue && item.price <= maxValue));
+      state.filteredProducts = data.filter((item) => {
+        const price = item.discont_price !== null ? item.discont_price : item.price;
+        return price >= minValue && price <= maxValue;
+      });
     },
     // сортировка от Мин цены до Макс цены. для избранного
     sortByMinMaxFromFavorites(state, { payload }) {
-      let maxValue = !payload.max && payload.max === "" ? Infinity : +payload.max;
-      let minValue = !payload.min && payload.min === "" ? 0 : +payload.min;
+      let maxValue = payload.max === "" ? Infinity : +payload.max;
+      let minValue = payload.min === "" ? 0 : +payload.min;
+
+      console.log("minValue:", minValue);
+      console.log("maxValue:", maxValue);
+      console.log("Filtered Data:", state.filteredFavoritesProducts);
 
       let data = state.filteredFavoritesProducts.length > 0 ? state.filteredFavoritesProducts : state.favoritesProducts;
 
-      state.filteredFavoritesProducts = data.filter((item) => (item.discont_price >= minValue && item.discont_price <= maxValue) || (item.price >= minValue && item.price <= maxValue));
-
-      // state.filteredFavoritesProducts = data.filter((item) => item.price >= minValue && item.price <= maxValue);
+      state.filteredFavoritesProducts = data.filter((item) => {
+        const price = item.discont_price !== null ? item.discont_price : item.price;
+        return price >= minValue && price <= maxValue;
+      });
     },
     // сортировка от Мин цены до Макс цены. для всех товаров из категорий
     sortByMinMaxFromCategories(state, { payload }) {
-      let maxValue = !payload.max && payload.max === "" ? Infinity : +payload.max;
-      let minValue = !payload.min && payload.min === "" ? 0 : +payload.min;
+      let maxValue = payload.max === "" ? Infinity : +payload.max;
+      let minValue = payload.min === "" ? 0 : +payload.min;
 
       let data = state.filteredProductsFromCategory.length > 0 ? state.filteredProductsFromCategory : state.productsFromCategory;
 
-      state.filteredProductsFromCategory = data.filter((item) => (item.discont_price >= minValue && item.discont_price <= maxValue) || (item.price >= minValue && item.price <= maxValue));
-      // state.filteredProductsFromCategory = data.filter((item) => item.price >= minValue && item.price <= maxValue);
+      console.log("minValue:", minValue);
+      console.log("maxValue:", maxValue);
+      console.log("Filtered Data:", state.filteredProductsFromCategory);
+
+      // Проверяем валидность диапазона и фильтруем 
+      if (minValue > maxValue) {
+        // Если диапазон невалиден, очищаем результат фильтрации, но при этом массив заполнится продуктами из категории, надо думать над условием
+        state.filteredProductsFromCategory = [];
+        // state.productsFromCategory = [];
+        console.log("Filtered Data:", state.filteredProductsFromCategory);
+      } else {
+        state.filteredProductsFromCategory = data.filter((item) => {
+          const price = item.discont_price !== null ? item.discont_price : item.price;
+          return price >= minValue && price <= maxValue;
+        });
+      }
+      console.log("Filtered Data:", state.filteredProductsFromCategory);
     },
+
     // Добавление товаров в корзину
     addProductToCart: (state, { payload }) => {
       let foundProduct = state.cartProducts.find((item) => item.id === payload.id);
