@@ -20,11 +20,8 @@
     position: relative;
 
     & img {
-      max-width: 748px;
-      height: auto;
-      position: relative;
-      left: 0; /* Начальная позиция */
-      transition: transform 0.3s ease-in-out; /* Плавный переход для свойства transform */
+      display: block;
+      transform: translateY(7%);
     }
   }
 
@@ -46,10 +43,12 @@
     &__container {
       display: flex;
       flex-direction: column;
+      text-align: left;
 
       & form {
         width: 100%;
         max-width: 516px;
+        margin-bottom: 15px;
       }
       & input {
         width: 100%;
@@ -117,7 +116,7 @@
 }
 @media (max-width: 768px) {
   .discount__content {
-    gap: 20px;
+    align-items: end;
   }
   .discount__form {
     h3 {
@@ -128,11 +127,12 @@
     max-width: 334px;
   }
   .discount__content img {
-    transform: translateX(-35%); /* Перемещение изображения влево на 35% */
+    transform: translateY(7%) translateX(-39%); /* Перемещение изображения влево на 35% */
   }
 }
 @media (max-width: 480px) {
   .discount__form {
+    padding: 32px 32px 0px 32px;
     h3 {
       font-size: 48px;
     }
