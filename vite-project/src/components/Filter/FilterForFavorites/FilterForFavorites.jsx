@@ -5,7 +5,6 @@ import { ThemeContext } from "../../Theme/ThemeContext";
 import { sortByMinMaxFromFavorites, sortByPayloadFromFavorites } from "../../../store/Reducers/ProductsReducer";
 
 const FilterForFavorites = () => {
-
   const dispatch = useDispatch();
 
   const { theme } = useContext(ThemeContext);
@@ -14,13 +13,23 @@ const FilterForFavorites = () => {
   const [toPrice, setToPrice] = useState(Infinity);
   const [select, setSelect] = useState("default");
 
-  useEffect(()=> {
-    dispatch(sortByMinMaxFromFavorites({ min: fromPrice, max: toPrice}));
+  useEffect(() => {
+    dispatch(sortByMinMaxFromFavorites({ min: fromPrice, max: toPrice }));
     dispatch(sortByPayloadFromFavorites({ value: select }));
-  },[fromPrice, toPrice, select, dispatch])
+  }, [fromPrice, toPrice, select, dispatch]);
 
   function handleSelect(e) {
     setSelect(e.target.value);
+  }
+
+  function handleFromPriceChange(e) {
+    const value = e.target.value;
+    setFromPrice(value === "" ? 0 : Number(value));
+  }
+
+  function handleToPriceChange(e) {
+    const value = e.target.value;
+    setToPrice(value === "" ? Infinity : Number(value));
   }
 
   return (
@@ -31,8 +40,8 @@ const FilterForFavorites = () => {
             <label htmlFor="price-from" className="box__label">
               Price
             </label>
-            <input className="price__input" id="price-from" type="number" name="min" placeholder="from" min="0" step="1" onChange={(e) => setFromPrice(+e.target.value)} />
-            <input value={toPrice} className="price__input" type="number" name="max" placeholder="to" min="0" step="1" onChange={(e) => setToPrice(+e.target.value)} />
+            <input value={fromPrice === 0 ? "" : fromPrice} className="price__input" id="price-from" type="number" name="min" placeholder="from" min="0" step="1" onChange={handleFromPriceChange} />
+            <input value={toPrice === Infinity ? "" : toPrice} className="price__input" type="number" name="max" placeholder="to" min="0" step="1" onChange={handleToPriceChange} />
           </form>
           <div className="sort">
             <label htmlFor="sort" className="box__label">

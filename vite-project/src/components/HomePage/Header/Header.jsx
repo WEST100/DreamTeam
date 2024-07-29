@@ -160,7 +160,7 @@ const Header = () => {
               <div className="modalHeader__product">
                 <div className="product__container">{discountProductOfTheDay && discountProductOfTheDay.map((prod) => <ProductCardOneDayDiscount key={prod.id} product={prod} />)}</div>
               </div>
-              {/* <Button className={"btn-white"} name={"Add to cart"} newDispatch={randomProducts[0]} onClick={() => setModalActive(false)} /> */}
+              {/* <Button className={"btn-white"} name={"Add to cart"} newDispatch={randomProducts[0]} /> */}
               <Link to={"/shopping-cart"}>
                 <button
                   className="modalHeader__btn"

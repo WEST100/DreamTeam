@@ -68,6 +68,7 @@ const ProductCart = ({ product }) => {
         <div className="list__content__title">
           <Link to={`/products/${product.id}`}>
             <h3>{shortText(product.title, 17)}</h3>
+            {/* <h3>{product.title}</h3> */}
           </Link>
           <div className="closeImage">
             <IoMdClose onClick={() => dispatch(removeProductFromCart(product))} />

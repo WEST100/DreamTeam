@@ -19,8 +19,6 @@ const DiscountedItems = () => {
   }, []);
 
   const data = filteredProducts.length > 0 ? filteredProducts : products;
-  console.log(data);
-  console.log(products);
 
   const findDiscountedItems = data.filter((item) => {
     if (item.discont_price != null) {

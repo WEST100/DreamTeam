@@ -46,8 +46,6 @@ const ShoppingCart = () => {
         body: JSON.stringify({ ...data, order: cartProducts.map((item) => `${item.title} * ${item.count} - ${item.price}`).join(",") }),
       });
       const results = await res.json();
-      console.log(results.status);
-      console.log(res);
       if (res.ok) {
         setIsResponce(!isResponce);
       } else {

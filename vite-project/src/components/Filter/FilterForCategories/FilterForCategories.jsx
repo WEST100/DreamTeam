@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./FilterForCategories.scss";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ThemeContext } from "../../Theme/ThemeContext";
 import { sortByMinMaxFromCategories, sortByPayloadFromCategories, sortByCheckBoxFromCategories } from "../../../store/Reducers/ProductsReducer";
 
@@ -14,13 +14,6 @@ const FilterForCategories = () => {
   const [isChecked, setIsChecked] = useState(false);
   const [select, setSelect] = useState("default");
 
-  // как??? как такое может быть??? почему?? не работает два на вид одинаковых useEffect'a
-  // useEffect(() => {
-  //   dispatch(sortByMinMaxFromCategories({ min: fromPrice, max: toPrice }));
-  //   dispatch(sortByPayloadFromCategories({ value: select }));
-  //   dispatch(sortByCheckBoxFromCategories({ value: isChecked }));
-  // }, [fromPrice, toPrice, select, isChecked, dispatch]);
-
   useEffect(() => {
     dispatch(sortByCheckBoxFromCategories({ value: isChecked }));
     dispatch(sortByMinMaxFromCategories({ min: fromPrice, max: toPrice }));
@@ -31,6 +24,16 @@ const FilterForCategories = () => {
     setSelect(e.target.value);
   }
 
+  function handleFromPriceChange(e) {
+    const value = e.target.value;
+    setFromPrice(value === "" ? 0 : Number(value));
+  }
+
+  function handleToPriceChange(e) {
+    const value = e.target.value;
+    setToPrice(value === "" ? Infinity : Number(value));
+  }
+
   return (
     <section className={`filter ${theme ? "filter-dark" : "filter-light"}`}>
       <div className="container">
@@ -39,8 +42,8 @@ const FilterForCategories = () => {
             <label htmlFor="price-from" className="box__label">
               Price
             </label>
-            <input className="price__input" id="price-from" type="number" name="min" placeholder="from" min="0" step="1" onChange={(e) => setFromPrice(+e.target.value)} />
-            <input value={toPrice} className="price__input" type="number" name="max" placeholder="to" min="0" step="1" onChange={(e) => setToPrice(+e.target.value)} />
+            <input value={fromPrice === 0 ? "" : fromPrice} className="price__input" id="price-from" type="number" name="min" placeholder="from" min="0" step="1" onChange={handleFromPriceChange} />
+            <input value={toPrice === Infinity ? "" : toPrice} className="price__input" type="number" name="max" placeholder="to" min="0" step="1" onChange={handleToPriceChange} />
           </form>
           <div className="discounted">
             <label htmlFor="checkbox" className="box__label">
@@ -74,7 +77,7 @@ const FilterForCategories = () => {
         </div>
       </div>
     </section>
-  );
+  )
 };
 
 export default FilterForCategories;
