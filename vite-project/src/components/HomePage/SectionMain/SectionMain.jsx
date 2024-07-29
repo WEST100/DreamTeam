@@ -2,7 +2,6 @@ import React, { useContext } from 'react'
 import header from "/src/assets/images/home_img/header.jpg";
 import "./SectionMain.scss";
 import { ThemeContext } from '../../Theme/ThemeContext';
-import { Link } from 'react-router-dom';
 import Button from '../../Buttons/Button';
 
 const SectionMain = () => {

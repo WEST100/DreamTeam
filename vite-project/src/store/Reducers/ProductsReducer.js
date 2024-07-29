@@ -160,7 +160,7 @@ const productsSlice = createSlice({
       console.log("maxValue:", maxValue);
       console.log("Filtered Data:", state.filteredProductsFromCategory);
 
-      // Проверяем валидность диапазона и фильтруем 
+      // Проверяем валидность диапазона и фильтруем
       if (minValue > maxValue) {
         // Если диапазон невалиден, очищаем результат фильтрации, но при этом массив заполнится продуктами из категории, надо думать над условием
         state.filteredProductsFromCategory = [];
@@ -259,6 +259,11 @@ const productsSlice = createSlice({
 
       state.cartProducts = [...state.cartProducts, newProduct];
       state.products = [...state.products, newProduct];
+
+      localStorage.setItem("cart", JSON.stringify(state.cartProducts));
+    },
+    clearProductsFromCart: (state, { payload }) => {
+      state.cartProducts = state.cartProducts.filter((item) => item.id !== payload.id);
 
       localStorage.setItem("cart", JSON.stringify(state.cartProducts));
     },

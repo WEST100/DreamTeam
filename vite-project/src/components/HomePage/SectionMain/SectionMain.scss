@@ -4,24 +4,19 @@
   line-height: 110%;
   color: #fffff1;
   margin-bottom: 40px;
-  // font-size: calc(52px + 44 * ((100vw - 360px) / 1080));
-  // font-size: calc(52px + (44 + 44 * 0.55) * ((100vw - 360px) / 1440));
-    
 }
 
-
 .main__button_large {
-
   width: auto;
 
   &:hover {
-    background: #7d8c2e;  
+    background: #7d8c2e;
   }
 }
 
 .main-content {
- padding-bottom: 40px;
- 
+  padding-bottom: 40px;
+
   &-light {
     background-color: #fffff1;
   }
@@ -31,21 +26,12 @@
   }
 
   &__item {
-    // position: absolute;
-    // padding-top: 80px;
-    // padding-left: 40px;
-    // top: 0;
-    // left: 0; 
-    // max-width: 1360px;
-
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      max-width: 1360px;
-      width: 100%;
-      text-align: left;
-
+    position: absolute;
+    padding-top: 80px;
+    padding-left: 40px;
+    top: 0;
+    left: 0;
+    max-width: 1360px;
   }
 
   &__items {
@@ -53,43 +39,84 @@
     max-width: 1440px;
     margin: 0 auto;
     overflow: hidden; /* Скрыть излишки изображения */
-     
   }
 
   &__image {
     // display: block;
     width: 100%;
-   
+
     object-fit: cover; /* Изображение покроет весь контейнер, обрезав излишки */
   }
 }
+
+@media (max-width: 1000px) {
+  .main__text {
+    font-size: 80px;
+  }
+
+  .main-content__item {
+    padding-top: 60px;
+  }
+}
+
 @media (max-width: 768px) {
- 
-  .main__button_large {
-    font-size: 1rem;
-    padding: 0.75rem 2.5rem;  
+  .main__text {
+    font-size: 68px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-content__items {
+    img {
+      height: 634px;
+    }
   }
 }
 
 @media (max-width: 480px) {
-  
+  .main__text {
+    font-size: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-content__items {
+    img {
+      height: 600px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .main__button_large {
+    font-size: 1rem;
+    padding: 0.75rem 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
   .main__button_large {
     font-size: 0.875rem;
-    padding: 0.5rem 2rem;   
+    padding: 0.5rem 2rem;
   }
 
   .main-content__item {
-    padding: 10% 5%;  
+    padding: 10% 5%;
   }
 }
 @media (max-width: 360px) {
-  
   .main__button_large {
     font-size: 0.75rem;
-    padding: 0.5rem 1.5rem;   
+    padding: 0.5rem 1.5rem;
   }
 
   .main-content__item {
-    padding: 15% 5%;  
+    padding: 15% 5%;
+  }
+}
+
+@media (max-width: 360px) {
+  .main__text {
+    font-size: 52px;
   }
 }

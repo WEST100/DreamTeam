@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./ProductCart.scss";
 import { IoMdClose } from "react-icons/io";
-import Quantity from "../../Quantity/Quantity";
+import "../../Quantity/Quantity.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { FaPlus } from "react-icons/fa6";
 import { FaMinus } from "react-icons/fa6";
@@ -13,7 +13,7 @@ const ProductCart = ({ product }) => {
 
   const dispatch = useDispatch();
 
-  const { cartProducts, products } = useSelector((state) => state.products);
+  const { cartProducts } = useSelector((state) => state.products);
 
   // установка счетчика кол-ва товара
   useEffect(() => {
@@ -57,6 +57,7 @@ const ProductCart = ({ product }) => {
     }
   }
 
+  // функция обрезания длины текста
   const shortText = (text, length) => {
     return text.length > length ? `${text.slice(0, length)} ...` : text;
   };
@@ -75,8 +76,6 @@ const ProductCart = ({ product }) => {
           </div>
         </div>
         <div className="list__content__price">
-          {/* <Quantity /> */}
-
           {count > 0 && (
             <div className="quantity">
               <button onClick={() => dispatch(decrementProduct(product?.id))} className="quantity__action">
@@ -88,7 +87,6 @@ const ProductCart = ({ product }) => {
               </button>
             </div>
           )}
-
           <div className="list__content__price__block">
             <h3>${priceCalculate()}</h3>
             <h6>{crossedOutPriceCalculate()}</h6>

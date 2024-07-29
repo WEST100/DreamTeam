@@ -76,12 +76,11 @@
   }
   &__form {
     display: flex;
-    // flex: 1;
     flex-direction: column;
     border-radius: 12px;
     padding: 32px;
     max-width: 548px;
-    max-height: 582px;
+    max-height: 662px;
     background: #f2f6d3;
 
     &__text {
@@ -100,7 +99,7 @@
       &__frame {
         & p,
         &__price p {
-          font-size:calc(32px + 8 * (100vw - 360px) / 1080);
+          font-size: calc(32px + 8 * (100vw - 360px) / 1080);
           line-height: 130%;
           color: #8b8b8b;
         }
@@ -113,7 +112,7 @@
           & span {
             font-weight: 700;
             font-size: calc(40px + 24 * (100vw - 360px) / 1080);
-            
+
             line-height: 110%;
             color: #424436;
           }
@@ -210,12 +209,11 @@
 
 @media (max-width: 768px) {
   .shop {
-      flex-direction: column;
-      gap: 20px;
+    flex-direction: column;
+    gap: 20px;
 
-      &__form {
-          max-width: 100%;
-      }
+    &__form {
+      max-width: 100%;
+    }
   }
 }
-

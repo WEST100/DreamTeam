@@ -98,7 +98,7 @@ const Header = () => {
         </div>
 
         <div className={isBurgerMenuOn ? "menu-opacity" : ""}>
-          <div className="menu">
+          <div className={`menu ${isBurgerMenuOn ? "menu-active" : ""}`}>
             <div className="menu__button">
               <button className="menu__button_small" onClick={() => setModalActive(true)}>
                 1 day discount!
@@ -128,6 +128,7 @@ const Header = () => {
                 </li>
               </ul>
             </nav>
+            <div className="menu__icon_close">{isBurgerMenuOn && <IoMdClose onClick={() => setIsBurgerMenuOn(!isBurgerMenuOn)} />}</div>
           </div>
         </div>
 
