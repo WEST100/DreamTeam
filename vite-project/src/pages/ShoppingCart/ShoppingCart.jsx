@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ThemeContext } from "../../components/Theme/ThemeContext";
 import "./ShoppingCart.scss";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ProductCart from "../../components/Product/ProductCart/ProductCart";
 import Button from "../../components/Buttons/Button";
 import { useForm } from "react-hook-form";
@@ -10,11 +10,19 @@ import Modal from "../../components/Modal/Modal/Modal";
 import { IoMdClose } from "react-icons/io";
 
 const ShoppingCart = () => {
+
+  const dispatch = useDispatch();
+  const { theme } = useContext(ThemeContext);
+  const { cartProducts, isLoading } = useSelector((state) => state.products);
   // состояние отвечающее за видимость модального окна
   const [modalActive, setModalActive] = useState(false);
-
   // состояние отвечающее за отправку ответа на сервер
   const [isResponce, setIsResponce] = useState(false);
+  // кнопка назад
+  const navigate = useNavigate();
+  const goBack = () => navigate(-1);
+  // проверка на наличие товаров в корзине
+  let data = cartProducts.length > 0 ? true : false;
 
   //создание хука useForm
   const {
@@ -55,16 +63,6 @@ const ShoppingCart = () => {
 
     fetchApi();
   };
-
-  const { theme } = useContext(ThemeContext);
-  const { cartProducts, isLoading } = useSelector((state) => state.products);
-
-  // кнопка назад
-  const navigate = useNavigate();
-  const goBack = () => navigate(-1);
-
-  // проверка на наличие товаров в корзине
-  let data = cartProducts.length > 0 ? true : false;
 
   // подсчет общего кол-ва цены (total price)
   let result = cartProducts.reduce(function (acc, curValue) {

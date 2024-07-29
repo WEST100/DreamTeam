@@ -195,8 +195,6 @@ const ProductCardDetail = () => {
                     </h6>
                   </div>
                   <div className="product-single__actions">
-                    {/* <Quantity /> */}
-
                     {count > 0 && (
                       <div className="quantity">
                         <button onClick={() => dispatch(decrementProduct(product?.id))} className="quantity__action">
