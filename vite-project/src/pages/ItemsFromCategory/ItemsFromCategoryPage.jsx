@@ -19,7 +19,6 @@ const ItemsFromCategoryPage = () => {
   const { category } = useSelector((state) => state.categories);
 
   let data = filteredProductsFromCategory.length > 0 ? filteredProductsFromCategory : productsFromCategory;
-  console.log(data);
 
   useEffect(() => {
     dispatch(getCategoriesProductsAction(categoryId));
@@ -44,7 +43,9 @@ const ItemsFromCategoryPage = () => {
           <h2>{category?.title}</h2>
         </div>
         <FilterForCategories />
-        <div className="productListContainer">{isLoading ? <div className="loader"></div> : data && data.map((item) => <ProductCard key={item.id} product={item} />)}</div>
+        {/* <div className="productListContainer">{isLoading ? <div className="loader"></div> : data && data.map((item) => <ProductCard key={item.id} product={item} />)}</div> */}
+        {/* пробую вывести сообщение что продукты не найдены если min больше max */}
+        <div className="productListContainer">{isLoading ? <div className="loader"></div> : data && data.length > 0 ? data.map((item) => <ProductCard key={item.id} product={item} />) : <p>No products available</p>}</div>
       </div>
     </section>
   );

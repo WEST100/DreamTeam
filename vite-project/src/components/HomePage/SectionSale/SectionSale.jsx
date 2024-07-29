@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useMemo } from "react";
 import { useSelector } from "react-redux";
 import ProductCard from "../../Product/ProductCard/ProductCard";
 import { Link } from "react-router-dom";
@@ -10,9 +10,15 @@ const SectionSale = () => {
 
   let { products, isLoading } = useSelector((state) => state.products);
 
-  let filteredProducts = products.filter((item) => item.discont_price);
+  // useMemo использую для кеширования отфильтрованных и случайных продуктов, чтобы они генерировались только один раз при монтировании компонента и не изменялись при перерендере. Иначе при клике на сердечко или сумку происходит перерендеривание компонента
+  const filteredProducts = useMemo(() => {
+    return products.filter((item) => item.discont_price);
+  }, [products]);
 
-  let randomProducts = filteredProducts.sort(() => Math.random() - 0.5).slice(0, 4);
+  // shuffle array with a method sort
+  const randomProducts = useMemo(() => {
+    return filteredProducts.sort(() => Math.random() - 0.5).slice(0, 4);
+  }, [filteredProducts]);
 
   // --------------------- 2nd variant to find randomProducts with a shuffle func ------------------
 
