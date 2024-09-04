@@ -40,17 +40,13 @@ const Header = () => {
 
   let discountProductOfTheDay = findOneDayDiscountProduct();
 
-  // метод случайной сортировки массива и слайс 1-го товара (метод работает, но при клике на сердечко, компонент постоянно обновляется, пришлось решить через new Date)
-  // let randomProducts = filteredProducts.sort(() => Math.random() - 0.5).slice(0, 1);
-  // console.log(randomProducts[0]);
-
   // функция сравнения есть ли товар со скидкой 50% уже в корзине или нет
   let checkForUniqueProductInCart = () => {
     let title = discountProductOfTheDay[0].title;
     let arrTitle = cartProducts.map((item) => item.title);
     let answer = arrTitle.filter((item) => item === title);
     if (answer[0] === title) {
-      console.log("product already been in cart");
+      console.log("the product is already in your cart");
     } else {
       dispatch(addProductFromOneDayDiscount(discountProductOfTheDay[0]));
     }

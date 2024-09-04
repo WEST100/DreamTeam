@@ -11,6 +11,7 @@ import { FaMinus } from "react-icons/fa6";
 import { ThemeContext } from "../../Theme/ThemeContext";
 import Button from "../../Buttons/Button";
 import Modal from "../../Modal/Modal/Modal";
+import ModalCardDetail from "../../Modal/ModalCardDetail/ModalCardDetail";
 
 const ProductCardDetail = () => {
   const dispatch = useDispatch();
@@ -236,9 +237,9 @@ const ProductCardDetail = () => {
           )}
         </div>
         {modalActive && (
-          <Modal active={modalActive} setActive={setModalActive}>
+          <ModalCardDetail active={modalActive} setActive={setModalActive}>
             <img src={`https://exam-server-5c4e.onrender.com${product?.image}`} alt="product-image" />
-          </Modal>
+          </ModalCardDetail>
         )}
       </div>
     </section>

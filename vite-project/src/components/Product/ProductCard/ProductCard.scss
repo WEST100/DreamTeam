@@ -115,12 +115,13 @@
     }
   }
 }
+
 @media(max-width:768px) {
   .product__discount {
     padding: 20px;
   }
-  
 }
+
 @media(max-width:480px), (max-width:360px) {
   .product__discount {
     padding: 20px
