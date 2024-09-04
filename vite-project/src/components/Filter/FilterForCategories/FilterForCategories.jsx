@@ -2,23 +2,28 @@ import React, { useContext, useEffect, useState } from "react";
 import "./FilterForCategories.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { ThemeContext } from "../../Theme/ThemeContext";
-import { sortByMinMaxFromCategories, sortByPayloadFromCategories, sortByCheckBoxFromCategories } from "../../../store/Reducers/ProductsReducer";
+import { sortByMinMaxFromCategories, sortByPayloadFromCategories, sortByCheckBoxFromCategories, setMinValue, setMaxValue, setMinMaxByDefault } from "../../../store/Reducers/ProductsReducer";
 
 const FilterForCategories = () => {
   const dispatch = useDispatch();
 
   const { theme } = useContext(ThemeContext);
 
-  const [fromPrice, setFromPrice] = useState(0);
-  const [toPrice, setToPrice] = useState(Infinity);
+  const {minValue, maxValue} = useSelector(state => state.products)
+
   const [isChecked, setIsChecked] = useState(false);
   const [select, setSelect] = useState("default");
 
   useEffect(() => {
     dispatch(sortByCheckBoxFromCategories({ value: isChecked }));
-    dispatch(sortByMinMaxFromCategories({ min: fromPrice, max: toPrice }));
+    dispatch(sortByMinMaxFromCategories({ min: minValue, max: maxValue }));
     dispatch(sortByPayloadFromCategories({ value: select }));
-  }, [isChecked, fromPrice, toPrice, select, dispatch]);
+  }, [isChecked, minValue, maxValue, select, dispatch]);
+
+  // установление значений min и max в default. чтобы решить проблему запоминания данных в инпутах при фильтрации и переходе на другую страницу
+  useEffect(() => {
+    dispatch(setMinMaxByDefault({ min: minValue, max: maxValue }));
+  }, []);
 
   function handleSelect(e) {
     setSelect(e.target.value);
@@ -26,12 +31,12 @@ const FilterForCategories = () => {
 
   function handleFromPriceChange(e) {
     const value = e.target.value;
-    setFromPrice(value === "" ? 0 : Number(value));
+    dispatch(setMinValue(value === "" ? 0 : Number(value)))
   }
 
   function handleToPriceChange(e) {
     const value = e.target.value;
-    setToPrice(value === "" ? Infinity : Number(value));
+    dispatch(setMaxValue(value === "" ? Infinity : Number(value)))
   }
 
   return (
@@ -42,8 +47,8 @@ const FilterForCategories = () => {
             <label htmlFor="price-from" className="box__label">
               Price
             </label>
-            <input value={fromPrice === 0 ? "" : fromPrice} className="price__input" id="price-from" type="number" name="min" placeholder="from" min="0" step="1" onChange={handleFromPriceChange} />
-            <input value={toPrice === Infinity ? "" : toPrice} className="price__input" type="number" name="max" placeholder="to" min="0" step="1" onChange={handleToPriceChange} />
+            <input value={minValue === 0 ? "" : minValue} className="price__input" id="price-from" type="number" name="min" placeholder="from" min="0" step="1" onChange={handleFromPriceChange} />
+            <input value={maxValue === Infinity ? "" : maxValue} className="price__input" type="number" name="max" placeholder="to" min="0" step="1" onChange={handleToPriceChange} />
           </form>
           <div className="discounted">
             <label htmlFor="checkbox" className="box__label">

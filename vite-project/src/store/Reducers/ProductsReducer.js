@@ -14,9 +14,26 @@ const productsSlice = createSlice({
     filteredProductsFromCategory: [],
     cartProducts: [],
     productsFromCategory: [],
+    minValue: 0,
+    maxValue: Infinity,
   },
 
   reducers: {
+      // установление значений min и max в default. чтобы решить проблему запоминания данных в инпутах при фильтрации и переходе на другую страницу
+    setMinMaxByDefault: (state, {payload})=>{
+      state.minValue = payload.min = 0;
+      state.maxValue = payload.max = Infinity;
+      console.log("from reducer: " + state.minValue);
+      console.log("from reducer: " + state.maxValue);
+      
+    },
+    // чтобы заработал фильтр необходимо запоминать значения мин и макс
+    setMinValue: (state, {payload})=>{
+      state.minValue = payload;
+    },
+    setMaxValue: (state, {payload})=>{
+      state.maxValue = payload;
+    },
     // вытягиваем продукты в корзину при первой загрузке страницы из LocalStorage если они были ранее туда добавлены
     getProductsFromLocalStorage: (state) => {
       let cartStorage = JSON.parse(localStorage.getItem("cart"));
@@ -39,7 +56,7 @@ const productsSlice = createSlice({
     },
     // сортировка из выпадающего списка для всех товаров
     sortByPayload(state, action) {
-      let data = state.filteredProducts.length > 0 ? state.filteredProducts : state.products;
+      let data = state.filteredProducts.length > 0 || state.minValue !== 0 || state.maxValue !== Infinity ? state.filteredProducts : state.products;
 
       if (action.payload.value === "default") {
         state.filteredProducts = data.slice().sort((a, b) => a.id - b.id);
@@ -63,7 +80,7 @@ const productsSlice = createSlice({
     },
     // сортировка из выпадающего списка для избранного
     sortByPayloadFromFavorites(state, action) {
-      let data = state.filteredFavoritesProducts.length > 0 ? state.filteredFavoritesProducts : state.favoritesProducts;
+      let data = state.filteredFavoritesProducts.length > 0 || state.minValue !== 0 || state.maxValue !== Infinity ? state.filteredFavoritesProducts : state.favoritesProducts;
 
       if (action.payload.value === "default") {
         state.filteredFavoritesProducts = data.slice().sort((a, b) => a.id - b.id);
@@ -87,7 +104,7 @@ const productsSlice = createSlice({
     },
     // сортировка из выпадающего списка для категорий
     sortByPayloadFromCategories(state, action) {
-      let data = state.filteredProductsFromCategory.length > 0 ? state.filteredProductsFromCategory : state.productsFromCategory;
+      let data = state.filteredProductsFromCategory.length > 0 || state.minValue !== 0 || state.maxValue !== Infinity ? state.filteredProductsFromCategory : state.productsFromCategory;
 
       if (action.payload.value === "default") {
         state.filteredProductsFromCategory = data.slice().sort((a, b) => a.id - b.id);
@@ -111,22 +128,22 @@ const productsSlice = createSlice({
     },
     // сортировка по нажатию на checkBox для всех товаров
     sortByCheckBox(state, action) {
-      let data = state.filteredProducts.length > 0 ? state.filteredProducts : state.products;
+      // let data = state.filteredProducts.length > 0 ? state.filteredProducts : state.products;
 
-      state.filteredProducts = action.payload.value ? data.filter((item) => item.discont_price) : [];
+      state.filteredProducts = action.payload.value ? state.products.filter((item) => item.discont_price) : state.products;
     },
     // сортировка по нажатию на checkBox для товаров из категорий
     sortByCheckBoxFromCategories(state, action) {
-      let data = state.filteredProductsFromCategory.length > 0 ? state.filteredProductsFromCategory : state.productsFromCategory;
+      // let data = state.filteredProductsFromCategory.length > 0  ? state.filteredProductsFromCategory : state.productsFromCategory;
 
-      state.filteredProductsFromCategory = action.payload.value ? data.filter((item) => item.discont_price) : [];
+      state.filteredProductsFromCategory = action.payload.value ? state.productsFromCategory.filter((item) => item.discont_price) : state.productsFromCategory;
     },
     // сортировка от Мин цены до Макс цены. для всех товаров
     sortByMinMax(state, { payload }) {
       let maxValue = !payload.max && payload.max === "" ? Infinity : +payload.max;
       let minValue = !payload.min && payload.min === "" ? 0 : +payload.min;
 
-      let data = state.filteredProducts.length > 0 ? state.filteredProducts : state.products;
+      let data = state.filteredProducts.length > 0 || maxValue !== Infinity || minValue !== 0 ? state.filteredProducts : state.products;
 
       state.filteredProducts = data.filter((item) => {
         const price = item.discont_price !== null ? item.discont_price : item.price;
@@ -142,7 +159,7 @@ const productsSlice = createSlice({
       console.log("maxValue:", maxValue);
       console.log("Filtered Data:", state.filteredFavoritesProducts);
 
-      let data = state.filteredFavoritesProducts.length > 0 ? state.filteredFavoritesProducts : state.favoritesProducts;
+      let data = state.filteredFavoritesProducts.length > 0 || maxValue !== Infinity || minValue !== 0 ? state.filteredFavoritesProducts : state.favoritesProducts;
 
       state.filteredFavoritesProducts = data.filter((item) => {
         const price = item.discont_price !== null ? item.discont_price : item.price;
@@ -154,24 +171,17 @@ const productsSlice = createSlice({
       let maxValue = payload.max === "" ? Infinity : +payload.max;
       let minValue = payload.min === "" ? 0 : +payload.min;
 
-      let data = state.filteredProductsFromCategory.length > 0 ? state.filteredProductsFromCategory : state.productsFromCategory;
+      let data = state.filteredProductsFromCategory.length > 0 || maxValue !== Infinity || minValue !== 0 ? state.filteredProductsFromCategory : state.productsFromCategory;
 
       console.log("minValue:", minValue);
       console.log("maxValue:", maxValue);
       console.log("Filtered Data:", state.filteredProductsFromCategory);
 
-      // Проверяем валидность диапазона и фильтруем
-      if (minValue > maxValue) {
-        // Если диапазон невалиден, очищаем результат фильтрации, но при этом массив заполнится продуктами из категории, надо думать над условием
-        state.filteredProductsFromCategory = [];
-        // state.productsFromCategory = [];
-        console.log("Filtered Data:", state.filteredProductsFromCategory);
-      } else {
         state.filteredProductsFromCategory = data.filter((item) => {
           const price = item.discont_price !== null ? item.discont_price : item.price;
           return price >= minValue && price <= maxValue;
         });
-      }
+
       console.log("Filtered Data:", state.filteredProductsFromCategory);
     },
 
@@ -262,8 +272,9 @@ const productsSlice = createSlice({
 
       localStorage.setItem("cart", JSON.stringify(state.cartProducts));
     },
-    clearProductsFromCart: (state, { payload }) => {
-      state.cartProducts = state.cartProducts.filter((item) => item.id !== payload.id);
+    // удаление из корзины после оформления заказа
+    clearProductsFromCart: (state) => {
+      state.cartProducts = [];
 
       localStorage.setItem("cart", JSON.stringify(state.cartProducts));
     },
@@ -313,4 +324,4 @@ const productsSlice = createSlice({
 });
 
 export default productsSlice.reducer;
-export const { sortByPayload, sortByCheckBox, sortByMinMax, addFavoritesProducts, addProductToCart, getProductsFromLocalStorage, getFavoritesFromLocalStorage, incrementProduct, decrementProduct, removeProductFromCart, removeProductFromFavorites, sortByPayloadFromFavorites, sortByMinMaxFromFavorites, sortByPayloadFromCategories, sortByCheckBoxFromCategories, sortByMinMaxFromCategories, addProductFromOneDayDiscount } = productsSlice.actions;
+export const { sortByPayload, sortByCheckBox, sortByMinMax, addFavoritesProducts, addProductToCart, getProductsFromLocalStorage, getFavoritesFromLocalStorage, incrementProduct, decrementProduct, removeProductFromCart, removeProductFromFavorites, sortByPayloadFromFavorites, sortByMinMaxFromFavorites, sortByPayloadFromCategories, sortByCheckBoxFromCategories, sortByMinMaxFromCategories, addProductFromOneDayDiscount, clearProductsFromCart, setMinValue, setMaxValue, setMinMaxByDefault } = productsSlice.actions;

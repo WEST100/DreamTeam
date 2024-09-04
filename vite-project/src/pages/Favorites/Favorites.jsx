@@ -9,9 +9,12 @@ import FilterForFavorites from "../../components/Filter/FilterForFavorites/Filte
 const Favorites = () => {
   const { theme } = useContext(ThemeContext);
 
-  const { favoritesProducts, isLoading, filteredFavoritesProducts } = useSelector((state) => state.products);
+  const { favoritesProducts, isLoading, filteredFavoritesProducts, minValue, maxValue } = useSelector((state) => state.products);
 
-  const data = filteredFavoritesProducts.length > 0 ? filteredFavoritesProducts : favoritesProducts;
+  const data = filteredFavoritesProducts.length > 0 || minValue !== 0 || maxValue !== Infinity ? filteredFavoritesProducts : favoritesProducts ;
+
+  console.log(data);
+  
 
   return (
     <>
@@ -28,7 +31,7 @@ const Favorites = () => {
             <h2>Liked products</h2>
           </div>
           <FilterForFavorites />
-          <div className="productListContainer">{isLoading ? <div className="loader"></div> : data && data.map((prod) => <ProductCard key={prod.id} product={prod} />)}</div>
+          <div className="productListContainer">{isLoading ? <div className="loader"></div> : data && data.length > 0 ? data.map((item) => <ProductCard key={item.id} product={item} />) : <p>No products available</p>}</div>
         </div>
       </section>
     </>

@@ -115,6 +115,16 @@ body {
   }
 }
 
+@media (max-width: 768px){
+  .breadcrumbs__button {
+    font-size: 12px;
+  }
+}
+
+
+
+
+
 @media (max-width: 360px) {
   .pageSectionTitle {
     h2 {

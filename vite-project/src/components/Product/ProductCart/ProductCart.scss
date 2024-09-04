@@ -5,9 +5,7 @@
         border: 1px solid #ddd;
         border-radius: 12px;
         gap: 32px;
-        
-        // max-height: 180px; 
-        
+  
         &__image {
             border: 1px solid #ddd;
             border-radius: 12px 0 0 12px;
@@ -20,7 +18,6 @@
         width: 100%;
         display: flex;
         flex-direction: column;
-        // justify-content: space-between;
         gap: 68px;
 
         &__title {
@@ -39,13 +36,13 @@
                 line-height: 130%;
                 
             }
+
             & svg {
                 width: 24px;
                 height: 24px;
             }
         }
         &__price {
-            // max-width: 516px;
             display: flex;
             gap: 32px;
             align-items: center;
@@ -73,15 +70,16 @@
   }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1024px) {
+  .list__item {
+    gap: 9px;
+  }
+
   .list__content {
-    // justify-content: left;
-    padding: 2opx 30px 20px 0px;
-    gap: 10px;
+    padding: 20px 7px 20px 0px;
+    gap: 60px;
 
     &__price {
-      flex-direction: column;
-      align-items: flex-start;
       gap: 15px
     }
   }
@@ -89,14 +87,13 @@
 
 @media (max-width: 768px) {
   .list__content {
-    // justify-content: space-between;
-    padding: 20px 30px 20px 0px;
+    padding: 20px 15px 20px 0px;
     gap: 30px;
 
     &__price {
       flex-direction: row;
-      gap: 32px;
       align-items: center;
+      gap: 32px;
       
       &__block {
         align-items: baseline;
@@ -105,10 +102,24 @@
   } 
 }
 
-@media (max-width: 480px), (max-width: 360px) {
+@media (max-width: 720px) {
   .list__content {
-    // justify-content: left;
-    padding: 2opx 30px 20px 0px;
+
+    &__price {
+     flex-direction: column;
+      align-items: flex-start;
+      gap: 32px;
+    }
+  }
+}
+
+@media (max-width: 480px), (max-width: 360px) {
+  .list__item {
+    gap: 7px;
+  }
+
+  .list__content {
+    padding: 20px 10px 20px 0px;
 
     &__title h3 {
       font-size: 18px;
@@ -124,9 +135,37 @@
       font-size: 18px;
     }
   }
-  
+}
 
-  
- 
-  
+@media (max-width: 431px) {
+
+  .list__item__image {
+    max-width: 180px;
+  }
+}
+
+
+@media (max-width: 415px) {
+
+  .list__item__image {
+    max-width: 160px;
+  }
+}
+
+@media (max-width: 390px) {
+  .list__item__image {
+    max-width: 140px;
+  }
+}
+
+@media (max-width: 376px) {
+  .list__item__image {
+    max-width: 120px;
+  }
+}
+
+@media (max-width: 345px) {
+  .list__item__image {
+    max-width: 100px;
+  }
 }
