@@ -88,12 +88,12 @@
 iframe {
   width: 100%;
 }
-@media(max-width: 768px) {
-  .footer__items {
-    grid-template-columns: 2fr, 1fr;
-  }
-}
-@media(max-width: 480px),(max-width: 360px) {
+// @media(max-width: 768px) {
+//   .footer__items {
+//     grid-template-columns: 2fr, 1fr;
+//   }
+// }
+@media(max-width: 768px),(max-width: 480px),(max-width: 360px) {
   .footer__items {
     grid-template-columns: repeat(1, 1fr);
   }

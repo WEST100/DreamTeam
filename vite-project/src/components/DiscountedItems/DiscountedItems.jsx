@@ -12,13 +12,13 @@ const DiscountedItems = () => {
 
   const dispatch = useDispatch();
 
-  const { products, isLoading, filteredProducts } = useSelector((state) => state.products);
+  const { products, isLoading, filteredProducts, minValue, maxValue } = useSelector((state) => state.products);
 
   useEffect(() => {
     dispatch(getAllProductAction());
   }, []);
 
-  const data = filteredProducts.length > 0 ? filteredProducts : products;
+  const data = filteredProducts.length > 0 || minValue !== 0 || maxValue !== Infinity ? filteredProducts : products;
 
   const findDiscountedItems = data.filter((item) => {
     if (item.discont_price != null) {
@@ -40,7 +40,9 @@ const DiscountedItems = () => {
           <h2>Discounted items</h2>
         </div>
         <Filter />
-        <div className="productListContainer">{isLoading ? <div className="loader"></div> : findDiscountedItems && findDiscountedItems.map((prod) => <ProductCard key={prod.id} product={prod} />)}</div>
+        {/* <div className="productListContainer">{isLoading ? <div className="loader"></div> : findDiscountedItems && findDiscountedItems.map((prod) => <ProductCard key={prod.id} product={prod} />)}</div> */}
+
+        <div className="productListContainer">{isLoading ? <div className="loader"></div> : findDiscountedItems && findDiscountedItems.length > 0 ? findDiscountedItems.map((item) => <ProductCard key={item.id} product={item} />) : <p>No products available</p>}</div>
       </div>
     </section>
   );

@@ -9,9 +9,9 @@ import { ThemeContext } from "../../Theme/ThemeContext";
 const ProductList = () => {
   const { theme } = useContext(ThemeContext);
 
-  const { products, isLoading, filteredProducts } = useSelector((state) => state.products);
+  const { products, isLoading, filteredProducts, minValue, maxValue } = useSelector((state) => state.products);
 
-  const data = filteredProducts.length > 0 ? filteredProducts : products;
+  const data = filteredProducts.length > 0 || minValue !== 0 || maxValue !== Infinity ? filteredProducts : products;
 
   return (
     <section className={`all_products ${theme ? "all_products-dark" : "all_products-light"}`}>
@@ -27,7 +27,8 @@ const ProductList = () => {
           <h2>All products</h2>
         </div>
         <Filter />
-        <div className="productListContainer">{isLoading ? <div className="loader"></div> : data && data.map((prod) => <ProductCard key={prod.id} product={prod} />)}</div>
+        <div className="productListContainer">{isLoading ? <div className="loader"></div> : data && data.length > 0 ? data.map((item) => <ProductCard key={item.id} product={item} />) : <p>No products available</p>}</div>
+
       </div>
     </section>
   );

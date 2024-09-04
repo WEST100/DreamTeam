@@ -8,9 +8,9 @@ import Button from "../../components/Buttons/Button";
 import { useForm } from "react-hook-form";
 import Modal from "../../components/Modal/Modal/Modal";
 import { IoMdClose } from "react-icons/io";
+import { clearProductsFromCart } from "../../store/Reducers/ProductsReducer";
 
 const ShoppingCart = () => {
-
   const dispatch = useDispatch();
   const { theme } = useContext(ThemeContext);
   const { cartProducts, isLoading } = useSelector((state) => state.products);
@@ -134,7 +134,12 @@ const ShoppingCart = () => {
                       required: "email is required",
                     })}
                   />
-                  <button type="submit" onClick={() => setModalActive(true)}>
+                  <button
+                    type="submit"
+                    onClick={() => {
+                      setModalActive(true);
+                    }}
+                  >
                     Order
                   </button>
                 </form>
@@ -158,6 +163,7 @@ const ShoppingCart = () => {
                   onClick={() => {
                     setModalActive(false);
                     setIsResponce(false);
+                    dispatch(clearProductsFromCart());
                   }}
                 />
               </div>

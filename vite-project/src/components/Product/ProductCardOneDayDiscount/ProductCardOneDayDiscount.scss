@@ -1,17 +1,17 @@
-.product__card {
+.product__card_oneday {
   &-dark {
-    .product__discount {
+    .product__discount_oneday {
       background: #424436;
 
       &__text a {
         color: #fff;
       }
 
-      .product__price__real {
+      .product__price__real_oneday {
         color: #fff;
       }
 
-      .product__price__old {
+      .product__price__old_oneday {
         color: #fff;
       }
     }
@@ -19,7 +19,7 @@
 }
 
 .product {
-  &__card {
+  &__card_oneday {
     display: grid;
     grid-template-rows: 1fr auto;
     position: relative;
@@ -29,7 +29,7 @@
     overflow: hidden;
   }
 
-  &__img {
+  &__img_oneday {
     img {
       width: 100%;
       object-fit: cover;
@@ -37,20 +37,20 @@
     }
   }
 
-  &__discount {
+  &__discount__oneday {
     // grid-row: 2 / 3;
-    padding: 20px 30px 30px 30px;
+    padding: 7px 30px 7px 30px;
     // margin-top: 16px;
     text-align: left;
     color: #424436;
     background: #fff;
 
     &__text {
-      margin-bottom: 16px;
-      min-height: 60px;
+      margin-bottom: 2px;
+      min-height: 25px;
 
       a {
-        font-size: 20px;
+        font-size: 12px;
         line-height: 130%;
         text-decoration: none;
         color: #424436;
@@ -76,13 +76,13 @@
       }
     }
   }
-  &__price {
+  &__price_oneday {
     // font-size: 24px;
 
     &__real {
       display: inline-block;
       font-weight: 600;
-      font-size: 40px;
+      font-size: 30px;
       color: #424436;
       line-height: 110%;
     }
@@ -95,7 +95,7 @@
       padding-left: 16px;
     }
   }
-  &__icons {
+  &__icons_oneday {
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -114,11 +114,35 @@
     }
   }
 }
-@media(max-width:480px), (max-width:360px) {
-  .product__price__real {
-    font-size: 36px;
+
+@media (max-width: 768px) {
+  .product__discount__oneday__text a {
+    font-size: 16px;
   }
-  .product__price__old {
-    font-size: 18px;
+
+  .product__price_oneday__real {
+    font-size: 30px;
+  }
+
+  .product__price_oneday__old {
+    font-size: 14px;
+  }
+
+  .product__discount__oneday__text {
+    margin-bottom: 0;
+    min-height: 44px;
+  }
+
+  .product__discount__oneday {
+    padding: 7px 30px 7px 30px;
+  }
+}
+
+@media (max-width: 480px), (max-width: 360px) {
+  .product__price_oneday__real {
+    font-size: 24px;
+  }
+  .product__price_oneday__old {
+    font-size: 10px;
   }
 }

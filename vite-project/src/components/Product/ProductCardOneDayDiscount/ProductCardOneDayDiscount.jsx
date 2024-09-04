@@ -16,17 +16,6 @@ export default function ProductCardOneDayDiscount({ product }) {
     return text.length > length ? `${text.slice(0, length)} ...` : text;
   };
 
-  // const [isColoredHeart, setIsColoredHeart] = useState(false);
-  // const [isColoredCart, setIsColoredCart] = useState(false);
-
-  // const handleSvgClickHeart = () => {
-  //   setIsColoredHeart(!isColoredHeart);
-  // };
-
-  // const handleSvgClickCart = () => {
-  //   setIsColoredCart(!isColoredCart);
-  // };
-
   // функция сравнения при клике на сердечко, если продукт есть в избранном то удаляем, если нету то добавляем
   function compareProductsFromFavorites() {
     let foundProduct = favoritesProducts.find((item) => item.id === product.id);
@@ -71,25 +60,25 @@ export default function ProductCardOneDayDiscount({ product }) {
   }
 
   return (
-    <div className={`product__card ${theme ? "product__card-dark" : "product__card-light"}`}>
-      <div className="product__img">
+    <div className={`product__card_oneday ${theme ? "product__card_oneday-dark" : "product__card_oneday-light"}`}>
+      <div className="product__img_oneday">
         <Link to={`/products/${product.id}`}>
           <img src={`https://exam-server-5c4e.onrender.com${product.image}`} alt="Product img" />
         </Link>
       </div>
-      <div className="product__discount">
-        <div className="product__discount__text">
+      <div className="product__discount__oneday">
+        <div className="product__discount__oneday__text">
           <Link to={`/products/${product.id}`}>{shortText(product.title, 27)}</Link>
         </div>
-        <div className="product__price">
-          <p className="product__price__real">${(product.price / 2).toFixed(2)}</p>
-          <p className="product__price__old">${product.price}</p>
+        <div className="product__price_oneday">
+          <p className="product__price_oneday__real">${(product.price / 2).toFixed(2)}</p>
+          <p className="product__price_oneday__old">${product.price}</p>
         </div>
       </div>
-      <div className="product__discount__Perc">
+      <div className="product__discount__oneday__Perc">
         <p>-50%</p>
       </div>
-      <div className="product__icons">
+      <div className="product__icons_oneday">
         <svg
           onClick={() => {
             // handleSvgClickHeart();

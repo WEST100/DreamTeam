@@ -1,4 +1,4 @@
-.modal {
+.modal2 {
   height: 100vh;
   width: 100vw;
   background-color: rgba(0, 0, 0, 0.4);
@@ -13,31 +13,23 @@
   transition: 0.5s;
 }
 
-.modal.active {
+.modal2.active {
   opacity: 1;
   pointer-events: all;
   z-index: 9999;
 }
 
-.modal__content {
-  padding: 32px;
+.modal2__content {
+  padding: 20px;
   border-radius: 12px;
-  background-color: #92a134;
-  // width: 50vw;
-  max-width: 310px;
-  max-height: 530px;
-  // height: 40vh;
   transform: scale(0.5);
   transition: 0.4s all;
 }
 
-@media (max-width: 768px), (max-width: 480px) {
-  .modal__content {
-    max-width: 310px;
-    max-height: 530px;
-  }
+.modal2__content.active {
+  transform: scale(1);
+}
 
-  .header .modalHeader__btn {
-    margin-top: 0;
-  }
+.modal2__content.active img{
+  width: 40vw;
 }
