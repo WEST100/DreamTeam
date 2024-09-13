@@ -1,0 +1,35 @@
+.up {
+  position: fixed;
+  right: 50px;
+  bottom: 50px;
+  border: 1px solid white;
+  padding: 5px 10px;
+  height: 39px;
+  min-width: 50px;
+  border-radius: 50px;
+  text-align: center;
+  cursor: pointer;
+  line-height: 28px;
+  z-index: 1;
+  user-select: none;
+  transform: scale(1);
+  animation: pulse 2s infinite;
+  background-color: #f2f6d3;
+  text-decoration: none;
+  color: black;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.9);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.5);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+  }
+  100% {
+    transform: scale(0.9);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
