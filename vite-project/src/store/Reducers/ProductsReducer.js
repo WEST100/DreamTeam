@@ -285,6 +285,7 @@ const productsSlice = createSlice({
       .addCase(getAllProductAction.pending, (state, action) => {
         state.isLoading = true;
         state.error = null;
+        
       })
       .addCase(getAllProductAction.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -293,6 +294,7 @@ const productsSlice = createSlice({
       .addCase(getAllProductAction.rejected, (state, action) => {
         state.isLoading = false;
         state.error = "Request execution error";
+        
       })
       // получение продуктов из категории
       .addCase(getCategoriesProductsAction.pending, (state, action) => {
