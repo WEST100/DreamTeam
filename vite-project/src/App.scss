@@ -109,6 +109,10 @@ body {
   gap: 32px;
 }
 
+.skeletonListContainer {
+  display: block;
+}
+
 @media (max-width: 1000px), (max-width: 768px), (max-width: 480px), (max-width: 360px) {
   .container {
     width: calc(100vw - 40px); /* Прямая установка уменьшенной разницы */

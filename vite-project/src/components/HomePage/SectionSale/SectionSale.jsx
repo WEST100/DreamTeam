@@ -4,6 +4,7 @@ import ProductCard from "../../Product/ProductCard/ProductCard";
 import { Link } from "react-router-dom";
 import { ThemeContext } from "../../Theme/ThemeContext";
 import "./SectionSale.scss";
+import Skeleton from "../../Skeleton/Skeleton";
 
 const SectionSale = () => {
   const { theme } = useContext(ThemeContext);
@@ -50,7 +51,9 @@ const SectionSale = () => {
             <Link to={"/discounted"}>All sales</Link>
           </button>
         </div>
-        <div className="productListContainer">{isLoading ? <div className="loader"></div> : randomProducts && randomProducts.map((item) => <ProductCard key={item.id} product={item} />)}</div>
+        {/* <div className="productListContainer">{isLoading ? <div className="loader"></div> : randomProducts && randomProducts.map((item) => <ProductCard key={item.id} product={item} />)}</div> */}
+
+        <div className={isLoading ? "skeletonListContainer" : "productListContainer"}>{isLoading ? <Skeleton type={"product"} count={4}/> : randomProducts && randomProducts.map((item) => <ProductCard key={item.id} product={item} />)}</div>
       </div>
     </section>
   );
