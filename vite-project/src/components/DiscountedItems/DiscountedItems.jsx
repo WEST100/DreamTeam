@@ -6,6 +6,7 @@ import ProductCard from "../Product/ProductCard/ProductCard";
 import Filter from "../Filter/Filter";
 import { Link } from "react-router-dom";
 import { ThemeContext } from "../Theme/ThemeContext";
+import Skeleton from "../Skeleton/Skeleton";
 
 const DiscountedItems = () => {
   const { theme } = useContext(ThemeContext);
@@ -42,7 +43,10 @@ const DiscountedItems = () => {
         <Filter />
         {/* <div className="productListContainer">{isLoading ? <div className="loader"></div> : findDiscountedItems && findDiscountedItems.map((prod) => <ProductCard key={prod.id} product={prod} />)}</div> */}
 
-        <div className="productListContainer">{isLoading ? <div className="loader"></div> : findDiscountedItems && findDiscountedItems.length > 0 ? findDiscountedItems.map((item) => <ProductCard key={item.id} product={item} />) : <p>No products available</p>}</div>
+        {/* <div className="productListContainer">{isLoading ? <div className="loader"></div> : findDiscountedItems && findDiscountedItems.length > 0 ? findDiscountedItems.map((item) => <ProductCard key={item.id} product={item} />) : <p>No products available</p>}</div> */}
+
+
+        <div className={isLoading ? "skeletonListContainer" : "productListContainer"}>{isLoading ? <Skeleton type={"product"} count={12}/> : findDiscountedItems && findDiscountedItems.length > 0 ? findDiscountedItems.map((item) => <ProductCard key={item.id} product={item} />) : <p>No products available</p>}</div>
       </div>
     </section>
   );

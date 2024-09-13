@@ -1,0 +1,43 @@
+.skeletonProductList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 32px;
+}
+
+.skeletonCategoryList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.product {
+  border-radius: 12px;
+  height: 422px;
+}
+
+.category {
+  // width: 100%;
+  border-radius: 12px;
+  height: 350px;
+}
+
+li {
+  list-style-type: none;
+}
+
+.product,
+.category {
+  background: linear-gradient(-90deg, #f0f0f0 0%, #bfc497 50%, #f0f0f0 100%);
+  // background:#f2f6d3;
+  background-size: 400% 400%;
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: -135% 0%;
+  }
+}
