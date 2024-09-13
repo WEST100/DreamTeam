@@ -11,6 +11,7 @@ import Button from "../../Buttons/Button";
 import ModalCartOneDayDiscount from "../../Modal/ModalCartOneDayDiscount/ModalCartOneDayDiscount";
 import { addProductFromOneDayDiscount, addProductToCart } from "../../../store/Reducers/ProductsReducer";
 import ProductCardOneDayDiscount from "../../Product/ProductCardOneDayDiscount/ProductCardOneDayDiscount";
+import BtnScrollUp from "../../ScrollUp/BtnScrollUp";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -173,6 +174,7 @@ const Header = () => {
           </ModalCartOneDayDiscount>
         )}
       </div>
+      <BtnScrollUp/>
     </header>
   );
 };
