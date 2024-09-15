@@ -111,8 +111,8 @@
 
           & span {
             font-weight: 700;
-            font-size: calc(40px + 24 * (100vw - 360px) / 1080);
-
+            // font-size: calc(40px + 24 * (100vw - 360px) / 1080);
+            font-size: clamp(40px, calc(40px + (56 - 40) * (100vw - 360px) / (1280 - 360)), 56px);
             line-height: 110%;
             color: #424436;
           }
@@ -197,6 +197,16 @@
       color: #fff;
       height: 44px;
       width: 44px;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .shop {
+    gap: 12px;
+
+    &__form {
+      max-width: 380px;
     }
   }
 }
