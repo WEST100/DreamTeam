@@ -22,7 +22,6 @@ const Skeleton = ({ count = 1, type = "product" }) => {
         <li className={type === "product" ? styles.product : styles.category}></li>
         // <li className={type === "product" ? "product" : "category"}></li>
       )}
-      ;
     </>
   );
 };
